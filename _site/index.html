@@ -1,0 +1,54 @@
+<!doctype html><html lang="en" class="scroll-smooth scroll-p-section-title"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mustafa</title><meta property="og:title" content="Mustafa"><meta name="description" content="
+     Multi-talented artist from Chicago"><meta property="og:description" content="
+     Multi-talented artist from Chicago"><meta property="og:url" content="https://mustafaanwar.com/"><meta property="og:image" content="https://mustafaanwar.com/images/uploads/og-image.jpg
+"><meta property="og:type" content="website"><meta name="generator" content="Eleventy v3.1.2"><link rel="icon" type="image/x-icon" href="https://mustafaanwar.com/images/uploads/favicon.png"><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=add,arrow_back,arrow_forward,bug_report,chevron_backward,chevron_forward,close,close_small,downloading,menu,remove,vertical_align_top"></head><body class="bg-bg-surface font-sans text-t-neutral text-base antialiased flex flex-col min-h-dvh items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]"><main class="flex flex-col w-full gap-section py-section grow"><div data-container="" class="mx-auto w-[var(--container-base)] max-w-[calc(100cqi-2*var(--spacing-site-inline))] grid gap-6"><div class="bg-bg- p-8"><h1 class="text-3xl text-t-hue">Mustafa</h1></div><div class="border border-border-neutral-light hover:border-border-action-light bg-bg-neutral hover:bg-bg-action-lighter p-8"><h1 class="font-semibold">Mustafa</h1></div><div class="border border-border-action-light hover:border-border-neutral-light bg-bg-action-light hover:bg-bg-action hover:text-t-surface p-8"><h1 class="font-semibold">Mustafa</h1></div><svg width="375" height="238" viewBox="0 0 375 238" fill="none" xmlns="http://www.w3.org/2000/svg"><g style="mix-blend-mode:plus-lighter"><path d="M283.403 125.67C375.157 121.715 453.66 46.7581 453.66 4.54395C453.66 -37.6702 456.714 228.161 456.714 228.161L-323.053 231.814L-323.053 190.615C-199.689 188.822 -128.599 80.6145 -19.2945 80.6145C150.119 80.6145 217.185 128.524 283.403 125.67Z" fill="#420D4A" style="fill:var(--color-fill-pink);"></path><path d="M288.824 144.796C380.102 140.862 448.378 99.9675 459.292 47.7775L459.311 228.121L-327.16 223.657L-328 201C-158.375 201 -129.125 101.682 -19.7921 101.682C133.569 101.682 152.261 150.682 288.824 144.796Z" fill="#0E243D" style="fill:var(--color-fill-blue)"></path><path d="M282.905 172.423C353.01 172.423 439.238 159.236 470.508 71.7501L464.209 261L-322.262 231.166L-323.551 209.653C-127.578 209.653 -140.783 127.994 -18.1079 127.994C118.421 127.994 148.28 172.423 282.905 172.423Z" fill="#1C9077" style="fill:var(--color-fill-teal)"></path><path d="M282.905 202.549C350.726 202.549 469.719 179.661 480 117.196L462.921 259.782L-327.934 231.297L-327.934 223.657C-300.343 226.904 -188.432 217.974 -145.37 202.346C-104.611 187.555 -77.7119 166.149 -20.725 166.149C82.2534 166.149 179.791 202.549 282.905 202.549Z" fill="#9E7C1E" style="fill:var(--color-fill-yellow)"></path></g></svg></div></main><div x-data="{
+        toasts: [],
+        add(e) {
+            if ( e.detail.toasterId === 'toaster') {
+                this.toasts.push({
+                    id: e.timeStamp,
+                    content: e.detail.content
+                })
+            }
+        },
+        remove(toast) {
+            this.toasts = this.toasts.filter(i => i.id !== toast.id)
+        }
+    }" @notify.window="add($event)" id="toaster" data-toaster="" role="status" aria-live="polite" class="fixed flex items-center flex-col-reverse justify-center z-(--z-top-elevated) pointer-events-none gap-2 top-nav right-site-inline left-site-inline"><template x-for="toast in toasts" :key="toast.id"><div x-data="{
+                show: false,
+                init() {
+                    this.$nextTick(() => this.show = true)
+                    setTimeout(() => this.transitionOut(), 2000)
+                },
+                transitionOut() {
+                    this.show = false
+                    setTimeout(() => this.remove(this.toast), 300)
+                }
+            }" x-show="show" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:leave-end="opacity-0 -translate-y-2" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition gap-item-sm bg-neutral border-neutral-light border shadow-zine rounded text-surface-light p-item-sm min-h-tube"><span class="text-base px-item-sm" x-text="toast.content"></span></div></template></div><div x-data="{
+        expanded: false,
+        windowWidth: window.innerWidth,
+        getWidth() {
+            window.addEventListener('resize', () => {
+                this.windowWidth = window.innerWidth
+            })
+        }
+    }" x-init="getWidth" :class="expanded && 'translate-0!'" class="fixed print:hidden left-0 bottom-1 z-(--z-elevated) -translate-x-[80%] flex items-center gap-1 py-1 pl-2 pr-1 text-sm transition duration-500 border-l-0 rounded-l-none border-1 border-border-neutral-light bg-bg-surface rounded shadow-zine"><span class="flex w-full mr-1"><span class="xs:hidden">XS-</span> <span class="hidden xs:max-sm:block">XS-SM</span> <span class="hidden sm:max-md:block">SM-MD</span> <span class="hidden md:max-lg:block">MD-LG</span> <span class="hidden lg:max-xl:block">LG-XL</span> <span class="hidden xl:block">XL+</span> <span>&nbsp;•&nbsp;</span> <span x-text="windowWidth"></span> <span>px</span></span><div data-dropdown="" x-data="{
+        open: false,
+        toggle() {
+            if (this.open) {
+                return this.close()
+            }
+            this.$refs.button.focus()
+            this.open = true
+        },
+        close(focusAfter) {
+            if (! this.open) return
+            this.open = false
+            focusAfter && focusAfter.focus()
+        },
+    }" x-id="['dropdown']" x-on:keydown.escape.prevent.stop="close($refs.button)" x-on:focusin.window="! $refs.panel.contains($event.target) && close()" :class="open && ''" class="relative max-w-full"><button data-button="" x-ref="button" @click="toggle()" :aria-expanded="open" :aria-controls="$id(&#39;dropdown&#39;)" style="--button-space: 
+    4px" class="shrink-0 disabled:opacity-60 active:scale-[.98] inline-flex justify-center items-center cursor-pointer w-full text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm h-10 px-[var(--button-space)]"><span class="flex items-center justify-center pointer-events-none"><span class="px-[calc(var(--button-space)*1/3)] text-icon">bug_report</span> <span class="px-[calc(var(--button-space)*2/3)]">Dev</span></span></button><div x-ref="panel" x-show="open" x-on:click.outside="close($refs.button)" x-cloak="" :id="$id('dropdown')" class="absolute min-w-max max-w-full z-(--z-elevated) outline-none bg-surface-light border border-neutral-lighter px-5 py-3 shadow-zine bottom-full mb-2 left-0"><ul class="flex flex-col items-start list-disc gap-item-sm *:ml-[1.25ch]"><li class="*:inline-block"><a data-button="" href="/components" style="--button-space: 
+    4px" class="shrink-0 disabled:opacity-60 active:scale-[.98] inline-flex justify-center items-center cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-sm"><span class="flex items-center justify-center pointer-events-none"><span class="px-[calc(var(--button-space)*2/3)]">Components</span></span></a></li><li class="*:inline-block"><a data-button="" href="/contract" style="--button-space: 
+    4px" class="shrink-0 disabled:opacity-60 active:scale-[.98] inline-flex justify-center items-center cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-sm"><span class="flex items-center justify-center pointer-events-none"><span class="px-[calc(var(--button-space)*2/3)]">Markdown</span></span></a></li><li class="*:inline-block"><a data-button="" href="/testing" style="--button-space: 
+    4px" class="shrink-0 disabled:opacity-60 active:scale-[.98] inline-flex justify-center items-center cursor-pointer text-link underline hover:no-underline underline-offset-3 decoration-1 text-sm"><span class="flex items-center justify-center pointer-events-none"><span class="px-[calc(var(--button-space)*2/3)]">Testing</span></span></a></li></ul></div></div><button data-button="" @click="expanded = !expanded" :title="expanded ? &#39;Minimize widget&#39; : &#39;Expand widget&#39;" style="--button-space: 
+    4px" class="shrink-0 disabled:opacity-60 active:scale-[.98] inline-flex justify-center items-center cursor-pointer text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded text-sm h-10 px-[var(--button-space)]"><span class="flex items-center justify-center pointer-events-none"><span x-show="!expanded" class="px-[calc(var(--button-space)*1/3)] text-icon">chevron_forward</span> <span x-show="expanded" class="px-[calc(var(--button-space)*1/3)] text-icon">chevron_backward</span></span></button></div><script defer="" src="https://printjs-4de6.kxcdn.com/print.min.js"></script><script defer="" src="https://cdn.jsdelivr.net/npm/@ryangjchandler/alpine-clipboard@2.x.x/dist/alpine-clipboard.js"></script><script defer="" src="https://cdn.jsdelivr.net/npm/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script><script defer="" src="https://unpkg.com/alpinejs@3.14.9/dist/cdn.min.js"></script><script defer="" src="//instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script></body></html>

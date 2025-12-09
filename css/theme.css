@@ -1,0 +1,142 @@
+@theme inline {
+  --breakpoint-xs: 28rem; /* 448px */
+  --breakpoint-sm: 36rem; /* 576px */
+  --breakpoint-md: 44rem; /* 704px */
+  --breakpoint-lg: 56rem; /* 896px */
+  --breakpoint-xl: 70rem; /* 1120px */
+
+  --text-icon: var(--text-icon);
+  --text-icon--line-height: 1;
+  --text-3xl: var(--text-3xl);
+  --text-3xl--line-height: 1;
+  --text-2xl: var(--text-2xl);
+  --text-2xl--line-height: 1.15;
+  --text-xl: var(--text-xl);
+  --text-xl--line-height: 1.3;
+  --text-lg: var(--text-lg);
+  --text-lg--line-height: 1.3;
+  --text-base: var(--text-base);
+  --text-sm: var(--text-sm);
+
+  --container-*: initial;
+  --container-narrow: 48rem;
+  --container-base: 81.5rem;
+  --container-wide: 100vw;
+  --container-content: 32ch;
+
+  --z-elevated: 20;
+  --z-sticky: 30;
+  --z-top: 40;
+  --z-top-elevated: 50;
+
+  --shadow-*: initial;
+  --shadow-zine: 0.5px 0.5px 1px lch(0% 0 0 / 0.1), 1px 1px 12px -4px lch(0% 0 0 / 0.2);
+  --shadow-page: 0.33px 0.33px 1px lch(0% 0 0 / 0.1), 0.75px 0.75px 0.75px lch(0% 0 0 / 0.1);
+  --shadow-button: 0 1px rgb(0 0 0 / 0.05);
+
+  /* Color ------------------------------------------------------------------------------------------------------------------------------- */
+
+  --color-*: initial;
+  --color-inherit: inherit;
+  --color-transparent: transparent;
+
+  /* Raw --------------------------------------- */
+
+  --color-surface: color(display-p3 0.094118 0.070588 0.129412 / 1);
+  --color-neutral: #f3f0e8;
+  --color-hue: color(display-p3 0.839216 0.32549 0.839216 / 1);
+  --color-action: color(display-p3 0.337255 0.898039 0.776471 / 1);
+  --color-validation: #fbc14b;
+
+  /* Display ----------------------------------- */
+
+  --color-t-surface: color-mix(in oklab, var(--color-surface), transparent 0%);
+  --color-t-neutral: color-mix(in oklab, var(--color-neutral), transparent 0%);
+  --color-t-neutral-light: color-mix(in oklab, var(--color-neutral), transparent 25%);
+  --color-t-hue: color-mix(in oklab, var(--color-hue), transparent 0%);
+  --color-t-action: color-mix(in oklab, var(--color-action), transparent 0%);
+  --color-t-validation: color-mix(in oklab, var(--color-validation), transparent 0%);
+
+  /* Display ----------------------------------- */
+
+  --color-t-surface: color-mix(in oklab, var(--color-surface), transparent 0%);
+  --color-t-neutral: color-mix(in oklab, var(--color-neutral), transparent 0%);
+  --color-t-neutral-light: color-mix(in oklab, var(--color-neutral), transparent 25%);
+  --color-t-hue: color-mix(in oklab, var(--color-hue), transparent 0%);
+  --color-t-action: color-mix(in oklab, var(--color-action), transparent 0%);
+  --color-t-validation: color-mix(in oklab, var(--color-validation), transparent 0%);
+
+  /* Border ---------------------------------- */
+
+  --color-border-surface: color-mix(in oklab, var(--color-surface), transparent 0%);
+  --color-border-neutral: color-mix(in oklab, var(--color-neutral), transparent 0%);
+  --color-border-neutral-light: color-mix(in oklab, var(--color-neutral), transparent 40%);
+  --color-border-neutral-lighter: color-mix(in oklab, var(--color-neutral), transparent 65%);
+  --color-border-action: color-mix(in oklab, var(--color-action), transparent 0%);
+  --color-border-action-light: color-mix(in oklab, var(--color-action), transparent 40%);
+
+  /* Background ------------------------------ */
+
+  --color-bg-surface: color-mix(in oklab, var(--color-surface), transparent 0%);
+  --color-bg-neutral: color-mix(in oklab, var(--color-neutral) 9%, var(--color-surface) 70%);
+  --color-bg-neutral-light: color-mix(in oklab, var(--color-neutral) 3%, var(--color-surface) 70%);
+  --color-bg-action: color-mix(in oklab, var(--color-action) 100%, var(--color-surface) 0%);
+  --color-bg-action-light: color-mix(in oklab, var(--color-action) 20%, var(--color-surface) 80%);
+  --color-bg-action-lighter: color-mix(in oklab, var(--color-action) 10%, var(--color-bg-neutral));
+
+  /* Perceptional ---------------------------- */
+
+  --color-fill-pink: color(display-p3 0.258824 0.05098 0.290196 / 1);
+  --color-fill-blue: color(display-p3 0.054902 0.141176 0.239216 / 1);
+  --color-fill-teal: color(display-p3 0.109804 0.564706 0.466667 / 1);
+  --color-fill-yellow: color(display-p3 0.619608 0.486275 0.117647 / 1);
+
+  /* ------------------------------------------------------------------------------------------------------------------------------------- */
+
+  --spacing-site-inline: var(--space-site-inline);
+  --spacing-nav: var(--space-nav);
+  --spacing-section: var(--space-section);
+  --spacing-section-title: var(--space-section-title);
+  --spacing-item: calc(var(--space-section-title) / 1.5);
+  --spacing-item-sm: calc(var(--space-section-title) / 3);
+  --spacing-dialog-inline: var(--space-dialog-inline);
+  --spacing-dialog-block: var(--space-dialog-block);
+  --spacing-tube: var(--space-tube);
+  --spacing-indent: 1.5ch;
+  --spacing-navbar-height: var(--navbar-height);
+
+  --spacing-block-size-nav: var(--block-size-nav);
+
+  --perspective-zine: 2000px;
+  --aspect-zine: 5.5 / 4.25;
+  --aspect-square: 1;
+
+  --duration-*: initial;
+  --duration-zine: 1000ms;
+
+  --ease-*: initial;
+  --ease-zine: cubic-bezier(0, 0, 0.2, 1);
+
+  --radius-*: initial;
+  --radius: 3px;
+  --animate-marquee: marquee var(--animate-duration, 1s) infinite linear;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+}
+
+@utility animate-duration-* {
+  --animate-duration: calc(--value(integer) * 1s);
+}
+
+@utility bg-bg-surface {
+  background-image: url("assets/texture.png");
+  background-repeat: repeat;
+  background-size: 1654px;
+}
