@@ -12,6 +12,7 @@ export default async function (eleventyConfig) {
   eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
 
   eleventyConfig.addPassthroughCopy("assets");
+  eleventyConfig.addPassthroughCopy("admin");
 
   // -------------------------------------------------------------------------------------------------------------------------------------
 
