@@ -1,6 +1,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/icon.njk" import icon %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -8,36 +9,43 @@
 
 {# Values ----------- #}
 
-{% set types = {
-    button: {
-        styles: "text-neutral font-bold leading-none bg-surface-light hover:bg-surface-lighter border-1 border-neutral-lighter hover:border-neutral-light shadow-button rounded",
-        on: "",
-        sizes: {
-            base: "text-base min-w-15 min-h-tube px-[var(--button-space)]",
-            sm: "text-sm h-10 px-[var(--button-space)]",
-            fab: "text-sm rounded-full h-14 min-w-14 shadow-zine px-[var(--button-space)]"
-        },
-        variants: {}
-    },
-    link: {
-        styles: "text-link underline hover:no-underline underline-offset-3 decoration-1",
-        on: "",
-        sizes: {
-            inherit: "",
-            base: "text-base",
-            sm: "text-sm",
-            lg: "text-base font-bold decoration-from-font"
-        },
-        variants: {}
-    }
-} %}
-
 {% set buttonSpace %}
-    {% if props.size === "sm" %}4px
-    {% elseif props.size === "base" %}8px
-    {% elseif props.size === "fab" %}8px
+    {% if props.size === "sm" %}24px
+    {% elseif props.size === "base" %}28px
+    {% elseif props.size === "lg" %}36px
     {% endif %}
 {% endset %}
+
+{% set buttonStyles = "transition-transform decoration-[1.5px] underline-offset-4" %}
+
+{% set types = {
+    button: {
+        styles: "hover:scale-[1.05] active:scale-[.99] h-fit hover:underline border",
+        on: "",
+        sizes: {
+            sm: "text-button-sm min-w-tube-sm min-h-tube-sm rounded-sm gap-4 px-6",
+            base: "text-button-base min-w-tube-base min-h-tube-base rounded-base gap-5 px-7",
+            lg: "text-button-lg min-w-tube-base min-h-tube-base rounded-base gap-5 px-7 md:min-w-tube-lg md:min-h-tube-lg md:rounded-lg md:gap-7 md:px-9"
+        },
+        variants: {
+            neutral: "border-neutral-light bg-neutral hover:bg-action-lighter hover:border-action-light",
+            action: "border-action-light bg-action-light hover:bg-action hover:border-neutral-lighter hover:text-surface"
+        }
+    },
+    link: {
+        styles: "hover:scale-[1.025] active:scale-[.98]",
+        on: "",
+        sizes: {
+            inherit: "text-inherit",
+            sm: "text-body-sm gap-2",
+            base: "text-body-base gap-2.5"
+        },
+        variants: {
+            neutral:"hover:underline",
+            action:"text-action underline hover:no-underline"
+        }
+    }
+} %}
 
 {# ------------------ #}
 
@@ -45,33 +53,34 @@
     {{ loopAttrs(attrs) }}
     style="--button-space: {{ buttonSpace }}"
     {% if props.toggleValue %}
-
          {% if types[props.type].on %}
             :class="{{ props.toggleValue }} && '{{ types[props.type].on }}'"
         {% endif %}
     {% endif %}
-    class="shrink-0 disabled:opacity-60 active:scale-[.98] inline-flex justify-center items-center cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
-    {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }} {{ types[props.type].variants[props.variant] }}"
+    class="shrink-0 disabled:opacity-60 inline-flex justify-center items-center cursor-pointer {{ attrs.class }} {% if attrs.disabled %}pointer-events-none{% endif %}
+    {{ types[props.type].styles }} {{ types[props.type].sizes[props.size] }} {{ types[props.type].variants[props.variant] }} {{ buttonStyles }}"
 >
     {% if props.toggleValue %}
-        <span class="flex items-center justify-center pointer-events-none">
+        <span class="flex items-center justify-center pointer-events-none gap-inherit {% if props.iconPosition === "end" %}flex-row-reverse{% endif %}">
             {% if props.icon %}
-                <span x-show="!{{ props.toggleValue }}" class="px-[calc(var(--button-space)*1/3)] text-icon">{{ props.icon.off }}</span>
-                <span x-show="{{ props.toggleValue }}" class="px-[calc(var(--button-space)*1/3)] text-icon">{{ props.icon.on }}</span>
+                {% set show %}{{ props.toggleValue }} == false {% endset %}
+                {{ icon({icon:props.icon.off}, {class:"fill-current", "x-show":show}) }}
+                {% set show %}{{ props.toggleValue }} == true {% endset %}
+                {{ icon({icon:props.icon.on}, {class:"fill-current", "x-show":show}) }}
             {% endif %}
             {% if props.label %}
-                <span x-show="!{{ props.toggleValue }}" class="px-[calc(var(--button-space)*2/3)]">{{ props.label.off }}</span>
-                <span x-show="{{ props.toggleValue }}" class="px-[calc(var(--button-space)*2/3)]">{{ props.label.on }}</span>
+                <span x-show="!{{ props.toggleValue }}" class="">{{ props.label.off }}</span>
+                <span x-show="{{ props.toggleValue }}" class="">{{ props.label.on }}</span>
             {% endif %}
         </span>
     {% else %}
         {% if props.icon or props.label %}
-            <span class="flex items-center justify-center pointer-events-none">
+            <span class="flex items-center justify-center pointer-events-none gap-inherit {% if props.iconPosition === "end" %}flex-row-reverse{% endif %}">
                 {% if props.icon %}
-                    <span class="px-[calc(var(--button-space)*1/3)] text-icon">{{ props.icon }}</span>
+                    {{ icon({icon:props.icon}, {class:"fill-current"}) }}
                 {% endif %}
                 {% if props.label %}
-                    <span class="px-[calc(var(--button-space)*2/3)]">{{ props.label }}</span>
+                    <span class="">{{ props.label }}</span>
                 {%- endif -%}
             </span>
         {% endif %}

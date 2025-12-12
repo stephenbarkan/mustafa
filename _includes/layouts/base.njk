@@ -2,6 +2,10 @@
 
 {% from "components/toaster.njk" import toaster %}
 {% from "components/announcementBanner.njk" import announcementBanner with context %}
+{% from "components/container.njk" import container %}
+{% from "components/button.njk" import button %}
+{% from "components/navbar.njk" import navbar %}
+{% from "assets.njk" import sparkle %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -25,13 +29,24 @@
     {% endif %}
 {% endset %}
 
+{% set navLinks %}
+    {{ button({type:"link", size:"base", variant:"neutral", label:"About me"}) }}
+    {{ sparkle({class:"fill-hue h-3.5"}) }}
+    {{ button({type:"link", size:"base", variant:"neutral", label:"My artforms", icon:"keyboard_arrow_down", iconPosition:"end"}) }}
+    {{ sparkle({class:"fill-hue h-3.5"}) }}
+    {{ button({type:"link", size:"base", variant:"neutral", label:"My writing"}) }}
+    {{ sparkle({class:"fill-hue h-3.5"}) }}
+    {{ button({type:"link", size:"base", variant:"neutral", label:"Contact me"}) }}
+{% endset %}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <!DOCTYPE html>
 <html
-    {# x-data="{
-        navbarHidden: false,
+    {% if showNavbar %}
+    x-data="{
         scrollable: true,
+        navbarHidden: false,
         hasScrolled: false,
         lastScrollY: window.scrollY,
         setHasScrolled() {
@@ -46,12 +61,13 @@
             if (this.navbarHidden) {
                 navbarHeight = 0;
             }
-            return {'--navbar-height': navbarHeight+'px'}
+            return {'--space-navbar-height': navbarHeight+'px'}
         }
     }"
     :class="!scrollable && 'h-dvh overflow-hidden'"
     :style="getNavbarHeight"
-    @scroll.window="setHasScrolled" #}
+    @scroll.window="setHasScrolled"
+    {% endif %}
     lang="en"
     class="scroll-smooth scroll-p-section-title">
     <head>
@@ -68,26 +84,45 @@
         <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.imagesFolder }}/{{ global.favicon }}">
         <link rel="stylesheet" href="/styles.css">
 
-        {% set comma = joiner() %}
-
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names={% for icon in icons | sort() %}{{ comma() }}{{ icon }}{% endfor %}" />
-
+        {% include "snippets/fonts.njk" %}
     </head>
-    <body class="bg-bg-surface font-sans text-t-neutral text-base antialiased flex flex-col min-h-dvh items-center  pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+    <body class="relative bg-surface font-body text-neutral text-base antialiased flex flex-col min-h-dvh overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+
+        {% block blobs %}{% endblock %}
+
+        {% if showTopLine %}
+            <div class="hidden lg:block z-(--z-top) w-screen h-site-inline border-b border-neutral-lighter"></div>
+        {% endif %}
 
         {% if global.bannerContent %}
             {{ announcementBanner({content: global.bannerContent }) }}
         {% endif %}
 
-        {{ content | safe }}
+        {% if showNavbar %}
+            {{navbar({rightSide:navLinks, sticky:true}) }}
+        {% endif %}
+
 
         {{ toaster() }}
+
+        <main class="@container flex flex-col justify-center w-full gap-section py-section grow lg:px-site-inline">
+            {% block content %}{% endblock %}
+        </main>
+
+        <div class="hidden lg:block z-(--z-top) fixed pointer-events-none border-x border-neutral-lighter h-dvh w-[calc(100vw-2*var(--space-site-inline))]"></div>
+
+        {% if showBottomLine %}
+            <div class="hidden lg:block z-(--z-top) w-screen h-site-inline border-t border-neutral-lighter"></div>
+        {% endif %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
         {% if environment.env == 'dev' %}
             {% include "components/_developmentWidget.njk" %}
         {% endif %}
 
         {% include "snippets/scripts.njk" %}
+
 
     </body>
 </html>

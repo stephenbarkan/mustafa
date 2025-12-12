@@ -1,42 +1,48 @@
----
-layout: base
----
+{% extends "layouts/base.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
-{% from "components/container.njk" import container %}
+{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
+{% set showBottomLine = true %}
+{% set showNavbar = true %}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<main class="flex flex-col w-full gap-section py-section grow">
+{% block content %}
+
     {% call container(
-    props={
-        size: "base",
-        type: "cols-1"
-    },
-    attrs={class:"gap-6"}
-) %}
-        <div class="bg-bg- p-8">
-            <h1 class="text-3xl text-t-hue">{{ global.siteTitle }}</h1>
-        </div>
-        <div class="border border-border-neutral-light hover:border-border-action-light bg-bg-neutral hover:bg-bg-action-lighter p-8">
-            <h1 class="font-semibold">{{ global.siteTitle }}</h1>
-        </div>
-        <div class="border border-border-action-light hover:border-border-neutral-light bg-bg-action-light hover:bg-bg-action hover:text-t-surface p-8">
-            <h1 class="font-semibold">{{ global.siteTitle }}</h1>
-        </div>
+        props={
+            size: "narrow",
+            type: "cols-2"
+        },
+        attrs={class:"gap-6 justify-items-start"}
+        ) %}
 
-<svg width="375" height="238" viewBox="0 0 375 238" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g style="mix-blend-mode:plus-lighter">
-        <path d="M283.403 125.67C375.157 121.715 453.66 46.7581 453.66 4.54395C453.66 -37.6702 456.714 228.161 456.714 228.161L-323.053 231.814L-323.053 190.615C-199.689 188.822 -128.599 80.6145 -19.2945 80.6145C150.119 80.6145 217.185 128.524 283.403 125.67Z" fill="#420D4A" style="fill:var(--color-fill-pink);"/>
-        <path d="M288.824 144.796C380.102 140.862 448.378 99.9675 459.292 47.7775L459.311 228.121L-327.16 223.657L-328 201C-158.375 201 -129.125 101.682 -19.7921 101.682C133.569 101.682 152.261 150.682 288.824 144.796Z" fill="#0E243D" style="fill:var(--color-fill-blue)"/>
-        <path d="M282.905 172.423C353.01 172.423 439.238 159.236 470.508 71.7501L464.209 261L-322.262 231.166L-323.551 209.653C-127.578 209.653 -140.783 127.994 -18.1079 127.994C118.421 127.994 148.28 172.423 282.905 172.423Z" fill="#1C9077" style="fill:var(--color-fill-teal)"/>
-        <path d="M282.905 202.549C350.726 202.549 469.719 179.661 480 117.196L462.921 259.782L-327.934 231.297L-327.934 223.657C-300.343 226.904 -188.432 217.974 -145.37 202.346C-104.611 187.555 -77.7119 166.149 -20.725 166.149C82.2534 166.149 179.791 202.549 282.905 202.549Z" fill="#9E7C1E" style="fill:var(--color-fill-yellow)"/>
-    </g>
-</svg>
+        {{ button(props={type: "button", size: "sm", variant: "neutral", label: "sm - Neutral", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
+        {{ button(props={type: "button", size: "sm", variant: "action", label: "sm - Action", icon:"keyboard_arrow_down",iconPosition:"end"}, attrs={}) }}
+        {{ button(props={type: "button", size: "base", variant: "neutral", label: "base - Neutral", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
+        {{ button(props={type: "button", size: "base", variant: "action", label: "base - Action", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
+        {{ button(props={type: "button", size: "lg", variant: "neutral", label: "lg - Neutral", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
+        {{ button(props={type: "button", size: "lg", variant: "action", label: "lg - Action", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
 
+        {{ button(props={type: "link", size: "sm", variant: "neutral", label: "Small - Neutral", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
+        {{ button(props={type: "link", size: "sm", variant: "action", label: "Small - Action", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
+        {{ button(props={type: "link", size: "base", variant: "neutral", label: "Base - Neutral", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
+        {{ button(props={type: "link", size: "base", variant: "action", label: "Base - Action", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
     {% endcall %}
-</main>
+
+{% endblock %}
+
+{% block blobs %}
+
+    {{ blobIndexTop({class:"top-0"}) }}
+    {{ blobIndexBottom({class:"bottom-0"}) }}
+
+{% endblock %}
+
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
