@@ -6,10 +6,11 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set developmentLinks = [
-    { macro: button, props:{label:"Testing", type:"link", size:"sm"}, attrs:{href:"/testing"} }
+    { macro: button, props:{label:"Landing", type:"link", size:"sm"}, attrs:{href:"/landing"} }
 ] %}
 
-{% set themeStyles = "gap-1 py-2 pl-3 pr-2 text-body-sm border-1 border-neutral-light hover:bg-neutral-light backdrop-blur-base" %}
+{% set themeStyles = "gap-1 py-2 pl-3 pr-2 text-body-sm border-1 border-neutral-light hover:bg-neutral-light hover:backdrop-blur-base" %}
+{% set expandedStyles = "translate-0! bg-neutral-light backdrop-blur-base" %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 <div x-data="{
@@ -22,7 +23,7 @@
         }
     }"
     x-init="getWidth"
-    :class="expanded && 'translate-0! bg-neutral-light'"
+    :class="expanded && '{{ expandedStyles }}'"
     class="fixed print:hidden left-0 bottom-1 z-(--z-top-elevated) -translate-x-[80%] flex items-center transition duration-500 border-l-0 rounded-l-none {{ themeStyles }}">
     <span class="flex w-full mr-1">
         <span class="xs:hidden">XS-</span>

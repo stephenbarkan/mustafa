@@ -12,6 +12,7 @@
 
   font-size: var(--md-font-size);
   color: var(--md-text-color);
+  font-variation-settings: "SOFT" 50, "WONK" 1;
 }
 
 .markdown > :first-child {
@@ -29,8 +30,10 @@
 .markdown h2,
 .markdown h3 {
   color: var(--md-text-color);
+  color: var(--md-heading-color);
   font-family: var(--md-heading-font);
   font-weight: var(--md-heading-font-weight);
+  font-variation-settings: "SOFT" 100, "WONK" 1;
   text-wrap: balance;
 }
 

@@ -1,0 +1,34 @@
+{% extends "layouts/base.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+{% from "components/markdown.njk" import markdown %}
+{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set showBottomLine = true %}
+{% set showNavbar = true %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+    {% call container(
+        props={
+            size: "narrow",
+            type: "cols-1"
+        },
+        attrs={class:"gap-6 justify-items-start"}
+        ) %}
+
+        <h1 class="text-heading-lg text-hue">{{ title }}</h1>
+        {{ markdown(
+            props={
+                content: content,
+                transform: false
+            },
+            attrs={class:"w-full"}
+        ) }}
+    {% endcall %}
+{% endblock %}

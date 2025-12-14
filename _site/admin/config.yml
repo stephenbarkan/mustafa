@@ -7,9 +7,23 @@ media_folder: /assets/uploads
 public_folder: /assets/uploads
 
 collections:
-  - name: posts
-    label: Posts
-    folder: /posts
+  - name: artforms
+    label: Artforms
+    folder: /artform
     fields:
-      - { label: Title, name: title, widget: string }
-      - { label: Body, name: body, widget: markdown }
+      - label: Title
+        name: title
+        widget: string
+      - label: Body
+        name: body
+        widget: richtext
+      - label: Photos
+        name: photos
+        widget: list
+        fields:
+          - label: Image
+            name: image
+            widget: image
+          - label: Caption
+            name: Caption
+            widget: string
