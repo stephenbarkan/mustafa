@@ -1,0 +1,23 @@
+{% extends "layouts/base.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set mainStyles = "py-section gap-section lg:px-site-inline" %}
+{% set showBottomLine = true %}
+{% set showNavbar = true %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+
+<h1 class="sr-only">My Artforms</h1>
+
+<ul class="text-heading-lg">
+    <li>{{ button({type:"link", size:"inherit", variant:"action", label:"Flow Art" },{href:"/artform/flow-art"}) }}</li>
+
+{% endblock %}
