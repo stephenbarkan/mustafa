@@ -2,7 +2,7 @@
 title: Fire Art
 photos: []
 ---
-\*Published on January 15, 2025 • 8 min read\*
+_Published on January 15, 2025 • 8 min read_
 
 ## Introduction
 
@@ -29,14 +29,13 @@ Before we dive in, make sure you have:
 
 When selecting a framework, consider these factors:
 
-1. \*\*Performance\*\*: How fast does it render?
-2. \*\*Learning Curve\*\*: How easy is it to learn?
-3. \*\*Community\*\*: Is there good community support?
+1. **Performance**: How fast does it render?
+2. **Learning Curve**: How easy is it to learn?
+3. **Community**: Is there good community support?
 
 ### Step 2: Set Up Your Development Environment
 
-\`\`\`bash
-
+```plain
 ## Install dependencies
 
 npm install
@@ -44,12 +43,13 @@ npm install
 ## Start development server
 
 npm run dev
+```
 
-\`\`\`
+## 
 
 ## Best Practices
 
-> \*\*Pro Tip\*\*: Always test your application across different browsers and devices to ensure compatibility.
+> **Pro Tip**: Always test your application across different browsers and devices to ensure compatibility.
 
 ### Performance Optimization
 
@@ -70,6 +70,6 @@ Building modern web applications requires understanding current best practices a
 
 ---
 
-\*Found this helpful? Share it with your network!\*
+_Found this helpful? Share it with your network!_
 
-\*\*Tags:\*\* #WebDevelopment #JavaScript #React #Performance
+**Tags:** #WebDevelopment #JavaScript #React #Performance
