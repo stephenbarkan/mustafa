@@ -52,7 +52,7 @@
         {{ button({type:"button", size:"base", variant:"neutral", label:"My artforms"},{href:"/artforms"}) }}
         {{ button({type:"button", size:"base", variant:"neutral", label:"My writing"}) }}
         {{ button({type:"button", size:"base", variant:"neutral", label:"Contact me"}) }}
-        {{ sparkle({class:"fill-hue h-6 absolute left-1/2 top-1/2 -translate-1/2"})}}
+        {{ sparkle({class:"fill-hue h-6 absolute left-1/2 top-1/2 -translate-1/2 hidden lg:block"})}}
     {% endcall %}
 
 {% endblock %}
@@ -63,7 +63,7 @@
             size: "full",
             type: "flex"
         },
-        attrs={class:"text-body-sm gap-6 relative border-t border-neutral-lighter flex-col xl:flex-row items-center justify-center py-4 pt-site-inline text-center gap-6 hover:bg-neutral-light hover:backdrop-blur-base"}
+        attrs={class:"text-body-sm gap-6 relative border-t border-neutral-lighter bg-neutral-lighter hover:bg-neutral-light transition backdrop-blur-base flex-col xl:flex-row items-center justify-center py-4 pt-site-inline text-center gap-6 hover:bg-neutral-light hover:backdrop-blur-base"}
     ) %}
     <span>Copyright 2025 Mustafa Anwar</span>
     {{ sparkle({class:"fill-hue h-3.5"}) }}
@@ -73,7 +73,7 @@
 
 {% block blobs %}
 
-    {{ blobIndexTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+    {{ blobIndexTop({class:"top-0 max-h-[50vh] w-full left-1/2 -translate-x-1/2"}) }}
     {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
 
 {% endblock %}

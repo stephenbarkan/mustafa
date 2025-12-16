@@ -12,12 +12,16 @@
 {# Theme styles ----------- #}
 
 {% set carouselStyles = "gap-8" %}
-{% set slideStyles = "gap-8 max-h-full overflow-hidden" %}
+
+{% set slideStyles = "gap-8 overflow-hidden" %}
 {% set slideImageStyles = "border border-neutral-lighter bg-neutral rounded-lg overflow-hidden" %}
 {% set slideCaptionStyles = "text-center text-body-sm" %}
+
 {% set controlsStyles = "gap-6 justify-between items-center" %}
-{% set indicatorRowStyles = "rounded-full bg-surface-light border-neutral-lighter border p-2 @md:p-2.5 gap-1.5 @md:gap-2" %}
-{% set indicatorStyles = "size-2 @md:size-2.5 checked:bg-(--color-neutral) bg-(--color-action)/50 hover:bg-action rounded-full" %}
+
+{% set indicatorRowStyles = "min-w-tube-sm min-h-tube-sm rounded-sm gap-4 px-6 bg-neutral backdrop-blur-base border-neutral-lighter border" %}
+{% set indicatorStyles = "size-3 @md:size-2.5 checked:bg-action border border-neutral-light hover:bg-(--color-neutral) rounded-full" %}
+
 {% set buttonProps = {
     type: "button",
     size: "sm",
@@ -49,17 +53,17 @@
         },
     }"
     {{ loopAttrs(attrs) }}
-    class="@container group relative w-full flex flex-col {{ attrs.class }} {{ carouselStyles }}">
+    class="@container group relative w-full flex flex-col grow {{ attrs.class }} {{ carouselStyles }}">
 
-    <div class="relative grid grid-overlap max-h-full overflow-hidden shrink grow">
+    <div class="relative grid grid-overlap overflow-hidden grow ">
         {% for slide in props.slides %}
             <figure
                 x-show="currentSlideIndex == {{ loop.index }}"
                 x-transition.opacity.duration.600ms
                 {{ loopAttrs(attrs) }}
                 class="flex flex-col {{ slideStyles }}">
-                <div class="{{ slideImageStyles }}">
-                    <img src="{{ slide.image }}" alt="{{ slide.caption }}">
+                <div class="grow {{ slideImageStyles }}">
+                    <img src="{{ slide.image }}" alt="{{ slide.caption }}" class="h-full w-full object-cover">
                 </div>
                 {% if slide.caption %}<figcaption class="{{ slideCaptionStyles }}">{{slide.caption}}</figcaption>{% endif %}
             </figure>
@@ -81,7 +85,7 @@
             }
         ) }}
         {% if props.indicators %}
-            <div class="flex self-center justify-self-center justify-center {{ indicatorRowStyles }}" role="group" aria-label="slides" >
+            <div class="flex self-center justify-self-center justify-center items-center {{ indicatorRowStyles }}" role="group" aria-label="slides" >
                 {% for slide in props.slides %}
                     <div x-data="{ id: $id('carousel-radio')}" class="flex">
                         <input

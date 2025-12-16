@@ -4,8 +4,9 @@
 {% from "components/announcementBanner.njk" import announcementBanner with context %}
 {% from "components/container.njk" import container %}
 {% from "components/button.njk" import button %}
-{% from "components/navbar.njk" import navbar %}
+{% from "components/navbar.njk" import navbar with context %}
 {% from "assets.njk" import sparkle %}
+
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -28,16 +29,18 @@
         {{- global.siteImage -}}
     {% endif %}
 {% endset %}
-
+{#
 {% set navLinks %}
-    {{ button({type:"link", size:"base", variant:"neutral", label:"About me"}) }}
-    {{ sparkle({class:"fill-hue h-3.5"}) }}
-    {{ button({type:"link", size:"base", variant:"neutral", label:"My artforms"},{href:"/artforms"}) }}
-    {{ sparkle({class:"fill-hue h-3.5"}) }}
-    {{ button({type:"link", size:"base", variant:"neutral", label:"My writing"}) }}
-    {{ sparkle({class:"fill-hue h-3.5"}) }}
-    {{ button({type:"link", size:"base", variant:"neutral", label:"Contact me"}) }}
-{% endset %}
+    {% set joinerSparkle %}
+        {{ sparkle({class:"fill-hue h-3.5"}) }}
+    {% endset%}
+    {% set divider = joiner(joinerSparkle | safe) %}
+
+    {% for link in navLinks %}
+        {{ divider() }}
+        {{ button({type:"link", size:"base", variant:"neutral", label:link.label},{href:link.href}) }}
+    {% endfor %}
+{% endset %} #}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -99,7 +102,7 @@
         {% endif %}
 
         {% if showNavbar %}
-            {{navbar({rightSide:navLinks, sticky:true}) }}
+            {{navbar({sticky:true}) }}
         {% endif %}
 
 

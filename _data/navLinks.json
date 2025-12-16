@@ -1,0 +1,18 @@
+[
+  {
+    "label": "About me",
+    "href": "/about-me"
+  },
+  {
+    "label": "My artforms",
+    "href": "/artforms"
+  },
+  {
+    "label": "My writing",
+    "href": "/writing"
+  },
+  {
+    "label": "Contact me",
+    "href": "/contact"
+  }
+]

@@ -360,9 +360,9 @@
   .aspect-\[8\/5\] {
     aspect-ratio: 8/5;
   }
-  .size-2 {
-    width: calc(var(--spacing) * 2);
-    height: calc(var(--spacing) * 2);
+  .size-3 {
+    width: calc(var(--spacing) * 3);
+    height: calc(var(--spacing) * 3);
   }
   .h-\(--icon-size\) {
     height: var(--icon-size);
@@ -382,23 +382,23 @@
   .h-\[450px\] {
     height: 450px;
   }
-  .h-\[500px\] {
-    height: 500px;
-  }
   .h-dvh {
     height: 100dvh;
   }
-  .h-dvh--navbar {
-    height: calc(100dvh - var(--space-navbar-height));
-  }
   .h-fit {
     height: fit-content;
+  }
+  .h-full {
+    height: 100%;
   }
   .h-site-inline {
     height: var(--space-site-inline);
   }
   .max-h-\[25vh\] {
     max-height: 25vh;
+  }
+  .max-h-\[50vh\] {
+    max-height: 50vh;
   }
   .max-h-full {
     max-height: 100%;
@@ -414,9 +414,6 @@
   }
   .w-\(--icon-size\) {
     width: var(--icon-size);
-  }
-  .w-1\/4 {
-    width: calc(1/4 * 100%);
   }
   .w-\[5\%\] {
     width: 5%;
@@ -456,9 +453,6 @@
   }
   .min-w-\[620px\] {
     min-width: 620px;
-  }
-  .min-w-full {
-    min-width: 100%;
   }
   .min-w-max {
     min-width: max-content;
@@ -726,12 +720,6 @@
       border-color: color-mix(in oklab, var(--color-neutral), transparent 65%);
     }
   }
-  .bg-\(--color-action\)\/50 {
-    background-color: color-mix(in srgb, color(display-p3 0.337255 0.898039 0.776471 / 1) 50%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-action) 50%, transparent);
-    }
-  }
   .bg-action-light {
     background-color: color-mix(in srgb, color(display-p3 0.337255 0.898039 0.776471 / 1) 20%, color(display-p3 0.094118 0.070588 0.129412 / 1) 80%);
     @supports (color: color-mix(in lab, red, red)) {
@@ -751,6 +739,12 @@
     background-color: color-mix(in srgb, #f3f0e8 3%, color(display-p3 0.094118 0.070588 0.129412 / 1) 70%);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-neutral) 3%, var(--color-surface) 70%);
+    }
+  }
+  .bg-neutral-lighter {
+    background-color: color-mix(in srgb, #f3f0e8 2%, color(display-p3 0.094118 0.070588 0.129412 / 1) 35%);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-neutral) 2%, var(--color-surface) 35%);
     }
   }
   .bg-surface {
@@ -802,8 +796,8 @@
   .fill-neutral {
     fill: #f3f0e8;
   }
-  .p-2 {
-    padding: calc(var(--spacing) * 2);
+  .object-cover {
+    object-fit: cover;
   }
   .p-12 {
     padding: calc(var(--spacing) * 12);
@@ -820,9 +814,6 @@
   .px-16 {
     padding-inline: calc(var(--spacing) * 16);
   }
-  .px-site-inline {
-    padding-inline: var(--space-site-inline);
-  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -832,9 +823,6 @@
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
   }
-  .py-6 {
-    padding-block: calc(var(--spacing) * 6);
-  }
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
   }
@@ -843,9 +831,6 @@
   }
   .py-section {
     padding-block: var(--space-section);
-  }
-  .pt-section {
-    padding-top: var(--space-section);
   }
   .pt-site-inline {
     padding-top: var(--space-site-inline);
@@ -1064,9 +1049,17 @@
       }
     }
   }
-  .checked\:bg-\(--color-neutral\) {
+  .checked\:bg-action {
     &:checked {
-      background-color: var(--color-neutral);
+      background-color: color(display-p3 0.337255 0.898039 0.776471 / 1);
+    }
+  }
+  .checked\:bg-action {
+    &:checked {
+      background-color: color-mix(in srgb, color(display-p3 0.337255 0.898039 0.776471 / 1) 100%, color(display-p3 0.094118 0.070588 0.129412 / 1) 1%);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-action) 100%, var(--color-surface) 1%);
+      }
     }
   }
   .hover\:scale-\[1\.05\] {
@@ -1100,6 +1093,13 @@
         @supports (color: color-mix(in lab, red, red)) {
           border-color: color-mix(in oklab, var(--color-neutral), transparent 65%);
         }
+      }
+    }
+  }
+  .hover\:bg-\(--color-neutral\) {
+    &:hover {
+      @media (hover: hover) {
+        background-color: var(--color-neutral);
       }
     }
   }
@@ -1298,11 +1298,6 @@
   .lg\:grid-cols-\[300px_1fr\] {
     @media (width >= 56rem) {
       grid-template-columns: 300px 1fr;
-    }
-  }
-  .lg\:flex-row {
-    @media (width >= 56rem) {
-      flex-direction: row;
     }
   }
   .lg\:px-site-inline {
