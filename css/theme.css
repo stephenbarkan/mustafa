@@ -63,7 +63,7 @@
   --container-narrow: 56rem;
   --container-base: 91.5rem;
   --container-wide: 100vw;
-  --container-content: 32ch;
+  --container-content: 49ch;
 
   /* Elevation --------------------------------------------------------------------------------------------------------------------------*/
 
@@ -87,6 +87,7 @@
   --spacing-section: var(--space-section);
   --spacing-indent: 1.5ch;
   --spacing-navbar-height: var(--space-navbar-height);
+  --spacing-dvh--navbar: calc(100dvh - var(--space-navbar-height));
 
   /* Aspect ratio ---------------------------------------------------------------------------------------------------------------------- */
 
@@ -104,7 +105,7 @@
   --radius-sm: calc(var(--spacing-tube-sm) * 0.475);
   --radius-base: calc(var(--spacing-tube-base) * 0.475);
   --radius-lg: calc(var(--spacing-tube-lg) * 0.475);
-  --radius-square: 41%;
+  --radius-square: 160px;
 
   /* Animations ------------------------------------------------------------------------------------------------------------------------ */
 

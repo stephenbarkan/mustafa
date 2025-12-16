@@ -4,11 +4,13 @@
 
 {% from "components/button.njk" import button %}
 {% from "components/markdown.njk" import markdown %}
-{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
+{% from "components/carousel.njk" import carousel %}
+{% from "assets.njk" import logo, sparkle, blobArtform %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set showBottomLine = true %}
+{% set mainStyles = "" %}
+{% set showBottomLine = false %}
 {% set showNavbar = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -16,19 +18,48 @@
 {% block content %}
     {% call container(
         props={
-            size: "narrow",
-            type: "cols-1"
+            size: "wide",
+            type: "cols-2"
         },
-        attrs={class:"gap-6 justify-items-start"}
+        attrs={class:""}
         ) %}
 
-        <h1 class="text-heading-lg text-hue">{{ title }}</h1>
-        {{ markdown(
-            props={
-                content: content,
-                transform: false
-            },
-            attrs={class:"w-full"}
-        ) }}
+        <section class="flex flex-col gap-6 px-16 py-24">
+            <h1 class="text-heading-lg text-hue">{{ title }}</h1>
+            {{ markdown(
+                props={
+                    content: content,
+                    transform: false
+                },
+                attrs={class:"w-full"}
+            ) }}
+        </section>
+        <section class="h-dvh--navbar sticky top-navbar-height border-l border-neutral-lighter flex shrink-0 flex-col py-6">
+            <div class="border-y border-neutral-lighter grow bg-neutral-light backdrop-blur-base p-12 flex flex-col max-h-full">
+                {% call carousel(
+                    props={
+                        slides: photos,
+                        indicators: true
+                    },
+                    attrs={class:"grow max-h-full"}
+                ) %}
+                    {% from "components/carousel.njk" import carouselSlide %}
+                    {% for slide in photos %}
+                        {% call carouselSlide({loop:loop}) %}
+                            <figure>
+                                <div class="border border-neutral-lighter bg-neutral rounded-square overflow-hidden"><img class="max-w-full shrink" src="{{ slide.image }}" alt="{{ slide.caption }}"></div>
+                                <figcaption>{{slide.caption}} </figcaption>
+                            </figure>
+                        {% endcall %}
+                    {% endfor %}
+                {% endcall %}
+            </div>
+        </section>
     {% endcall %}
+{% endblock %}
+
+{% block blobs %}
+
+    {{ blobArtform({class:"top-0 right-0 bottom-0 h-dvh fixed"}) }}
+
 {% endblock %}

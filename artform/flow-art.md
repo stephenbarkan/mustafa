@@ -2,8 +2,9 @@
 title: Flow Art
 photos:
   - image: /assets/uploads/mustafa-test.png
-    Caption: This is a caption about the photo, there’s really not a lot to say if you ask me, but here I am, explaining it again.
+    caption: This is a caption about the photo, there’s really not a lot to say if you ask me, but here I am, explaining it again.
 ---
+
 The prompt was to flow with your non-dominant hand, for me that’s my left. It felt clumsy at first, like trying to doodle a heart with the wrong hand, but balance takes practice. Kinda like my new day job, where I’m still learning rhythm and patience (and yes, I literally recorded this right before work in my recruitment shirt LOL). Just like with my students, the magic is in showing up, wobble and all. The more I lean in, the more the groove finds me.
 
 ## Community resources

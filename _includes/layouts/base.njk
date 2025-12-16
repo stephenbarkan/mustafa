@@ -32,7 +32,7 @@
 {% set navLinks %}
     {{ button({type:"link", size:"base", variant:"neutral", label:"About me"}) }}
     {{ sparkle({class:"fill-hue h-3.5"}) }}
-    {{ button({type:"link", size:"base", variant:"neutral", label:"My artforms", icon:"keyboard_arrow_down", iconPosition:"end"}) }}
+    {{ button({type:"link", size:"base", variant:"neutral", label:"My artforms"},{href:"/artform/flow-art"}) }}
     {{ sparkle({class:"fill-hue h-3.5"}) }}
     {{ button({type:"link", size:"base", variant:"neutral", label:"My writing"}) }}
     {{ sparkle({class:"fill-hue h-3.5"}) }}
@@ -50,7 +50,7 @@
         hasScrolled: false,
         lastScrollY: window.scrollY,
         setHasScrolled() {
-            if (this.lastScrollY > 100) {
+            if (this.lastScrollY > 83) {
                 this.hasScrolled = true
             } else {
                 this.hasScrolled = false
@@ -86,7 +86,7 @@
 
         {% include "snippets/fonts.njk" %}
     </head>
-    <body class="relative bg-surface font-body text-neutral text-base antialiased flex flex-col min-h-dvh overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+    <body class="relative bg-surface font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
 
         {% block blobs %}{% endblock %}
 
@@ -105,7 +105,7 @@
 
         {{ toaster() }}
 
-        <main class="@container flex flex-col justify-center w-full gap-section py-section grow lg:px-site-inline">
+        <main class="@container flex flex-col justify-center w-full grow {{ mainStyles }}">
             {% block content %}{% endblock %}
         </main>
 

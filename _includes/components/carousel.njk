@@ -1,0 +1,151 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/button.njk" import button %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro carousel(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set carouselStyles = "gap-6" %}
+{% set slideStyles = "gap-6 max-h-full overflow-hidden" %}
+{% set slideImageStyles = "border border-neutral-lighter bg-neutral rounded-lg overflow-hidden" %}
+{% set slideCaptionStyles = "text-center text-body-sm" %}
+{% set controlsStyles = "gap-8" %}
+{% set indicatorRowStyles = "rounded-full bg-surface-light border-neutral-lighter border px-1.5 py-1.5 @md:px-2 @md:py-2 gap-1 @md:gap-1.5" %}
+{% set indicatorStyles = "size-1.5 @md:size-2 checked:bg-(--color-neutral) bg-(--color-action)/50 rounded-full" %}
+{% set buttonProps = {
+    type: "button",
+    size: "sm",
+    variant: "neutral"
+} %}
+{% set buttonStyles = "min-h-[max(15cqi,_64px)]" %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    data-carousel
+    x-data="{
+        currentSlideIndex: 1,
+        previous() {
+            if (this.currentSlideIndex > 1) {
+                this.currentSlideIndex = this.currentSlideIndex - 1
+            } else {
+                // If it's the first slide, go to the last slide
+                this.currentSlideIndex = {{ props.slides | length }}
+            }
+        },
+        next() {
+            if (this.currentSlideIndex < {{ props.slides | length }}) {
+                this.currentSlideIndex = this.currentSlideIndex + 1
+            } else {
+                // If it's the last slide, go to the first slide
+                this.currentSlideIndex = 1
+            }
+        },
+    }"
+    {{ loopAttrs(attrs) }}
+    class="@container group relative w-full flex flex-col {{ attrs.class }} {{ carouselStyles }}">
+
+    <div class="relative grid grid-overlap max-h-full overflow-hidden shrink grow">
+        {% for slide in props.slides %}
+            <figure
+                x-show="currentSlideIndex == {{ loop.index }}"
+                x-transition.opacity.duration.600ms
+                {{ loopAttrs(attrs) }}
+                class="flex flex-col {{ slideStyles }}">
+                <div class="{{ slideImageStyles }}">
+                    <img src="{{ slide.image }}" alt="{{ slide.caption }}" class="w-full h-full object-cover">
+                </div>
+                {% if slide.caption %}<figcaption class="{{ slideCaptionStyles }}">{{slide.caption}}</figcaption>{% endif %}
+            </figure>
+        {% endfor %}
+    </div>
+    <div class="flex justify-center items-center {{ controlsStyles }}">
+        {{ button(
+            props={
+                type: buttonProps.type,
+                size: buttonProps.size,
+                variant: buttonProps.variant,
+                icon: "arrow_back"
+            },
+            attrs={
+                "aria-label":"Previous slide",
+                "title":"Previous slide",
+                "@click": "previous()",
+                "class": buttonStyles + " col-start-1 pointer-events-auto"
+            }
+        ) }}
+        {% if props.indicators %}
+            <div class="flex self-center justify-self-center justify-center {{ indicatorRowStyles }}" role="group" aria-label="slides" >
+                {% for slide in props.slides %}
+                    <div x-data="{ id: $id('carousel-radio')}" class="flex">
+                        <input
+                            :checked="currentSlideIndex === {{ loop.index }}"
+                            x-on:change="currentSlideIndex = {{ loop.index }}"
+                            :id="id"
+                            type="radio"
+                            name="id"
+                            value="View slide {{ loop.index }}"
+                            class="{{ indicatorStyles }} appearance-none pointer-events-auto"/>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {{ button(
+            props={
+                type: buttonProps.type,
+                size: buttonProps.size,
+                variant: buttonProps.variant,
+                icon: "arrow_forward"
+            },
+            attrs={
+                "aria-label":"Next slide",
+                "title":"Next slide",
+                "@click": "next()",
+                "class": buttonStyles + " col-start-3 pointer-events-auto"
+            }
+        ) }}
+
+    </div>
+</div>
+
+{% endmacro %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro carouselSlide(props={}, attrs={}) %}
+
+    <div
+        x-show="currentSlideIndex == {{ props.loop.index }}"
+        x-transition.opacity.duration.600ms
+        {{ loopAttrs(attrs) }}
+        class="{{ carouselSlideStyles }} {{ attrs.class }}">
+        {{ caller() }}
+    </div>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set carouselMeta = {
+    args: '{% call carousel(
+    props={
+        slides: [],
+        indicators: true | false
+    },
+    attrs={}
+) %}
+    {% from "components/carousel.njk" import carouselSlide %}
+    {% for slide in slides %}
+        {% call carouselSlide({loop:loop}) %}
+            {# slide content #}
+        {% endcall %}
+    {% endfor %}
+{% endcall %}',
+description: ""
+} %}
