@@ -15,15 +15,15 @@
 {% set slideStyles = "gap-6 max-h-full overflow-hidden" %}
 {% set slideImageStyles = "border border-neutral-lighter bg-neutral rounded-lg overflow-hidden" %}
 {% set slideCaptionStyles = "text-center text-body-sm" %}
-{% set controlsStyles = "gap-8" %}
-{% set indicatorRowStyles = "rounded-full bg-surface-light border-neutral-lighter border px-1.5 py-1.5 @md:px-2 @md:py-2 gap-1 @md:gap-1.5" %}
-{% set indicatorStyles = "size-1.5 @md:size-2 checked:bg-(--color-neutral) bg-(--color-action)/50 rounded-full" %}
+{% set controlsStyles = "gap-8 justify-between items-center" %}
+{% set indicatorRowStyles = "rounded-full bg-surface-light border-neutral-lighter border p-2 @md:p-2.5 gap-1.5 @md:gap-2" %}
+{% set indicatorStyles = "size-2 @md:size-2.5 checked:bg-(--color-neutral) bg-(--color-action)/50 rounded-full" %}
 {% set buttonProps = {
     type: "button",
     size: "sm",
     variant: "neutral"
 } %}
-{% set buttonStyles = "min-h-[max(15cqi,_64px)]" %}
+{% set buttonStyles = "w-1/4" %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -59,13 +59,13 @@
                 {{ loopAttrs(attrs) }}
                 class="flex flex-col {{ slideStyles }}">
                 <div class="{{ slideImageStyles }}">
-                    <img src="{{ slide.image }}" alt="{{ slide.caption }}" class="w-full h-full object-cover">
+                    <img src="{{ slide.image }}" alt="{{ slide.caption }}">
                 </div>
                 {% if slide.caption %}<figcaption class="{{ slideCaptionStyles }}">{{slide.caption}}</figcaption>{% endif %}
             </figure>
         {% endfor %}
     </div>
-    <div class="flex justify-center items-center {{ controlsStyles }}">
+    <div class="flex {{ controlsStyles }}">
         {{ button(
             props={
                 type: buttonProps.type,
@@ -77,7 +77,7 @@
                 "aria-label":"Previous slide",
                 "title":"Previous slide",
                 "@click": "previous()",
-                "class": buttonStyles + " col-start-1 pointer-events-auto"
+                "class": buttonStyles
             }
         ) }}
         {% if props.indicators %}
@@ -107,7 +107,7 @@
                 "aria-label":"Next slide",
                 "title":"Next slide",
                 "@click": "next()",
-                "class": buttonStyles + " col-start-3 pointer-events-auto"
+                "class": buttonStyles
             }
         ) }}
 

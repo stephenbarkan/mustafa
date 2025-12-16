@@ -1,9 +1,68 @@
----
-photos:
-  - /assets/uploads/homepage-01.png
-  - /assets/uploads/homepage-02.png
-  - /assets/uploads/homepage-03.png
-  - /assets/uploads/homepage-04.png
-  - /assets/uploads/homepage-05.png
----
+{% extends "layouts/base.njk" %}
 
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/marquee.njk" import marquee %}
+{% from "components/button.njk" import button %}
+{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set mainStyles = "py-section gap-section lg:px-site-inline" %}
+{% set showBottomLine = true %}
+{% set showNavbar = true %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+
+    {% call container(
+        props={
+            size: "full",
+            type: "flex"
+        },
+        attrs={class:"gap-6 justify-items-start"}
+        ) %}
+        {% call marquee(
+            props={
+                speed: "25s",
+                pauseOnHover: false,
+                fadeEdges: false
+            },
+            attrs={class:"w-full"}
+        ) %}
+            <div class="flex gap-6 h-[500px]">
+                {% for photo in homepage.photos %}
+                    <div class="flex flex-col rounded-base border border-neutral-light overflow-hidden">
+                        <img src="{{ photo}}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+        {% endcall %}
+    {% endcall %}
+
+    {% call container(
+    props={
+        size: "narrow",
+        type: "cols-2"
+    },
+    attrs={class:"gap-6 relative"}
+    ) %}
+        {{ button({type:"button", size:"base", variant:"neutral", label:"About me"}) }}
+        {{ button({type:"button", size:"base", variant:"neutral", label:"My artforms"},{href:"/artforms"}) }}
+        {{ button({type:"button", size:"base", variant:"neutral", label:"My writing"}) }}
+        {{ button({type:"button", size:"base", variant:"neutral", label:"Contact me"}) }}
+        {{ sparkle({class:"fill-hue h-6 absolute left-1/2 top-1/2 -translate-1/2"})}}
+    {% endcall %}
+
+{% endblock %}
+
+{% block blobs %}
+
+    {{ blobIndexTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+    {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+
+{% endblock %}
+
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}

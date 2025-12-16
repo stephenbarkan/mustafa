@@ -24,7 +24,7 @@
         attrs={class:""}
         ) %}
 
-        <section class="flex flex-col gap-6 px-16 py-24">
+        <section class="flex flex-col gap-6 px-16 py-24 max-w-content">
             <h1 class="text-heading-lg text-hue">{{ title }}</h1>
             {{ markdown(
                 props={
@@ -34,27 +34,31 @@
                 attrs={class:"w-full"}
             ) }}
         </section>
-        <section class="h-dvh--navbar sticky top-navbar-height border-l border-neutral-lighter flex shrink-0 flex-col py-6">
-            <div class="border-y border-neutral-lighter grow bg-neutral-light backdrop-blur-base p-12 flex flex-col max-h-full">
-                {% call carousel(
-                    props={
-                        slides: photos,
-                        indicators: true
-                    },
-                    attrs={class:"grow max-h-full"}
-                ) %}
-                    {% from "components/carousel.njk" import carouselSlide %}
-                    {% for slide in photos %}
-                        {% call carouselSlide({loop:loop}) %}
-                            <figure>
-                                <div class="border border-neutral-lighter bg-neutral rounded-square overflow-hidden"><img class="max-w-full shrink" src="{{ slide.image }}" alt="{{ slide.caption }}"></div>
-                                <figcaption>{{slide.caption}} </figcaption>
-                            </figure>
-                        {% endcall %}
-                    {% endfor %}
-                {% endcall %}
-            </div>
-        </section>
+
+        {% if photos.length %}
+            <section class="h-dvh--navbar sticky top-navbar-height border-l border-neutral-lighter flex shrink-0 flex-col py-6">
+                <div class="border-y border-neutral-lighter grow bg-neutral-light backdrop-blur-base p-12 flex flex-col max-h-full">
+                    {% call carousel(
+                        props={
+                            slides: photos,
+                            indicators: true
+                        },
+                        attrs={class:"grow max-h-full"}
+                    ) %}
+                        {% from "components/carousel.njk" import carouselSlide %}
+                        {% for slide in photos %}
+                            {% call carouselSlide({loop:loop}) %}
+                                <figure>
+                                    <div class="border border-neutral-lighter bg-neutral rounded-square overflow-hidden"><img class="max-w-full shrink" src="{{ slide.image }}" alt="{{ slide.caption }}"></div>
+                                    <figcaption>{{slide.caption}} </figcaption>
+                                </figure>
+                            {% endcall %}
+                        {% endfor %}
+                    {% endcall %}
+                </div>
+            </section>
+        {% endif %}
+
     {% endcall %}
 {% endblock %}
 

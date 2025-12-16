@@ -6,10 +6,35 @@ backend:
 media_folder: /assets/uploads
 public_folder: /assets/uploads
 
+singletons:
+  - label: Homepage
+    name: homepage
+    file: /_data/homepage.json
+    icon: home
+    fields:
+      - label: Photos
+        name: photos
+        widget: list
+        required: true
+        fields:
+          - label: Image
+            name: image
+            widget: image
+          - label: Alt Text
+            name: altText
+            widget: string
+          - label: Aspect ratio
+            name: aspect
+            widget: select
+            default: base
+            options:
+              - "4:5"
+              - "8:5"
 collections:
-  - name: artforms
-    label: Artforms
+  - label: Artforms
+    name: artforms
     folder: /artform
+    icon: wand_shine
     fields:
       - label: Title
         name: title

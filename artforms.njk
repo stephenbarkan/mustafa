@@ -17,7 +17,9 @@
 
 <h1 class="sr-only">My Artforms</h1>
 
-<ul class="text-heading-lg">
-    <li>{{ button({type:"link", size:"inherit", variant:"action", label:"Flow Art" },{href:"/artform/flow-art"}) }}</li>
+<ul class="text-heading-lg flex flex-col items-center gap-section">
+    {% for artform in collections.artform %}
+        <li>{{ button({type:"link", size:"inherit", variant:"action", label:artform.data.title },{href:artform.url}) }}</li>
+    {% endfor %}
 
 {% endblock %}

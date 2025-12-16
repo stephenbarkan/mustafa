@@ -9,18 +9,11 @@
 
 {# Values ----------- #}
 
-{% set buttonSpace %}
-    {% if props.size === "sm" %}24px
-    {% elseif props.size === "base" %}28px
-    {% elseif props.size === "lg" %}36px
-    {% endif %}
-{% endset %}
-
 {% set buttonStyles = "transition-transform decoration-[1.5px] underline-offset-4" %}
 
 {% set types = {
     button: {
-        styles: "hover:scale-[1.05] active:scale-[.99] h-fit hover:underline border",
+        styles: "hover:scale-[1.05] active:scale-[.99] h-fit hover:underline border backdrop-blur-base",
         on: "",
         sizes: {
             sm: "text-button-sm min-w-tube-sm min-h-tube-sm rounded-sm gap-4 px-6",
@@ -51,7 +44,6 @@
 
 <{% if attrs.href %}a{% else %}button{% endif %} data-button
     {{ loopAttrs(attrs) }}
-    style="--button-space: {{ buttonSpace }}"
     {% if props.toggleValue %}
          {% if types[props.type].on %}
             :class="{{ props.toggleValue }} && '{{ types[props.type].on }}'"
