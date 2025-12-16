@@ -109,6 +109,8 @@
             {% block content %}{% endblock %}
         </main>
 
+        {% block footer %}{% endblock %}
+
         <div class="hidden lg:block z-(--z-top) fixed pointer-events-none border-x border-neutral-lighter h-dvh w-[calc(100vw-2*var(--space-site-inline))]"></div>
 
         {% if showBottomLine %}

@@ -36,12 +36,12 @@
         </section>
 
         {% if photos.length %}
-            <section class="h-dvh--navbar sticky top-navbar-height border-l border-neutral-lighter flex shrink-0 flex-col py-6">
-                <div class="border-y border-neutral-lighter grow bg-neutral-light backdrop-blur-base p-12 flex flex-col max-h-full">
+            <section class="h-dvh--navbar sticky top-navbar-height border-l border-neutral-lighter flex shrink-0 flex-col">
+                <div class="grow bg-neutral-light backdrop-blur-base p-12 flex flex-col max-h-full">
                     {% call carousel(
                         props={
                             slides: photos,
-                            indicators: true
+                            indicators: false
                         },
                         attrs={class:"grow max-h-full"}
                     ) %}

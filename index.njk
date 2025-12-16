@@ -8,8 +8,8 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set mainStyles = "py-section gap-section lg:px-site-inline" %}
-{% set showBottomLine = true %}
+{% set mainStyles = "py-section gap-section" %}
+{% set showBottomLine = false %}
 {% set showNavbar = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -22,7 +22,7 @@
             type: "flex"
         },
         attrs={class:"gap-6 justify-items-start"}
-        ) %}
+    ) %}
         {% call marquee(
             props={
                 speed: "25s",
@@ -31,10 +31,10 @@
             },
             attrs={class:"w-full"}
         ) %}
-            <div class="flex gap-6 h-[500px]">
+            <div class="flex gap-6 pr-site-inline h-[450px]">
                 {% for photo in homepage.photos %}
-                    <div class="flex flex-col rounded-base border border-neutral-light overflow-hidden">
-                        <img src="{{ photo}}" alt="">
+                    <div class="flex flex-col rounded-base border border-neutral-light overflow-hidden {% if photo.aspect === "8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
+                        <img src="{{ photo.image }}" alt="{{ photo.altText }}">
                     </div>
                 {% endfor %}
             </div>
@@ -42,11 +42,11 @@
     {% endcall %}
 
     {% call container(
-    props={
-        size: "narrow",
-        type: "cols-2"
-    },
-    attrs={class:"gap-6 relative"}
+        props={
+            size: "narrow",
+            type: "cols-2"
+        },
+        attrs={class:"gap-6 relative"}
     ) %}
         {{ button({type:"button", size:"base", variant:"neutral", label:"About me"}) }}
         {{ button({type:"button", size:"base", variant:"neutral", label:"My artforms"},{href:"/artforms"}) }}
@@ -56,6 +56,20 @@
     {% endcall %}
 
 {% endblock %}
+
+{% block footer %}
+    {% call container(
+        props={
+            size: "full",
+            type: "flex"
+        },
+        attrs={class:"text-body-sm gap-6 relative border-t border-neutral-lighter flex-col xl:flex-row items-center justify-center py-4 pt-site-inline text-center gap-6 hover:bg-neutral-light hover:backdrop-blur-base"}
+    ) %}
+    <span>Copyright 2025 Mustafa Anwar</span>
+    {{ sparkle({class:"fill-hue h-3.5"}) }}
+    <span>Website design and development by {{ button({type:"link", size:"inherit", variant:"action", label:"Chicago Design Cooperative"},{href:"https://drive.proton.me/urls/VVVEAKPAF0#I10aLlkKDSvR", target:"_blank"}) }}</span>
+    {% endcall %}
+{% endblock footer %}
 
 {% block blobs %}
 
