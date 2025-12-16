@@ -1,49 +1,9 @@
-{% extends "layouts/base.njk" %}
+---
+photos:
+  - /assets/uploads/homepage-01.png
+  - /assets/uploads/homepage-02.png
+  - /assets/uploads/homepage-03.png
+  - /assets/uploads/homepage-04.png
+  - /assets/uploads/homepage-05.png
+---
 
-{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
-
-{% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
-
-{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
-
-{% set mainStyles = "py-section gap-section lg:px-site-inline" %}
-{% set showBottomLine = true %}
-{% set showNavbar = true %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% block content %}
-
-    {% call container(
-        props={
-            size: "narrow",
-            type: "cols-2"
-        },
-        attrs={class:"gap-6 justify-items-start"}
-        ) %}
-
-        {{ button(props={type: "button", size: "sm", variant: "neutral", label: "sm - Neutral", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
-        {{ button(props={type: "button", size: "sm", variant: "action", label: "sm - Action", icon:"keyboard_arrow_down",iconPosition:"end"}, attrs={}) }}
-        {{ button(props={type: "button", size: "base", variant: "neutral", label: "base - Neutral", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
-        {{ button(props={type: "button", size: "base", variant: "action", label: "base - Action", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
-        {{ button(props={type: "button", size: "lg", variant: "neutral", label: "lg - Neutral"}, attrs={}) }}
-        {{ button(props={type: "button", size: "lg", variant: "action", label: "lg - Action"}, attrs={}) }}
-
-        {{ button(props={type: "link", size: "sm", variant: "neutral", label: "Small - Neutral", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
-        {{ button(props={type: "link", size: "sm", variant: "action", label: "Small - Action", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
-        {{ button(props={type: "link", size: "base", variant: "neutral", label: "Base - Neutral", icon:"bug_report", iconPosition:"end"}, attrs={}) }}
-        {{ button(props={type: "link", size: "base", variant: "action", label: "Base - Action", icon:"keyboard_arrow_down", iconPosition:"end"}, attrs={}) }}
-    {% endcall %}
-
-{% endblock %}
-
-{% block blobs %}
-
-    {{ blobIndexTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
-    {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
-
-{% endblock %}
-
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
