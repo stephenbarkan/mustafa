@@ -25,5 +25,5 @@ collections:
             name: image
             widget: image
           - label: Caption
-            name: Caption
+            name: caption
             widget: string
