@@ -1,0 +1,29 @@
+{
+  "photos": [
+    {
+      "image": "/assets/uploads/homepage-01.png",
+      "altText": "Mustafa with his blue levi-wand",
+      "aspect": "4:5"
+    },
+    {
+      "image": "/assets/uploads/homepage-02.png",
+      "altText": "Mustafa gifting his magic to his friends",
+      "aspect": "8:5"
+    },
+    {
+      "image": "/assets/uploads/homepage-03.png",
+      "altText": "Mustafa wielding fire!",
+      "aspect": "4:5"
+    },
+    {
+      "image": "/assets/uploads/homepage-04.png",
+      "altText": "Mustafa using ribbons by the Lake",
+      "aspect": "8:5"
+    },
+    {
+      "image": "/assets/uploads/homepage-05.png",
+      "altText": "Mustafa with fire at Full Moon Jam",
+      "aspect": "4:5"
+    }
+  ]
+}
