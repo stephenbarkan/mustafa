@@ -1,0 +1,86 @@
+{% extends "layouts/base.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/marquee.njk" import marquee %}
+{% from "components/button.njk" import button %}
+{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set mainStyles = "py-section gap-section" %}
+{% set showBottomLine = false %}
+{% set showNavbar = true %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+
+    {% call container(
+        props={
+            size: "full",
+            type: "flex"
+        },
+        attrs={class:"gap-6 justify-items-start"}
+    ) %}
+        {% call marquee(
+            props={
+                speed: "45s",
+                pauseOnHover: false,
+                fadeEdges: false
+            },
+            attrs={class:"w-full"}
+        ) %}
+            <div class="flex gap-6 pr-site-inline h-[350px] lg:h-[450px]">
+                {% for photo in homepage.photos %}
+                    <div
+                        style="--animate-duration: 45s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{homepage.photos.length}})"
+                        class="flex animate-wave flex-col rounded-base border border-neutral-light overflow-hidden {% if photo.aspect === "8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
+                        <img src="{{ photo.image }}" alt="{{ photo.altText }}">
+                    </div>
+                {% endfor %}
+            </div>
+        {% endcall %}
+    {% endcall %}
+
+    {% call container(
+        props={
+            size: "narrow",
+            type: "cols-1"
+        },
+        attrs={class:"px-site-inline"}
+    ) %}
+        <div class="grid lg:grid-cols-2 gap-4 lg:gap-6 relative ">
+            {{ button({type:"button", size:"base", variant:"neutral", label:"About me"}) }}
+            {{ button({type:"button", size:"base", variant:"neutral", label:"My artforms"},{href:"/artforms"}) }}
+            {{ button({type:"button", size:"base", variant:"neutral", label:"My writing"}) }}
+            {{ button({type:"button", size:"base", variant:"neutral", label:"Contact me"}) }}
+            {{ sparkle({class:"fill-hue h-6 absolute left-1/2 top-1/2 -translate-1/2 hidden lg:block"})}}
+        </div>
+    {% endcall %}
+
+{% endblock %}
+
+{% block footer %}
+    {% call container(
+        props={
+            size: "full",
+            type: "flex"
+        },
+        attrs={class:"text-body-sm gap-6 relative border-t border-neutral-lighter bg-neutral-lighter hover:bg-neutral-light transition duration-600 backdrop-blur-sm flex-col xl:flex-row items-center justify-center pt-4 pb-8 xl:py-4 text-center gap-4 xl:gap-6 hover:bg-neutral-light hover:backdrop-blur-base"}
+    ) %}
+    <span>Copyright 2025 Mustafa Anwar</span>
+    {{ sparkle({class:"fill-hue h-3.5 order-first xl:order-none"}) }}
+    <span>Website design and development by {{ button({type:"link", size:"inherit", variant:"action", label:"Chicago Design Cooperative"},{href:"https://drive.proton.me/urls/VVVEAKPAF0#I10aLlkKDSvR", target:"_blank"}) }}</span>
+    {% endcall %}
+{% endblock footer %}
+
+{% block blobs %}
+
+    {{ blobIndexTop({class:"top-0 max-h-[50vh] w-full left-1/2 -translate-x-1/2"}) }}
+    {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+
+{% endblock %}
+
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
