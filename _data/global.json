@@ -2,8 +2,6 @@
   "siteDomain": "https://mustafaanwar.com",
   "siteTitle": "Mustafa Anwar",
   "siteDescription": "Multi-talented artist from Chicago",
-  "siteImage": "og-image.jpg",
-  "favicon": "favicon.png",
-  "imagesFolder": "/images/uploads",
-  "bannerContent": ""
+  "siteImage": "/assets/uploads/og-image.jpg",
+  "favicon": "/assets/uploads/favicon.png"
 }
