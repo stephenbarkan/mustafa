@@ -1,8 +1,4 @@
 .markdown {
-  --md-border-color: color-mix(in oklab, var(--md-text-color), transparent 75%);
-  --md-border-width: 1px;
-  --md-background-color: color-mix(in oklab, var(--md-text-color), transparent 95%);
-
   --space-half: calc(var(--md-font-size) * 2 / 8);
   --space-1: calc(var(--md-font-size) * 4 / 8);
   --space-2: calc(var(--md-font-size) * 7 / 8);
@@ -121,8 +117,9 @@
   padding: 2px 4px;
   margin: 0;
   background-color: var(--md-background-color);
-  border: var(--md-border-width) dotted var(--md-border-color);
+  border: var(--md-border-width) solid var(--md-border-color);
   line-height: var(--leading-relaxed);
+  backdrop-filter: blur(3px);
 }
 
 .markdown pre {

@@ -2,6 +2,7 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
+{% from "components/container.njk" import container %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -11,7 +12,7 @@
 
 {# Theme styles ----------- #}
 
-{% set panelStyles %} bg-neutral-light border-neutral-lighter py-16 gap-8 justify-items-center backdrop-blur-base {% if props.alignment === "bottom" %}border-t{% else %}border-b{% endif %}{% endset %}
+{% set panelStyles %} bg-neutral-light border-neutral-lighter py-12 px-site-inline h-dvh--navbar backdrop-blur-base duration-600 {% if props.alignment === "bottom" %}border-t{% else %}border-b{% endif %}{% endset %}
 {% set backdropStyles %} bg-transparent {% endset %}
 {% set panelAlignmentStyles %}
     {% if props.alignment === "bottom" %}bottom-0 flex-col-reverse
@@ -55,16 +56,16 @@
         x-cloak
         x-show="drawerOpen"
         {% if props.alignment === "top" %}
-            x-transition:enter-start="opacity-0 -translate-y-4"
-            x-transition:leave-end="opacity-0 -translate-y-4"
+            x-transition:enter-start="opacity-0"
+            x-transition:leave-end="opacity-0"
         {% elseif props.alignment === "bottom" %}
-            x-transition:enter-start="opacity-0 translate-y-4"
-            x-transition:leave-end="opacity-0 translate-y-4"
+            x-transition:enter-start="opacity-0"
+            x-transition:leave-end="opacity-0"
         {% elseif props.alignment === "right" %}
-            x-transition:enter-start="opacity-0 translate-x-4"
-            x-transition:leave-end="opacity-0 translate-x-4"
+            x-transition:enter-start="opacity-0"
+            x-transition:leave-end="opacity-0"
         {% endif %}
-        class="flex z-(--z-top) flex-col grow fixed {{ panelAlignmentStyles }} left-0 h-[200dvh] w-full transition">
+        class="flex z-(--z-top) flex-col grow fixed {{ panelAlignmentStyles }} left-0 w-full transition">
         <nav
             x-ref="panel"
             @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"

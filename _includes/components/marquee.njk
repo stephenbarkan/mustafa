@@ -10,15 +10,8 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 <style>
-    @property --100cqi {
-        syntax: "<length>";
-        initial-value: 0px;
-        inherits: true;
-    }
-
     [data-marquee] > * {
-        --100cqi: 100cqi;
-        --px-width: tan(atan2(var(--100cqi), 1px));
+        --px-width: tan(atan2(1512px, 1px));
         --marquee-duration: calc(var(--px-width) / 1500 * {{ props.speed }})
     }
 </style>

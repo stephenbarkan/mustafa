@@ -19,7 +19,7 @@
 
 {% set controlsStyles = "gap-6 justify-between items-center" %}
 
-{% set indicatorRowStyles = "min-w-tube-sm min-h-tube-sm rounded-sm gap-4 px-6 bg-neutral backdrop-blur-base border-neutral-lighter border" %}
+{% set indicatorRowStyles = "min-w-tube-sm min-h-tube-sm rounded-sm gap-3 px-6 bg-neutral backdrop-blur-base border-neutral-lighter border" %}
 {% set indicatorStyles = "size-3 @md:size-2.5 checked:bg-action border border-neutral-light hover:bg-(--color-neutral) rounded-full" %}
 
 {% set buttonProps = {
@@ -53,7 +53,7 @@
         },
     }"
     {{ loopAttrs(attrs) }}
-    class="@container group relative w-full flex flex-col grow {{ attrs.class }} {{ carouselStyles }}">
+    class="@container relative w-full flex flex-col grow {{ attrs.class }} {{ carouselStyles }}">
 
     <div class="relative grid grid-overlap overflow-hidden grow ">
         {% for slide in props.slides %}

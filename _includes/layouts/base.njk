@@ -29,18 +29,6 @@
         {{- global.siteImage -}}
     {% endif %}
 {% endset %}
-{#
-{% set navLinks %}
-    {% set joinerSparkle %}
-        {{ sparkle({class:"fill-hue h-3.5"}) }}
-    {% endset%}
-    {% set divider = joiner(joinerSparkle | safe) %}
-
-    {% for link in navLinks %}
-        {{ divider() }}
-        {{ button({type:"link", size:"base", variant:"neutral", label:link.label},{href:link.href}) }}
-    {% endfor %}
-{% endset %} #}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -67,12 +55,12 @@
             return {'--space-navbar-height': navbarHeight+'px'}
         }
     }"
-    :class="!scrollable && 'h-dvh overflow-hidden'"
+    :class="!scrollable && ''"
     :style="getNavbarHeight"
     @scroll.window="setHasScrolled"
     {% endif %}
     lang="en"
-    class="scroll-smooth scroll-p-section-title">
+    class="scroll-smooth scroll-p-section-title relative">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -89,7 +77,9 @@
 
         {% include "snippets/fonts.njk" %}
     </head>
-    <body class="relative bg-surface font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+    <body
+    :class="!scrollable && 'overflow-hidden'"
+    class="bg-surface font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
 
         {% block blobs %}{% endblock %}
 
@@ -117,7 +107,7 @@
         <div class="hidden lg:block z-(--z-top) fixed pointer-events-none border-x border-neutral-lighter h-dvh w-[calc(100vw-2*var(--space-site-inline))]"></div>
 
         {% if showBottomLine %}
-            <div class="hidden lg:block z-(--z-top) w-screen h-site-inline border-t border-neutral-lighter"></div>
+            <div class="block z-(--z-top) w-screen h-site-inline border-t border-neutral-lighter"></div>
         {% endif %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

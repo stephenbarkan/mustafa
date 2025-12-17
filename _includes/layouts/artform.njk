@@ -10,7 +10,7 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set mainStyles = "" %}
-{% set showBottomLine = false %}
+{% set showBottomLine = true %}
 {% set showNavbar = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -24,7 +24,7 @@
         attrs={class:""}
         ) %}
 
-        <section class="flex flex-col gap-6 px-16 py-24 max-w-content">
+        <section class="flex flex-col gap-6 md:px-16 py-24">
             <h1 class="text-heading-lg text-hue">{{ title }}</h1>
             {{ markdown(
                 props={
@@ -36,14 +36,14 @@
         </section>
 
         {% if photos.length %}
-            <section class="h-dvh sticky top-navbar-height border-l border-neutral-lighter flex shrink-0 flex-col">
-                <div class="grow bg-neutral-light backdrop-blur-base p-12 flex flex-col max-h-full">
+            <section class="xl:h-dvh--navbar xl:sticky md:mx-16 xl:mx-0 top-navbar-height max-xl:border xl:border-l border-neutral-lighter flex shrink-0 flex-col">
+                <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col max-h-full">
                     {% call carousel(
                         props={
                             slides: photos,
                             indicators: true
                         },
-                        attrs={class:"grow max-h-full"}
+                        attrs={class:"grow max-h-[500px] xl:max-h-full"}
                     ) %}
                         {% from "components/carousel.njk" import carouselSlide %}
                         {% for slide in photos %}
@@ -64,6 +64,6 @@
 
 {% block blobs %}
 
-    {{ blobArtform({class:"top-0 right-0 bottom-0 h-dvh fixed"}) }}
+    {{ blobArtform({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed"}) }}
 
 {% endblock %}

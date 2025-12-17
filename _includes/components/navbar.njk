@@ -30,16 +30,24 @@
     {% endfor %}
 {% endset %}
 
+{% set drawerContents %}
+    {% call container({size:"base", type:"flex"},{class:"flex-col gap-4"}) %}
+        {% for link in navLinks %}
+            {{ button({type:"button", size:"base", variant:"neutral", label:link.label},{href:link.href}) }}
+        {% endfor %}
+    {% endcall %}
+{% endset %}
+
 {# Theme styles ----------- #}
 
 
 {% set themeAlignment = "left" %}
 {% set drawerOnNarrow = true %}
 
-{% set navbarStyles = "@container z-(--z-sticky) border-b border-neutral-lighter py-3 xl:py-site-inline lg:px-site-inline bg-neutral-lighter hover:bg-neutral-light backdrop-blur-base" %}
+{% set navbarStyles = "@container z-(--z-sticky) border-b border-neutral-lighter py-3 xl:py-site-inline lg:px-site-inline bg-neutral-lighter backdrop-blur-sm hover:bg-neutral-light hover:backdrop-blur-base pointer-coarse:bg-neutral-light pointer-coarse:backdrop-blur-base transition duration-600" %}
 {% set containerStyles = "" %}
-{% set stickyStyles = "sticky top-0 bg-neutral-light" %}
-{% set onScrollStyles = "bg-neutral-light" %}
+{% set stickyStyles = "sticky top-0 !bg-neutral-light" %}
+{% set onScrollStyles = "!bg-neutral-light !backdrop-blur-base" %}
 {% set itemGap = "gap-8" %}
 
 {# Other ------------------ #}
@@ -66,11 +74,11 @@
     :class="{'-translate-y-full' : navbarHidden, '{{ onScrollStyles }}' : hasScrolled | !scrollable }"
     @scroll.window="setNavbarHidden()"
     {{ loopAttrs(attrs) }}
-    class="w-full transition duration-300 flex flex-col relative {{ attrs.class }} {{ navbarStyles }}
+    class="w-full flex flex-col relative {{ attrs.class }} {{ navbarStyles }}
     {% if props.sticky %}{{ stickyStyles }}{% endif %}">
 
     <div class="{%if drawerOnNarrow %}hidden xl:block{% endif %}">
-        {% call container({size: "base", type:"flex"},{class:"items-center justify-between"+containerStyles}) %}
+        {% call container({size: "base", type:"flex"},{class:"items-center justify-between"}) %}
 
             <div data-slot="left"
             class="grow flex items-center justify-start flex-wrap {{ itemGap }}
@@ -100,12 +108,16 @@
 
     {% if drawerOnNarrow %}
         <div class="xl:hidden">
-            {% call container({size: "base", type:"flex"},{class:"items-center justify-between"+containerStyles}) %}
+            {% call container({size: "base", type:"flex"},{class:"items-center justify-between"}) %}
                 {{ navbarLogo | safe }}
                 {% if leftSide or rightSide or props.leftSide or props.rightSide %}
                     {% call drawer({ alignment:"top", triggerProps:{ icon:{off:"menu", on:"close"}, type:"button", variant:"neutral", size:"sm"} }) %}
-                        {{ props.leftSide | safe }}
-                        {% if props.rightSide %}{{ props.rightSide | safe }}{% else %}{{ rightSide | safe }}{% endif %}
+                        {% if drawerContents %}
+                            {{ drawerContents | safe }}
+                        {% else %}
+                            {{ props.leftSide | safe }}
+                            {% if props.rightSide %}{{ props.rightSide | safe }}{% else %}{{ rightSide | safe }}{% endif %}
+                        {% endif %}
                     {% endcall %}
                 {% endif %}
             {% endcall %}

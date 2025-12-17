@@ -8,11 +8,14 @@
     fontSize: "text-body-base",
     textColor: "color-neutral",
     linkColor: "color-action",
+    borderColor: "border-neutral-lighter",
+    borderWidth: "1px",
+    backgroundColor: "bg-neutral",
     radius: "radius-sm",
     headingFont: "font-body",
     headingFontWeight: "600",
     headingColor: "color-hue",
-    scale: "1.13"
+    scale: "1.25"
 } %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
@@ -30,7 +33,9 @@
     {% set mdHeadingFontWeight %}--md-heading-font-weight: {% if props.overrides.headingFontWeight %}{{ props.overrides.headingFontWeight }}{% else %}{{ themeDefaults.headingFontWeight }}{% endif %};{% endset %}
     {% set mdScale %}--md-scale: {% if props.overrides.scale %}{{ props.overrides.scale }}{% else %}{{ themeDefaults.scale }}{% endif %};{% endset %}
     {% set mdRadius %}--md-radius: var(--{% if props.overrides.radius %}{{ props.overrides.radius }}{% else %}{{ themeDefaults.radius }}{% endif %});{% endset %}
-
+    {% set mdBorderColor %}--md-border-color: var(--color-{% if props.overrides.borderColor %}{{ props.overrides.borderColor }}{% else %}{{ themeDefaults.borderColor }}{% endif %});{% endset %}
+    {% set mdBorderWidth %}--md-border-width: {% if props.overrides.borderWidth %}{{ props.overrides.borderWidth }}{% else %}{{ themeDefaults.borderWidth }}{% endif %};{% endset %}
+    {% set mdBackgroundColor %}--md-background-color: var(--color-{% if props.overrides.backgroundColor %}{{ props.overrides.backgroundColor }}{% else %}{{ themeDefaults.backgroundColor }}{% endif %});{% endset %}
     {% if props.customStyles %}
         <style>
             {{ attrs.id }} {
@@ -52,6 +57,9 @@
             {{ mdHeadingFont }}
             {{ mdHeadingFontWeight }}
             {{ mdHeadingColor }}
+            {{ mdBorderColor }}
+            {{ mdBorderWidth }}
+            {{ mdBackgroundColor }}
             {{ mdScale }}
         "
         class="markdown @container {{ attrs.class }}">
