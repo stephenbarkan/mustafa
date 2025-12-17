@@ -7,30 +7,54 @@ media_folder: /assets/uploads
 public_folder: /assets/uploads
 
 singletons:
-  - label: Homepage
-    name: homepage
-    file: /_data/homepage.json
-    icon: home
+  - label: Global Site Data
+    name: global
+    file: /_data/global.json
+    icon: public
     fields:
-      - label: Photos
-        name: photos
-        widget: list
-        required: true
-        fields:
-          - label: Image
-            name: image
-            widget: image
-          - label: Alt Text
-            name: altText
-            widget: string
-          - label: Aspect ratio
-            name: aspect
-            widget: select
-            default: base
-            options:
-              - "4:5"
-              - "8:5"
+      - label: Site Domain
+        name: siteDomain
+        widget: string
+      - label: Site Title
+        name: siteTitle
+        widget: string
+      - label: Site Description
+        name: siteDescription
+        widget: string
+      - label: Share Image
+        name: siteImage
+        widget: image
+      - label: Browser Icon
+        name: favicon
+        widget: image
 collections:
+  - label: Pages
+    name: pages
+    icon: stacks
+    files:
+      - label: Home
+        name: homepage
+        file: /_data/homepage.json
+        icon: home
+        fields:
+          - label: Photos
+            name: photos
+            widget: list
+            required: true
+            fields:
+              - label: Image
+                name: image
+                widget: image
+              - label: Alt Text
+                name: altText
+                widget: string
+              - label: Aspect ratio
+                name: aspect
+                widget: select
+                default: base
+                options:
+                  - "4:5"
+                  - "8:5"
   - label: Artforms
     name: artforms
     folder: /artform

@@ -24,7 +24,7 @@
 {% endset %}
 
 {% set ogImage %}
-    {{- global.siteDomain -}}{{- global.imagesFolder -}}/{% if ogImage %}{{- page.fileSlug -}}{{- ogImage -}}
+    {{- global.siteDomain -}}{% if ogImage %}{{- page.fileSlug -}}{{- ogImage -}}
     {% else %}
         {{- global.siteImage -}}
     {% endif %}
@@ -72,7 +72,7 @@
         <meta property="og:image" content="{{ ogImage }}"/>
         <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}"/>
         <meta name="generator" content="{{ eleventy.generator }}">
-        <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.imagesFolder }}/{{ global.favicon }}">
+        <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.favicon }}">
         <link rel="stylesheet" href="/styles.css">
 
         {% include "snippets/fonts.njk" %}
