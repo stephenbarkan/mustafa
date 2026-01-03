@@ -3,5 +3,6 @@
   "layout": "artform",
   "date": "Last Modified",
   "ogImage": "/og-image.jpg",
+  "permalink": "/artform/{{ page.fileSlug }}/",
   "tags": ["artform"]
 }

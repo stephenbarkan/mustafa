@@ -32,6 +32,7 @@
 
 {% set drawerContents %}
     {% call container({size:"base", type:"flex"},{class:"flex-col gap-4"}) %}
+        {{ button({type:"button", size:"base", variant:"neutral", label:"home"},{href:"/home"}) }}
         {% for link in navLinks %}
             {{ button({type:"button", size:"base", variant:"neutral", label:link.label},{href:link.href}) }}
         {% endfor %}

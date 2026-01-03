@@ -1,7 +1,12 @@
 ---
 title: Fire Art
-photos: []
+photos:
+  - image: /assets/uploads/mustafa-test.png
+    caption: This is a caption about the photo, there’s really not a lot to say if you ask me, but here I am, explaining it again.
+  - image: /assets/uploads/mustafa-test-2.png
+    caption: Here's another caption about this photo this time! Woohoo
 ---
+
 _Published on January 15, 2025 • 8 min read_
 
 ## Introduction
@@ -45,7 +50,7 @@ npm install
 npm run dev
 ```
 
-## 
+##
 
 ## Best Practices
 

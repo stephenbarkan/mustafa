@@ -13,30 +13,31 @@
 {% set showBottomLine = true %}
 {% set showNavbar = true %}
 
+{% set previousArtform = collections.artform | getPreviousCollectionItem %}
+{% set nextArtform = collections.artform | getNextCollectionItem %}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container(
-        props={
-            size: "wide",
-            type: "cols-2"
-        },
-        attrs={class:""}
-        ) %}
-
-        <section class="flex flex-col gap-6 md:px-16 py-24">
-            <h1 class="text-heading-lg text-hue">{{ title }}</h1>
-            {{ markdown(
-                props={
-                    content: content,
-                    transform: false
-                },
-                attrs={class:"w-full"}
-            ) }}
+    {% call container(props={size: "wide", type: "cols-2"}, attrs={}) %}
+        <section class="flex flex-col gap-16 pt-16">
+            <div class="flex flex-col gap-12 md:px-16">
+                <div data-breadcrumbs class="flex items-center gap-3">
+                    {{ button({type:"link", size:"sm", variant:"action", label:"All artforms", icon:"chevron_backward"},{href:"/artforms"}) }}
+                    <span>/</span>
+                    <p class="text-body-sm">{{ title }}</p>
+                </div>
+                <h1 class="text-heading-lg text-hue">{{ title }}</h1>
+                {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
+            </div>
+            <div class="flex items-center gap-6 py-6 md:px-8 border-t border-neutral-lighter">
+                {% if previousArtform %}{{ button({type:"link", size:"base", variant:"action", label:previousArtform.data.title, icon:"chevron_backward"}, {href:previousArtform.url, class:"mr-auto"}) }}{% endif %}
+                {% if nextArtform %}{{ button({type:"link", size:"base", variant:"action", label:nextArtform.data.title, icon:"chevron_forward", iconPosition:"end"}, {href:nextArtform.url, class:"ml-auto"}) }}{% endif %}
+            </div>
         </section>
 
         {% if photos.length %}
-            <section class="xl:h-dvh--navbar xl:sticky md:mx-16 xl:mx-0 top-navbar-height max-xl:border xl:border-l border-neutral-lighter flex shrink-0 flex-col">
+            <section class="xl:h-dvh--navbar transition-all duration-600 xl:sticky md:mx-16 xl:mx-0 top-navbar-height max-xl:border xl:border-l border-neutral-lighter flex shrink-0 flex-col">
                 <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col max-h-full">
                     {% call carousel(
                         props={
