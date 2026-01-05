@@ -21,7 +21,7 @@ Handmade flow and juggling gear created with care, creativity, and good vibes at
 
 **Discount Code:** _PAPASTAFA_
 
-## **MoodHoops**
+## MoodHoops
 
 [https://moodhoops.com/](https://moodhoops.com/)
 
