@@ -20,7 +20,7 @@
 {% block content %}
 
     {% call container(props={size: "narrow", type: "cols-1"}, attrs={class:"gap-16"}) %}
-        <h1 class="text-heading-lg text-hue text-center">Contact Mustafa!</h1>
+        <h1 class="text-heading-lg text-hue text-center">{{ contactPage.title }}</h1>
         <div
             x-data="{
                     name: '',
@@ -38,7 +38,8 @@
                 {{ input(
                     props={
                         name: "name",
-                        label: "Your name",
+                        label: contactPage.nameField.label,
+                        description: contactPage.nameField.description,
                         fieldAttrs: {
                             type: "text",
                             required: true,
@@ -50,8 +51,8 @@
                 {{ input(
                     props={
                         name: "contactMethod",
-                        label: "Contact info",
-                        description: "So I can message you back!",
+                        label: contactPage.contactMethodField.label,
+                        description: contactPage.contactMethodField.description,
                         fieldAttrs: {
                             type: "text",
                             required: true,
@@ -79,10 +80,11 @@
                 {{ textarea(
                     props={
                         name: "message",
-                        label: "Your message",
-                        description: "",
+                        label: contactPage.messageField.label,
+                        description: contactPage.messageField.description,
                         fieldAttrs: {
-                            rows: "10"
+                            rows: "10",
+                            required: true
                         }
                     }
                 ) }}
