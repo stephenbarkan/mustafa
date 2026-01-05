@@ -1,0 +1,15 @@
+{
+  "title": "Contact Mustafa!",
+  "nameField": {
+    "label": "Your name",
+    "description": ""
+  },
+  "contactMethodField": {
+    "label": "Contact info",
+    "description": "So I can message you back!"
+  },
+  "messageField": {
+    "label": "Your message",
+    "description": ""
+  }
+}
