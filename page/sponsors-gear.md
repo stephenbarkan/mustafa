@@ -12,6 +12,8 @@ Reliable, thoughtfully designed props built for longevity and adaptability. Flow
 
 **Discount Code:** _Contact Directly_
 
+---
+
 ## Derp Gear
 
 [https://www.derpgear.com/](https://www.derpgear.com/)
@@ -19,6 +21,8 @@ Reliable, thoughtfully designed props built for longevity and adaptability. Flow
 Handmade flow and juggling gear created with care, creativity, and good vibes at heart. Kristina makes leviwands, contact wands, hoods, and custom pieces that emphasize joy, play, and personal expression in flow arts.
 
 **Discount Code:** _PAPASTAFA_
+
+---
 
 ## MoodHoops
 
