@@ -77,7 +77,8 @@ collections:
         icon: wand_stars
         fields:
           - name: layout
-            widget: hidden
+            widget: string
+            readonly: true
             default: "layouts/page.njk"
           - label: Title
             name: title
