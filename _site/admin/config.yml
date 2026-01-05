@@ -78,7 +78,7 @@ collections:
         fields:
           - name: layout
             widget: hidden
-            default: layouts/page.njk
+            default: "layouts/page.njk"
           - label: Title
             name: title
             widget: string
