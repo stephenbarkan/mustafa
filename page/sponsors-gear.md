@@ -1,6 +1,8 @@
 ---
 title: My Sponsors and Gear
+layout: layouts/page.njk
 ---
+
 The tools I work with shape how I move, practice, and perform. I’m grateful to be supported by companies whose values align with care, durability, and intentional design.
 
 ## Flowtoys
