@@ -76,9 +76,8 @@ collections:
         file: /page/sponsors-gear.md
         icon: wand_stars
         fields:
-          - label: Layout
-            name: layout
-            widget: string
+          - name: layout
+            widget: hidden
             default: layouts/page.njk
           - label: Title
             name: title
