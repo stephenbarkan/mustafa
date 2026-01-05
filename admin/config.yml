@@ -79,8 +79,7 @@ collections:
           - label: Layout
             name: layout
             widget: string
-            readonly: true
-            default: "layouts/page.njk"
+            default: layouts/page.njk
           - label: Title
             name: title
             widget: string
