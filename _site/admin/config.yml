@@ -60,6 +60,9 @@ collections:
         file: /page/sponsorsGear.md
         icon: wand_stars
         fields:
+          - label: Title
+            name: title
+            widget: string
           - label: Body
             name: body
             widget: richtext

@@ -1,0 +1,35 @@
+{% extends "layouts/base.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+{% from "components/markdown.njk" import markdown %}
+{% from "assets.njk" import logo, sparkle, blobArtform %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set mainStyles = "" %}
+{% set showBottomLine = true %}
+{% set showNavbar = true %}
+
+{% set previousArtform = collections.artform | getPreviousCollectionItem %}
+{% set nextArtform = collections.artform | getNextCollectionItem %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+    {% call container(props={size: "content", type: "cols-1"}, attrs={}) %}
+        <section class="flex flex-col gap-16 pt-16">
+            <div class="flex flex-col gap-12 md:px-16">
+                <h1 class="text-heading-lg text-hue">{{ title }}</h1>
+                {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
+            </div>
+        </section>
+    {% endcall %}
+{% endblock %}
+
+{% block blobs %}
+
+    {{ blobArtform({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed"}) }}
+
+{% endblock %}

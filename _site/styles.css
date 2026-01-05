@@ -26,7 +26,7 @@
     --container-narrow: 56rem;
     --container-base: 91.5rem;
     --container-wide: 100vw;
-    --container-content: 49ch;
+    --container-content: 56ch;
     --z-lowered: -10;
     --z-elevated: 20;
     --z-sticky: 30;
@@ -450,9 +450,6 @@
   }
   .w-screen {
     width: 100vw;
-  }
-  .max-w-\[25\%\] {
-    max-width: 25%;
   }
   .max-w-\[25vw\] {
     max-width: 25vw;
