@@ -4,7 +4,7 @@
 
 {% from "components/button.njk" import button %}
 {% from "components/markdown.njk" import markdown %}
-{% from "assets.njk" import logo, sparkle, blobArtform %}
+{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -18,18 +18,13 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container(props={size: "content", type: "cols-1"}, attrs={}) %}
-        <section class="flex flex-col gap-16 pt-16">
-            <div class="flex flex-col gap-12 md:px-16">
-                <h1 class="text-heading-lg text-hue">{{ title }}</h1>
-                {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
-            </div>
-        </section>
+    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"flex flex-col py-40 gap-12 md:px-16"}) %}
+        <h1 class="text-heading-lg text-hue text-pretty">{{ title }}</h1>
+        {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
     {% endcall %}
 {% endblock %}
 
 {% block blobs %}
-
-    {{ blobArtform({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed"}) }}
-
+    {{ blobIndexTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
+    {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
 {% endblock %}

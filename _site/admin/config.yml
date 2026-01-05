@@ -27,6 +27,22 @@ singletons:
       - label: Browser Icon
         name: favicon
         widget: image
+  - label: Navigation Links
+    name: navLinks
+    file: /_data/navLinks.json
+    icon: link
+    fields:
+      - label: Links
+        name: siteDomain
+        widget: list
+        root: true
+        fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: URL
+            name: href
+            widget: string
 collections:
   - label: Pages
     name: pages
