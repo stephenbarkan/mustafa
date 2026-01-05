@@ -73,7 +73,7 @@ collections:
                   - "8:5"
       - label: Sponsors and Gear
         name: sponsorsGear
-        file: /page/sponsorsGear.md
+        file: /page/sponsors-gear.md
         icon: wand_stars
         fields:
           - label: Title
