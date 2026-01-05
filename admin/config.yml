@@ -55,10 +55,18 @@ collections:
                 options:
                   - "4:5"
                   - "8:5"
+      - label: Sponsors and Gear
+        name: sponsorsGear
+        file: /page/sponsorsGear.md
+        icon: wand_stars
+        fields:
+          - label: Body
+            name: body
+            widget: richtext
   - label: Artforms
     name: artforms
     folder: /artform
-    icon: wand_shine
+    icon: comedy_mask
     fields:
       - label: Title
         name: title

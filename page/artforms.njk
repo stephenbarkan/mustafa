@@ -3,7 +3,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
+{% from "assets.njk" import logo, sparkle, blobArtformsLeft, blobArtformsRight %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -22,4 +22,9 @@
         <li>{{ button({type:"link", size:"inherit", variant:"action", label:artform.data.title },{href:artform.url}) }}</li>
     {% endfor %}
 
+{% endblock %}
+
+{% block blobs %}
+    {{ blobArtformsLeft({class:"hidden lg:block top-0 left-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
+    {{ blobArtformsRight({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
 {% endblock %}

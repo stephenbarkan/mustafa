@@ -451,6 +451,12 @@
   .w-screen {
     width: 100vw;
   }
+  .max-w-\[25\%\] {
+    max-width: 25%;
+  }
+  .max-w-\[25vw\] {
+    max-width: 25vw;
+  }
   .max-w-\[760px\] {
     max-width: 760px;
   }
