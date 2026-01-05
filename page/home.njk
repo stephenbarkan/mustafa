@@ -4,7 +4,7 @@
 
 {% from "components/marquee.njk" import marquee %}
 {% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
+{% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -62,17 +62,15 @@
         },
         attrs={class:"text-body-sm gap-6 relative border-t border-neutral-lighter bg-neutral-lighter hover:bg-neutral-light transition duration-600 backdrop-blur-sm flex-col xl:flex-row items-center justify-center pt-4 pb-8 xl:py-4 text-center gap-4 xl:gap-6 hover:bg-neutral-light hover:backdrop-blur-base"}
     ) %}
-    <span>Copyright 2025 Mustafa Anwar</span>
+    <span>Copyright {{ helpers.currentYear() }} {{ global.siteTitle }}</span>
     {{ sparkle({class:"fill-hue h-3.5 order-first xl:order-none"}) }}
     <span>Website design and development by {{ button({type:"link", size:"inherit", variant:"action", label:"Chicago Design Cooperative"},{href:"https://drive.proton.me/urls/VVVEAKPAF0#I10aLlkKDSvR", target:"_blank"}) }}</span>
     {% endcall %}
 {% endblock footer %}
 
 {% block blobs %}
-
-    {{ blobIndexTop({class:"top-0 max-h-[50vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
-    {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
-
+    {{ blobDefaultTop({class:"top-0 max-h-[40vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
+    {{ blobDefaultBottom({class:"bottom-0 max-h-[40vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
 {% endblock %}
 
 

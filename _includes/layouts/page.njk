@@ -4,7 +4,7 @@
 
 {% from "components/button.njk" import button %}
 {% from "components/markdown.njk" import markdown %}
-{% from "assets.njk" import logo, sparkle, blobIndexTop, blobIndexBottom %}
+{% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -18,13 +18,8 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"flex flex-col py-40 gap-12 md:px-16"}) %}
+    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"flex flex-col pt-40 pb-52 gap-12 md:px-16"}) %}
         <h1 class="text-heading-lg text-hue text-pretty">{{ title }}</h1>
         {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
     {% endcall %}
-{% endblock %}
-
-{% block blobs %}
-    {{ blobIndexTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
-    {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
 {% endblock %}

@@ -2,7 +2,6 @@
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/marquee.njk" import marquee %}
 {% from "components/button.njk" import button %}
 {% from "assets.njk" import logo, sparkle %}
 
@@ -16,7 +15,7 @@
 
 {% block content %}
 
-    {% call container(props={size: "wide", type: "cols-1"}, attrs={}) %}
+    {% call container(props={size: "wide", type: "cols-1"}, attrs={class:""}) %}
     {% endcall %}
 
 {% endblock %}

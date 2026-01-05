@@ -9,7 +9,7 @@ permalink: /404.html
 
 {% from "components/container.njk" import container %}
 {% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, blobIndexTop, blobIndexBottom %}
+{% from "assets.njk" import logo, blobDefaultTop, blobDefaultBottom %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -21,17 +21,10 @@ permalink: /404.html
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-
     {% call container({type:"cols-1", size:"content"}, {class:"text-pretty flex flex-col gap-10"}) %}
             <h1 class="text-heading-lg text-hue">
                 404
             </h1>
             <p class="text-body-base">Page not found. Return to the {{ button({label:"homepage", variant:"action", type:"link", size:"inherit"},{href:"/home", class:"inline-block"}) }}?</p>
     {% endcall %}
-
-{% endblock %}
-
-{% block blobs %}
-    {{ blobIndexTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
-    {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
 {% endblock %}

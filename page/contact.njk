@@ -1,0 +1,106 @@
+
+{% extends "layouts/base.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+{% from "components/input.njk" import input %}
+{% from "components/checkbox.njk" import checkbox %}
+{% from "components/textarea.njk" import textarea %}
+{% from "assets.njk" import logo, sparkle, blobContactRight, blobContactLeft %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set mainStyles = "py-section gap-section" %}
+{% set showBottomLine = false %}
+{% set showNavbar = true %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+
+    {% call container(props={size: "narrow", type: "cols-1"}, attrs={class:"gap-16"}) %}
+        <h1 class="text-heading-lg text-hue text-center">Contact Mustafa!</h1>
+        <div
+            x-data="{
+                    name: '',
+                    contactMethod: '',
+                    interest: [],
+                    message:''
+                }">
+            <form
+                name="contact"
+                method="POST"
+                action="/success"
+                netlify
+                tabindex="0"
+                class="w-full gap-16 grid border border-neutral-lighter bg-neutral-light backdrop-blur-base p-24">
+                {{ input(
+                    props={
+                        name: "name",
+                        label: "Your name",
+                        fieldAttrs: {
+                            type: "text",
+                            required: true,
+                            autocomplete: false
+                        }
+                    }
+                ) }}
+
+                {{ input(
+                    props={
+                        name: "contactMethod",
+                        label: "Contact info",
+                        description: "So I can message you back!",
+                        fieldAttrs: {
+                            type: "text",
+                            required: true,
+                            autocomplete: false
+                        }
+                    }
+                ) }}
+
+                {{ checkbox(
+                    props={
+                        name: "interest",
+                        label: "What are you interested in?",
+                        description: "Check all that apply.",
+                        options: [
+                            {label: "Get updates on future events", value: "Future events"},
+                            {label: "Learn more about DMA's work and campaigns", value: "Learn more"},
+                            {label: "Volunteer (flyer, plan events, share skills & resources)", value: "Volunteer"},
+                            {label: "Join one of the organizations", value: "Join an org"}
+                        ],
+                        fieldAttrs:{
+                        }
+                    },
+                    attrs={class: "w-full"}
+                ) }}
+                {{ textarea(
+                    props={
+                        name: "message",
+                        label: "Your message",
+                        description: "",
+                        fieldAttrs: {
+                            rows: "10"
+                        }
+                    }
+                ) }}
+                {{ button({label: "Submit", type:"button", size:"lg", variant: "action"}, {type:"submit", class:"mx-auto"}) }}
+            </form>
+    </div>
+
+    {% endcall %}
+
+{% endblock %}
+
+{% block footer %}
+{% endblock footer %}
+
+{% block blobs %}
+    {{ blobContactLeft({class:"fixed left-0 bottom-0 w-[50vw] max-w-[646px]"}) }}
+    {{ blobContactRight({class:"fixed right-0 bottom-0 w-[50vw] max-w-[712px]"}) }}
+{% endblock %}
+
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}

@@ -79,9 +79,12 @@
     </head>
     <body
     :class="!scrollable && 'overflow-hidden'"
-    class="bg-surface font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+    class="bg-space font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
 
-        {% block blobs %}{% endblock %}
+        {% block blobs %}
+            {{ blobDefaultTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
+            {{ blobDefaultBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
+        {% endblock %}
 
         {% if showTopLine %}
             <div class="hidden lg:block z-(--z-top) w-screen h-site-inline border-b border-neutral-lighter"></div>

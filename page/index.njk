@@ -8,7 +8,7 @@ permalink: /index.html
 
 {% from "components/container.njk" import container %}
 {% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, blobIndexTop, blobIndexBottom %}
+{% from "assets.njk" import logo, blobDefaultTop, blobDefaultBottom %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -23,13 +23,8 @@ permalink: /index.html
     <div class="flex items-center justify-center flex-col gap-8 w-full">
         {{ logo({class:"fill-neutral max-w-[760px]"}) }}
         <h1 class="sr-only">{{ global.siteTitle }}</h1>
-        <p class="text-hue text-heading-base">{{ global.siteDescription }}</p>
+        <p class="text-hue text-center text-heading-base text-balance">{{ global.siteDescription }}</p>
     </div>
     {{ button({type:"button", size:"lg", variant:"action", label:"Enter site"},{href:"/home"}) }}
 {% endcall %}
-{% endblock %}
-
-{% block blobs %}
-    {{ blobIndexTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
-    {{ blobIndexBottom({class:"bottom-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 min-w-[620px]"}) }}
 {% endblock %}

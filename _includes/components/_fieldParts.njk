@@ -1,0 +1,65 @@
+{# Nested components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set directionStyles = {
+    row: "grid gap-2 items-center",
+    column: "flex flex-col gap-5"
+} %}
+
+{% set fieldLabelStyles = "text-hue text-heading-base text-pretty" %}
+{% set fieldLabelRequiredStyles = "text-validation" %}
+{% set fieldDescriptionStyles = "text-neutral-light text-body-base text-pretty" %}
+
+{% set fieldsetOptionLabelSize = "text-heading-base" %}
+{% set fieldsetOptionStyles %} gap-4 {{ fieldsetOptionLabelSize }} {% endset %}
+{% set fieldsetInputStyles %} accent-action w-[1.3em]  {% endset %}
+{% set fieldsetOptionLabelStyles = "text-neutral" %}
+
+{% set fieldWrapperStyles = "grow flex" %}
+{% set fieldStyles = "
+  leading-none
+  grow
+  min-w-px
+  text-heading-base
+  not-focus:bg-space
+  border
+  border-neutral-light
+  not-disabled:hover:invalid:border-neutral
+  not-disabled:hover:backdrop-blur-base
+  not-disabled:hover:bg-neutral-light
+  not-disabled:focus:bg-surface
+  not-disabled:focus:border-action
+  not-disabled:valid:border-action
+  not-disabled:valid:backdrop-blur-base
+  outline-none
+  disabled:opacity-60
+  min-h-tube-lg
+  rounded-lg
+  px-8
+  py-(--radius-sm)
+" %}
+
+{# Macros ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% macro fieldLabel(props={}, attrs={}) %}
+    <{{ props.tag }}
+        {% if props.tag === "label" %}for="{{ props.fieldProps.name }}"{% endif %}
+        class="{{ fieldLabelStyles }} {{ attrs.class }}"
+        {{ loopAttrs(attrs) }}
+    >
+        {{ props.fieldProps.label }} {% if props.fieldProps.fieldAttrs.required %}<sup class="{{ fieldLabelRequiredStyles }}">*</sup>{% endif %}
+    </{{ props.tag }}>
+{% endmacro %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro fieldDescription(props={}, attrs={}) %}
+    <small
+        {{ loopAttrs(attrs) }}
+        class="{{ fieldDescriptionStyles }} {{ attrs.class }}">
+        {{ props.description }}
+    </small>
+{% endmacro %}
