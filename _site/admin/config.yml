@@ -7,8 +7,8 @@ media_folder: /assets/uploads
 public_folder: /assets/uploads
 
 singletons:
-  - label: Global Site Data
-    name: global
+  - name: global
+    label: Global Site Data
     file: /_data/global.json
     icon: public
     fields:
@@ -27,8 +27,8 @@ singletons:
       - label: Browser Icon
         name: favicon
         widget: image
-  - label: Navigation Links
-    name: navLinks
+  - name: navLinks
+    label: Navigation Links
     file: /_data/navLinks.json
     icon: link
     fields:
@@ -43,50 +43,86 @@ singletons:
           - label: URL
             name: href
             widget: string
-collections:
-  - label: Pages
-    name: pages
-    icon: stacks
-    files:
-      - label: Home
-        name: homepage
-        file: /_data/homepage.json
-        icon: home
+  - name: homepage
+    label: Home page
+    file: /_data/homepage.json
+    icon: home
+    fields:
+      - label: Photos
+        name: photos
+        widget: list
+        required: true
         fields:
-          - label: Photos
-            name: photos
-            widget: list
-            required: true
-            fields:
-              - label: Image
-                name: image
-                widget: image
-              - label: Alt Text
-                name: altText
-                widget: string
-              - label: Aspect ratio
-                name: aspect
-                widget: select
-                default: base
-                options:
-                  - "4:5"
-                  - "8:5"
-      - label: Sponsors and Gear
-        name: sponsorsGear
-        file: /page/sponsors-gear.md
-        icon: wand_stars
-        fields:
-          - name: layout
-            widget: hidden
-            default: "layouts/page.njk"
-          - label: Title
-            name: title
+          - label: Image
+            name: image
+            widget: image
+          - label: Alt Text
+            name: altText
             widget: string
-          - label: Body
-            name: body
-            widget: richtext
-  - label: Artforms
-    name: artforms
+          - label: Aspect ratio
+            name: aspect
+            widget: select
+            default: base
+            options:
+              - "4:5"
+              - "8:5"
+  - name: sponsorsGear
+    label: Sponsors and Gear page
+    file: /page/sponsors-gear.md
+    icon: wand_stars
+    fields:
+      - name: layout
+        widget: hidden
+        default: "layouts/page.njk"
+      - label: Title
+        name: title
+        widget: string
+      - label: Body
+        name: body
+        widget: richtext
+        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote]
+  - name: contactPage
+    label: Contact page
+    file: _data/contactPage.json
+    icon: mail
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - name: nameField
+        label: Name field
+        widget: object
+        fields:
+          - name: label
+            label: Label
+            widget: string
+          - name: description
+            label: Description
+            required: false
+      - name: contactMethodField
+        label: Contact method field
+        widget: object
+        fields:
+          - name: label
+            label: Label
+            widget: string
+          - name: description
+            label: Description
+            required: false
+      - name: messageField
+        label: Message field
+        widget: object
+        fields:
+          - name: label
+            label: Label
+            widget: string
+          - name: description
+            label: Description
+            required: false
+
+collections:
+  - name: artforms
+    label: Artforms
     folder: /artform
     icon: comedy_mask
     fields:
@@ -96,6 +132,7 @@ collections:
       - label: Body
         name: body
         widget: richtext
+        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote]
       - label: Photos
         name: photos
         widget: list
