@@ -2,8 +2,10 @@
   color-scheme: dark;
 
   --icon-size: 1.45em;
+
   --body-sm: 18px;
   --body-base: 19.5px;
+  --body-lg: 20.5px;
 
   --heading-sm: 21px;
   --heading-base: 24px;
@@ -16,6 +18,7 @@
   @media screen and (min-width: 44rem) {
     --body-sm: 20px;
     --body-base: 22px;
+    --body-lg: 26px;
 
     --heading-sm: 24px;
     --heading-base: 28px;
@@ -44,6 +47,8 @@
   --text-body-sm--line-height: 1.35;
   --text-body-base: var(--body-base);
   --text-body-base--line-height: 1.55;
+  --text-body-lg: var(--body-lg);
+  --text-body-lg--line-height: 1.5;
 
   --text-heading-sm: var(--heading-sm);
   --text-heading-sm--line-height: 1.4;
@@ -242,15 +247,9 @@
   background-attachment: fixed;
 }
 
-@utility text-button-* {
-  text-transform: uppercase;
-  font-family: var(--font-display);
-  letter-spacing: 0.08em;
-  --icon-size: 1em;
-}
-@utility text-heading-lg {
-  font-family: var(--font-display);
-  letter-spacing: 0.04em;
+@utility text-body-lg {
+  font-weight: 500;
+  font-variation-settings: "SOFT" 75, "WONK" 1;
 }
 @utility text-body-base {
   font-weight: 400;
@@ -260,6 +259,10 @@
   font-weight: 400;
   font-variation-settings: "SOFT" 100, "WONK" 1;
 }
+@utility text-heading-lg {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+}
 @utility text-heading-base {
   font-weight: 600;
   font-variation-settings: "SOFT" 100, "WONK" 1;
@@ -267,4 +270,10 @@
 @utility text-heading-sm {
   font-weight: 550;
   font-variation-settings: "SOFT" 100, "WONK" 1;
+}
+@utility text-button-* {
+  text-transform: uppercase;
+  font-family: var(--font-display);
+  letter-spacing: 0.08em;
+  --icon-size: 1em;
 }

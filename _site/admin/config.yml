@@ -53,6 +53,11 @@ singletons:
       - label: Title
         name: title
         widget: string
+        hint: The big text at the top of the page.
+      - label: Elaboration
+        name: elaboration
+        widget: text
+        hint: Only use if you really have something to say!
       - name: nameField
         label: Name field
         widget: object
@@ -60,8 +65,8 @@ singletons:
           - name: label
             label: Label
             widget: string
-          - name: description
-            label: Description
+          - name: hint
+            label: Hint
             required: false
       - name: contactMethodField
         label: Contact method field
@@ -70,8 +75,8 @@ singletons:
           - name: label
             label: Label
             widget: string
-          - name: description
-            label: Description
+          - name: hint
+            label: Hint
             required: false
       - name: messageField
         label: Message field
@@ -80,8 +85,8 @@ singletons:
           - name: label
             label: Label
             widget: string
-          - name: description
-            label: Description
+          - name: hint
+            label: Hint
             required: false
   - name: global
     label: Global site data
