@@ -57,6 +57,7 @@ singletons:
       - label: Elaboration
         name: elaboration
         widget: text
+        required: false
         hint: Only use if you really have something to say!
       - name: nameField
         label: Name field
