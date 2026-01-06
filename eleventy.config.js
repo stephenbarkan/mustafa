@@ -8,10 +8,6 @@ const md = markdownIt();
 
 export default async function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
-
-  eleventyConfig.addLayoutAlias("base", "layouts/base.njk");
-  eleventyConfig.addLayoutAlias("artform", "layouts/artform.njk");
-
   eleventyConfig.addPassthroughCopy("assets");
   eleventyConfig.addPassthroughCopy("admin");
 

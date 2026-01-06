@@ -1378,6 +1378,27 @@
       }
     }
   }
+  .not-disabled\:hover\:border-neutral {
+    &:not(*:disabled) {
+      &:hover {
+        @media (hover: hover) {
+          border-color: #f3f0e8;
+        }
+      }
+    }
+  }
+  .not-disabled\:hover\:border-neutral {
+    &:not(*:disabled) {
+      &:hover {
+        @media (hover: hover) {
+          border-color: color-mix(in srgb, #f3f0e8, transparent 0%);
+          @supports (color: color-mix(in lab, red, red)) {
+            border-color: color-mix(in oklab, var(--color-neutral), transparent 0%);
+          }
+        }
+      }
+    }
+  }
   .not-disabled\:hover\:bg-neutral {
     &:not(*:disabled) {
       &:hover {

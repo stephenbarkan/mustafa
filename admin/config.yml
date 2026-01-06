@@ -121,9 +121,9 @@ singletons:
             required: false
 
 collections:
-  - name: artforms
-    label: Artforms
-    folder: /artform
+  - name: offerings
+    label: Offerings
+    folder: /offering
     icon: comedy_mask
     fields:
       - label: Title

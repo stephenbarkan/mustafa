@@ -3,7 +3,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, sparkle, blobArtformsLeft, blobArtformsRight %}
+{% from "assets.njk" import logo, sparkle, blobOfferingsLeft, blobOfferingsRight %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -15,16 +15,16 @@
 
 {% block content %}
 
-<h1 class="sr-only">My Artforms</h1>
+<h1 class="sr-only">My Offerings</h1>
 
 <ul class="text-heading-lg flex flex-col items-center gap-section">
-    {% for artform in collections.artform %}
-        <li>{{ button({type:"link", size:"inherit", variant:"action", label:artform.data.title },{href:artform.url}) }}</li>
+    {% for offering in collections.offering %}
+        <li>{{ button({type:"link", size:"inherit", variant:"action", label:offering.data.title },{href:offering.url}) }}</li>
     {% endfor %}
 
 {% endblock %}
 
 {% block blobs %}
-    {{ blobArtformsLeft({class:"hidden lg:block top-0 left-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
-    {{ blobArtformsRight({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
+    {{ blobOfferingsLeft({class:"hidden lg:block top-0 left-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
+    {{ blobOfferingsRight({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
 {% endblock %}
