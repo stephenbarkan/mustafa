@@ -1,15 +1,19 @@
 {
   "title": "Contact Mustafa!",
+  "elaboration": "Fill out the form below and I'll get back to you soon!",
   "nameField": {
     "label": "Your name",
+    "hint": "",
     "description": ""
   },
   "contactMethodField": {
     "label": "Contact info",
+    "hint": "",
     "description": "So I can message you back!"
   },
   "messageField": {
     "label": "Your message",
+    "hint": "",
     "description": ""
   }
 }
