@@ -56,7 +56,7 @@ singletons:
         hint: The big text at the top of the page.
       - name: elaboration
         label: Elaboration
-        widget: text
+        widget: string
         required: false
         hint: Only use if you really have something to say!
       - name: nameField
