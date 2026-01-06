@@ -1,21 +1,35 @@
-{% extends "layouts/base.njk" %}
+{% extends "layouts/page.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, sparkle %}
+{% from "assets.njk" import logo, sparkle, blobContactLeft, blobContactRight %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set mainStyles = "py-section gap-section" %}
 {% set showNavbar = true %}
-{% set showBottomLine = false %}
+{% set showBottomLine = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
 
-    {% call container(props={size: "wide", type: "cols-1"}, attrs={class:""}) %}
+    {% call container(props={size: "narrow", type: "cols-1"}, attrs={class:"gap-8 justify-items-center"}) %}
+        <h1 class="text-heading-lg text-hue text-balance text-center">Success!</h1>
+        <p class="text-body-base text-balance text-center"> I'll get back to you soon.</p>
+        {{ button(
+    props={
+        type: "button",
+        size: "base",
+        variant: "action",
+        label: "Return home"
+    },
+    attrs={
+        href: "/home",
+        class:""
+    }
+) }}
     {% endcall %}
 
 {% endblock %}
@@ -24,6 +38,8 @@
 {% endblock footer %}
 
 {% block blobs %}
+    {{ blobContactLeft({class:"fixed left-0 bottom-0 w-[50vw] max-w-[646px]"}) }}
+    {{ blobContactRight({class:"fixed right-0 bottom-0 w-[50vw] max-w-[712px]"}) }}
 {% endblock %}
 
 

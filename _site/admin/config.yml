@@ -7,42 +7,6 @@ media_folder: /assets/uploads
 public_folder: /assets/uploads
 
 singletons:
-  - name: global
-    label: Global Site Data
-    file: /_data/global.json
-    icon: public
-    fields:
-      - label: Site Domain
-        name: siteDomain
-        widget: string
-      - label: Site Title
-        name: siteTitle
-        widget: string
-      - label: Site Description
-        name: siteDescription
-        widget: string
-      - label: Share Image
-        name: siteImage
-        widget: image
-      - label: Browser Icon
-        name: favicon
-        widget: image
-  - name: navLinks
-    label: Navigation Links
-    file: /_data/navLinks.json
-    icon: link
-    fields:
-      - label: Links
-        name: siteDomain
-        widget: list
-        root: true
-        fields:
-          - label: Label
-            name: label
-            widget: string
-          - label: URL
-            name: href
-            widget: string
   - name: homepage
     label: Home page
     file: /_data/homepage.json
@@ -119,12 +83,49 @@ singletons:
           - name: description
             label: Description
             required: false
+  - name: global
+    label: Global site data
+    file: /_data/global.json
+    icon: public
+    fields:
+      - label: Site Domain
+        name: siteDomain
+        widget: string
+      - label: Site Title
+        name: siteTitle
+        widget: string
+      - label: Site Description
+        name: siteDescription
+        widget: string
+      - label: Share Image
+        name: siteImage
+        widget: image
+      - label: Browser Icon
+        name: favicon
+        widget: image
+  - name: navLinks
+    label: Navigation links
+    file: /_data/navLinks.json
+    icon: link
+    fields:
+      - label: Links
+        name: siteDomain
+        widget: list
+        root: true
+        fields:
+          - label: Label
+            name: label
+            widget: string
+          - label: URL
+            name: href
+            widget: string
 
 collections:
   - name: offerings
     label: Offerings
     folder: /offering
     icon: comedy_mask
+    label_singular: offering
     fields:
       - label: Title
         name: title
@@ -133,7 +134,7 @@ collections:
         name: body
         widget: richtext
         buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote]
-      - label: Photos
+      - label: Photo carousel
         name: photos
         widget: list
         required: false
@@ -143,4 +144,4 @@ collections:
             widget: image
           - label: Caption
             name: caption
-            widget: string
+            widget: text

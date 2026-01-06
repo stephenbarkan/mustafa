@@ -456,6 +456,9 @@
   .w-\[var\(--container-wide\)\] {
     width: var(--container-wide);
   }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
@@ -907,6 +910,9 @@
   }
   .pb-\[calc\(env\(safe-area-inset-bottom\)\+var\(--announcementBannerBlockSize\)\)\] {
     padding-bottom: calc(env(safe-area-inset-bottom) + var(--announcementBannerBlockSize));
+  }
+  .pb-section {
+    padding-bottom: var(--space-section);
   }
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
