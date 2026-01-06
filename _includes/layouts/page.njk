@@ -4,19 +4,25 @@
 
 {% from "components/button.njk" import button %}
 {% from "components/markdown.njk" import markdown %}
+{% from "components/textLockup.njk" import textLockup %}
 {% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set mainStyles = "" %}
+{% set mainStyles = "pt-48 pb-64 gap-32 md:px-16" %}
 {% set showBottomLine = true %}
 {% set showNavbar = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"flex flex-col pt-40 pb-52 gap-12 md:px-16"}) %}
-        <h1 class="text-heading-lg text-hue text-pretty">{{ title }}</h1>
+    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-8 justify-items-center"}) %}
+        {{ textLockup({
+            title: title,
+            elaboration: "The tools I work with shape how I move, practice, and perform. I’m grateful to be supported by companies whose values align with care, durability, and intentional design."
+        }) }}
+    {% endcall %}
+    {% call container(props={size: "content", type: "cols-1"}, attrs={}) %}
         {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
     {% endcall %}
 {% endblock %}

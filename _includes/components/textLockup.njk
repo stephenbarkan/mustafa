@@ -1,0 +1,12 @@
+{% from "components/container.njk" import container %}
+{% from "components/button.njk" import button %}
+
+{% macro textLockup(props={}, attrs={}) %}
+        <h1 class="text-heading-lg text-hue text-center">{{ props.title }}</h1>
+        {% if props.elaboration %}
+            <p class="text-body-lg text-balance text-center">{{ props.elaboration }}</p>
+        {% endif %}
+        {% if props.button %}
+            {{ button(props.button.props, props.button.attrs) }}
+        {% endif %}
+{% endmacro %}
