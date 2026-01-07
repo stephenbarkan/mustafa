@@ -140,6 +140,19 @@ singletons:
           - name: hint
             label: Hint
             required: false
+  - name: successPage
+    label: Success page
+    file: _data/successPage.json
+    icon: celebration
+    fields:
+      - name: title
+        label: Title
+        widget: string
+        hint: The big text at the top of the page.
+      - name: elaboration
+        label: Elaboration
+        widget: string
+        required: false
   - name: global
     label: Global site data
     file: /_data/global.json

@@ -73,9 +73,9 @@
                 {{ checkbox(
                     props={
                         name: "interest",
-                        label: "What are you interested in?",
-                        description: "Check all that apply.",
-                        options: contactPage.interestField,
+                        label: contactPage.interestField.label,
+                        description: contactPage.interestField.hint,
+                        options: contactPage.interestField.options,
                         fieldAttrs:{
                         }
                     },
