@@ -74,7 +74,7 @@ collections:
                   - "8:5"
       - name: about
         label: About page
-        file: /page/about.njk
+        file: /page/about.md
         icon: person
         fields:
           - name: title
