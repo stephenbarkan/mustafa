@@ -859,9 +859,6 @@
   .px-site-inline {
     padding-inline: var(--space-site-inline);
   }
-  .py-\(--radius-sm\) {
-    padding-block: var(--radius-sm);
-  }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
   }
@@ -975,16 +972,12 @@
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
   }
-  .leading-none {
-    --tw-leading: 1;
-    line-height: 1;
-  }
   .text-body-base {
     font-weight: 400;
     font-variation-settings: "SOFT" 50, "WONK" 1;
   }
   .text-body-lg {
-    font-weight: 500;
+    font-weight: 400;
     font-variation-settings: "SOFT" 75, "WONK" 1;
   }
   .text-body-sm {
@@ -1145,14 +1138,6 @@
       }
     }
   }
-  .not-focus\:bg-space {
-    &:not(*:focus) {
-      background-color: color-mix(in srgb, color(display-p3 0.094118 0.070588 0.129412 / 1), transparent 0%);
-      @supports (color: color-mix(in lab, red, red)) {
-        background-color: color-mix(in oklab, var(--color-surface), transparent 0%);
-      }
-    }
-  }
   .not-focus\:bg-surface {
     &:not(*:focus) {
       background-color: color(display-p3 0.094118 0.070588 0.129412 / 1);
@@ -1164,14 +1149,6 @@
       @supports (color: color-mix(in lab, red, red)) {
         background-color: color-mix(in oklab, var(--color-surface), transparent 0%);
       }
-    }
-  }
-  .not-focus\:bg-space {
-    &:not(*:focus) {
-      background-image: url("assets/texture.png");
-      background-repeat: repeat;
-      background-size: 1654px;
-      background-attachment: fixed;
     }
   }
   .\*\:last-of-type\:z-10 {
@@ -1974,10 +1951,6 @@
   inherits: false;
   initial-value: 100%;
 }
-@property --tw-leading {
-  syntax: "*";
-  inherits: false;
-}
 @property --tw-backdrop-blur {
   syntax: "*";
   inherits: false;
@@ -2073,7 +2046,6 @@
       --tw-gradient-from-position: 0%;
       --tw-gradient-via-position: 50%;
       --tw-gradient-to-position: 100%;
-      --tw-leading: initial;
       --tw-backdrop-blur: initial;
       --tw-backdrop-brightness: initial;
       --tw-backdrop-contrast: initial;

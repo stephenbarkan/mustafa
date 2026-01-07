@@ -248,7 +248,7 @@
 }
 
 @utility text-body-lg {
-  font-weight: 500;
+  font-weight: 400;
   font-variation-settings: "SOFT" 75, "WONK" 1;
 }
 @utility text-body-base {
