@@ -108,18 +108,28 @@ singletons:
             label: Hint
             required: false
       - name: interestField
-        label: Interest field options
-        widget: list
-        label_singular: option
+        label: Interest field
+        widget: object
         fields:
           - name: label
-            label: Display text
+            label: Label
             widget: string
-            hint: The text shown on the website (i.e. "Meet Mustafa in person!")
-          - name: value
-            label: Value
-            widget: string
-            hint: The text sent to the server in a form submission (i.e. "meet" )
+          - name: hint
+            label: Hint
+            required: false
+          - name: options
+            label: Options
+            widget: list
+            label_singular: option
+            fields:
+              - name: label
+                label: Display text
+                widget: string
+                hint: The text shown on the website (i.e. "Meet Mustafa in person!")
+              - name: value
+                label: Value
+                widget: string
+                hint: The text sent to the server in a form submission (i.e. "meet" )
       - name: messageField
         label: Message field
         widget: object

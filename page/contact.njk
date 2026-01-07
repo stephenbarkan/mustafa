@@ -16,10 +16,6 @@
 {% set showNavbar = true %}
 {% set showBottomLine = true %}
 
-{# {% set interestOptions = [
-    {% for option in contactPage. %}
-    {% endfor %}
-] %} #}
 
 
 
@@ -79,12 +75,7 @@
                         name: "interest",
                         label: "What are you interested in?",
                         description: "Check all that apply.",
-                        options: [
-                            {label: "Get updates on future events", value: "Future events"},
-                            {label: "Learn more about DMA's work and campaigns", value: "Learn more"},
-                            {label: "Volunteer (flyer, plan events, share skills & resources)", value: "Volunteer"},
-                            {label: "Join one of the organizations", value: "Join an org"}
-                        ],
+                        options: contactPage.interestField,
                         fieldAttrs:{
                         }
                     },

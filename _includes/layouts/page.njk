@@ -5,11 +5,12 @@
 {% from "components/button.njk" import button %}
 {% from "components/markdown.njk" import markdown %}
 {% from "components/textLockup.njk" import textLockup %}
+{% from "components/divider.njk" import divider %}
 {% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set mainStyles = "pt-48 pb-64 gap-32 md:px-16" %}
+{% set mainStyles = "pt-40 pb-56 gap-24" %}
 {% set showBottomLine = true %}
 {% set showNavbar = true %}
 
@@ -22,7 +23,8 @@
             elaboration: elaboration
         }) }}
     {% endcall %}
-    {% call container(props={size: "content", type: "cols-1"}, attrs={}) %}
+    {{ divider() }}
+    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"md:px-16"}) %}
         {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
     {% endcall %}
 {% endblock %}

@@ -1,0 +1,52 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/button.njk" import button %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro divider(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set  dividerStyles = "border-neutral-lighter" %}
+
+{# Other ------------------ #}
+
+{% set directionStyles %}
+{% if props.direction === "vertical" %}
+    border-l
+{% else %}
+    border-t
+{% endif %}
+
+{% endset %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<div
+    {{ loopAttrs(attrs) }}
+    class="{{ attrs.class }} {{ dividerStyles }} {{ directionStyles }}">
+    {# content #}
+</div>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set dividerMeta = {
+    args: '{% call divider(
+    props={
+        input: "",
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+-
+-
+-
+"
+} %}

@@ -20,8 +20,8 @@
 
 {% set rightSide %}
     {% set joinerSparkle %}
-        {{ sparkle({class:"fill-hue h-3.5"}) }}
-    {% endset%}
+        {{ sparkle({class:"fill-hue h-3.5 self-center"}) }}
+    {% endset %}
     {% set divider = joiner(joinerSparkle | safe) %}
 
     {% for link in navLinks %}
@@ -99,7 +99,7 @@
             {% endif %}
 
             <div data-slot="right"
-            class="grow flex items-center justify-end flex-wrap {{ itemGap }}
+            class="grow flex items-stretch justify-end flex-wrap {{ itemGap }}
             {% if alignment === "left" %}shrink-0{% endif %}">
                 {% if props.rightSide %}{{ props.rightSide | safe }}{% else %}{{ rightSide | safe }}{% endif %}
             </div>

@@ -5,6 +5,7 @@
 {% from "components/button.njk" import button %}
 {% from "components/markdown.njk" import markdown %}
 {% from "components/carousel.njk" import carousel %}
+{% from "components/divider.njk" import divider %}
 {% from "assets.njk" import logo, sparkle, blobOffering %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
@@ -19,7 +20,7 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container(props={size: "wide", type: "cols-2"}, attrs={}) %}
+    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"relative"}) %}
         <section class="flex flex-col gap-16 pt-16">
             <div class="flex flex-col gap-12 md:px-16">
                 <div data-breadcrumbs class="flex items-center gap-3">
@@ -35,9 +36,8 @@
                 {% if nextOffering %}{{ button({type:"link", size:"base", variant:"action", label:nextOffering.data.title, icon:"chevron_forward", iconPosition:"end"}, {href:nextOffering.url, class:"ml-auto"}) }}{% endif %}
             </div>
         </section>
-
         {% if photos.length %}
-            <section class="xl:h-dvh--navbar transition-all duration-600 xl:sticky md:mx-16 xl:mx-0 top-navbar-height max-xl:border xl:border-l border-neutral-lighter flex shrink-0 flex-col">
+            <section class="xl:h-dvh--navbar transition-all duration-600 xl:sticky md:mx-16 xl:mx-0 top-navbar-height flex shrink-0 flex-col">
                 <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col max-h-full">
                     {% call carousel(
                         props={
@@ -59,10 +59,10 @@
                 </div>
             </section>
         {% endif %}
-
+        {{ divider({direction:"vertical"},{class:"hidden xl:block absolute top-0 left-1/2 h-full"}) }}
     {% endcall %}
 {% endblock %}
 
 {% block blobs %}
-    {{ blobOffering({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed"}) }}
+    {{ blobOffering({class:"hidden xl:block top-0 right-0 bottom-0 h-dvh fixed"}) }}
 {% endblock %}
