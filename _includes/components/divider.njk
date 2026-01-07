@@ -1,7 +1,6 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
-{% from "components/button.njk" import button %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -26,27 +25,17 @@
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<div
-    {{ loopAttrs(attrs) }}
-    class="{{ attrs.class }} {{ dividerStyles }} {{ directionStyles }}">
-    {# content #}
-</div>
+<div {{ loopAttrs(attrs) }} class="{{ attrs.class }} {{ dividerStyles }} {{ directionStyles }}"></div>
 
 {% endmacro %}
 
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
 {% set dividerMeta = {
-    args: '{% call divider(
-    props={
-        input: "",
-    },
-    attrs={}
-) %}
-{% endcall %}',
+    args: '{{ divider(props={direction: ""}, attrs={}) }}',
 description: "
--
--
--
+- Use as a visual divider.
+- Can be vertical or horizontal.
+- When vertical, most likely you need to have `align-items: stretch` applied to a flex container, or `height: 100%` used on a grid container.
 "
 } %}

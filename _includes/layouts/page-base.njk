@@ -1,0 +1,36 @@
+{% extends "layouts/base.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+{% from "components/container.njk" import container %}
+{% from "components/markdown.njk" import markdown %}
+{% from "components/textLockup.njk" import textLockup %}
+{% from "components/divider.njk" import divider %}
+{% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set mainStyles = "pt-24 pb-12 gap-12 lg:pt-40 lg:pb-24 lg:gap-24" %}
+{% set showBottomLine = true %}
+{% set showNavbar = true %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-8 justify-items-center md:px-16"}) %}
+        {{ textLockup({
+            title: title,
+            elaboration: elaboration
+        }) }}
+    {% endcall %}
+    {{ divider({},{class:""}) }}
+
+    {% block pageContent %}{% endblock %}
+
+{% endblock %}
+
+{# {% block blobs %}
+    {{ blobDefaultTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 rotate-y-180 min-w-[620px]"}) }}
+    {{ blobDefaultBottom({class:"bottom-0 h-[40vh] w-full left-1/2 -translate-x-1/2 rotate-y-180 min-w-[620px]"}) }}
+{% endblock %} #}

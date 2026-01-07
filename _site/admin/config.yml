@@ -7,152 +7,6 @@ media_folder: /assets/uploads
 public_folder: /assets/uploads
 
 singletons:
-  - name: homepage
-    label: Home page
-    file: /_data/homepage.json
-    icon: home
-    fields:
-      - label: Photos
-        name: photos
-        widget: list
-        required: true
-        fields:
-          - label: Image
-            name: image
-            widget: image
-          - label: Alt Text
-            name: altText
-            widget: string
-          - label: Aspect ratio
-            name: aspect
-            widget: select
-            default: base
-            options:
-              - "4:5"
-              - "8:5"
-  - name: about
-    label: About page
-    file: /page/about.md
-    icon: person
-    fields:
-      - name: layout
-        widget: hidden
-        default: "layouts/page-cols-2.njk"
-      - name: title
-        label: Title
-        widget: string
-      - name: elaboration
-        label: Elaboration
-        widget: richtext
-        buttons: [bold, italic, strikethrough, code, link]
-        editor_components: []
-      - name: body
-        label: Body
-        widget: richtext
-        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
-      - name: photo
-        label: Photo
-        widget: image
-  - name: sponsorsGear
-    label: Sponsors and Gear page
-    file: /page/sponsors-gear.md
-    icon: wand_stars
-    fields:
-      - name: layout
-        widget: hidden
-        default: "layouts/page.njk"
-      - label: Title
-        name: title
-        widget: string
-      - name: elaboration
-        label: Elaboration
-        widget: richtext
-        buttons: [bold, italic, strikethrough, code, link]
-        editor_components: []
-      - label: Body
-        name: body
-        widget: richtext
-        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
-  - name: contactPage
-    label: Contact page
-    file: _data/contactPage.json
-    icon: mail
-    fields:
-      - name: title
-        label: Title
-        widget: string
-        hint: The big text at the top of the page.
-      - name: elaboration
-        label: Elaboration
-        widget: string
-        required: false
-        hint: Only use if you really have something to say!
-      - name: nameField
-        label: Name field
-        widget: object
-        fields:
-          - name: label
-            label: Label
-            widget: string
-          - name: hint
-            label: Hint
-            required: false
-      - name: contactMethodField
-        label: Contact method field
-        widget: object
-        fields:
-          - name: label
-            label: Label
-            widget: string
-          - name: hint
-            label: Hint
-            required: false
-      - name: interestField
-        label: Interest field
-        widget: object
-        fields:
-          - name: label
-            label: Label
-            widget: string
-          - name: hint
-            label: Hint
-            required: false
-          - name: options
-            label: Options
-            widget: list
-            label_singular: option
-            fields:
-              - name: label
-                label: Display text
-                widget: string
-                hint: The text shown on the website (i.e. "Meet Mustafa in person!")
-              - name: value
-                label: Value
-                widget: string
-                hint: The text sent to the server in a form submission (i.e. "meet" )
-      - name: messageField
-        label: Message field
-        widget: object
-        fields:
-          - name: label
-            label: Label
-            widget: string
-          - name: hint
-            label: Hint
-            required: false
-  - name: successPage
-    label: Success page
-    file: _data/successPage.json
-    icon: celebration
-    fields:
-      - name: title
-        label: Title
-        widget: string
-        hint: The big text at the top of the page.
-      - name: elaboration
-        label: Elaboration
-        widget: string
-        required: false
   - name: global
     label: Global site data
     file: /_data/global.json
@@ -191,6 +45,156 @@ singletons:
             widget: string
 
 collections:
+  - name: pages
+    label: Pages
+    icon: select_window_2
+    files:
+      - name: homepage
+        label: Home page
+        file: /_data/homepage.json
+        icon: home
+        fields:
+          - label: Photos
+            name: photos
+            widget: list
+            required: true
+            fields:
+              - label: Image
+                name: image
+                widget: image
+              - label: Alt Text
+                name: altText
+                widget: string
+              - label: Aspect ratio
+                name: aspect
+                widget: select
+                default: base
+                options:
+                  - "4:5"
+                  - "8:5"
+      - name: about
+        label: About page
+        file: /page/about.njk
+        icon: person
+        fields:
+          - name: layout
+            widget: hidden
+            default: "layouts/page-cols-2.njk"
+          - name: title
+            label: Title
+            widget: string
+          - name: elaboration
+            label: Elaboration
+            widget: richtext
+            buttons: [bold, italic, strikethrough, code, link]
+            editor_components: []
+          - name: body
+            label: Body
+            widget: richtext
+            buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
+          - name: photo
+            label: Photo
+            widget: image
+      - name: sponsorsGear
+        label: Sponsors and Gear page
+        file: /page/sponsors-gear.md
+        icon: wand_stars
+        fields:
+          - name: layout
+            widget: hidden
+            default: "layouts/page.njk"
+          - label: Title
+            name: title
+            widget: string
+          - name: elaboration
+            label: Elaboration
+            widget: richtext
+            buttons: [bold, italic, strikethrough, code, link]
+            editor_components: []
+          - label: Body
+            name: body
+            widget: richtext
+            buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
+      - name: contactPage
+        label: Contact page
+        file: _data/contactPage.json
+        icon: mail
+        fields:
+          - name: title
+            label: Title
+            widget: string
+            hint: The big text at the top of the page.
+          - name: elaboration
+            label: Elaboration
+            widget: string
+            required: false
+            hint: Only use if you really have something to say!
+          - name: nameField
+            label: Name field
+            widget: object
+            fields:
+              - name: label
+                label: Label
+                widget: string
+              - name: hint
+                label: Hint
+                required: false
+          - name: contactMethodField
+            label: Contact method field
+            widget: object
+            fields:
+              - name: label
+                label: Label
+                widget: string
+              - name: hint
+                label: Hint
+                required: false
+          - name: interestField
+            label: Interest field
+            widget: object
+            fields:
+              - name: label
+                label: Label
+                widget: string
+              - name: hint
+                label: Hint
+                required: false
+              - name: options
+                label: Options
+                widget: list
+                label_singular: option
+                fields:
+                  - name: label
+                    label: Display text
+                    widget: string
+                    hint: The text shown on the website (i.e. "Meet Mustafa in person!")
+                  - name: value
+                    label: Value
+                    widget: string
+                    hint: The text sent to the server in a form submission (i.e. "meet" )
+          - name: messageField
+            label: Message field
+            widget: object
+            fields:
+              - name: label
+                label: Label
+                widget: string
+              - name: hint
+                label: Hint
+                required: false
+      - name: successPage
+        label: Success page
+        file: _data/successPage.json
+        icon: celebration
+        fields:
+          - name: title
+            label: Title
+            widget: string
+            hint: The big text at the top of the page.
+          - name: elaboration
+            label: Elaboration
+            widget: string
+            required: false
   - name: offerings
     label: Offerings
     folder: /offering

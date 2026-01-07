@@ -1,0 +1,14 @@
+---
+title: About Me
+elaboration: Hi! I’m Mustafa, a Chicago-based performer, poet, educator, and community organizer.
+photo: /assets/uploads/homepage-01.png
+---
+
+{% extends "layouts/page-base.njk" %}
+
+{% block pageContent %}
+    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 items-center justify-items-center md:px-16"}) %}
+        <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden max-lg:row-start-2"><img class="max-w-full shrink" src="{{ photo }}" alt="{{ slide.caption }}"></div>
+        {{ markdown({content: content, transform: false}, attrs={class:"w-full max-w-content"}) }}
+    {% endcall %}
+{% endblock %}
