@@ -22,8 +22,11 @@
             elaboration: elaboration
         }) }}
     {% endcall %}
-    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12"}) %}
+    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 items-center"}) %}
+        <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden"><img class="max-w-full shrink" src="{{ photo }}" alt="{{ slide.caption }}"></div>
         {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
-        <div class="border border-neutral-lighter bg-neutral rounded-square overflow-hidden"><img class="max-w-full shrink" src="{{ photo }}" alt="{{ slide.caption }}"></div>
+    {% endcall %}
+    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-8 justify-items-center"}) %}
+        {{ button({label: "Contact me", type:"button", variant:"action", size:"lg"},{href:"/contact"})}}
     {% endcall %}
 {% endblock %}

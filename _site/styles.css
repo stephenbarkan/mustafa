@@ -34,6 +34,7 @@
     --z-top-elevated: 50;
     --spacing-site-inline: var(--space-site-inline);
     --spacing-indent: 1.5ch;
+    --spacing-dvh--navbar: calc(100dvh - var(--space-navbar-height));
     --spacing-tube-sm: 4rem;
     --spacing-tube-base: 5rem;
     --spacing-tube-lg: 6rem;
@@ -1755,7 +1756,10 @@
   }
   .markdown img, .markdown iframe {
     max-inline-size: 100%;
-    margin-block: var(--space-3);
+    border-radius: var(--md-radius);
+    border: var(--md-border-color) var(--md-border-width) solid;
+    object-fit: cover;
+    max-height: 75dvh;
   }
   .markdown iframe {
     border-radius: var(--md-radius);

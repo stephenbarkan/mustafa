@@ -1,11 +1,9 @@
 ---
-layout: layouts/page.njk
+layout: layouts/page-cols-2.njk
 title: About Mustafa!
 elaboration: Hi! I’m Mustafa, a Chicago-based performer, poet, educator, and community organizer.
 photo: /assets/uploads/homepage-01.png
 ---
-
-![Mustafa with a blue want](/assets/uploads/homepage-01.png)
 
 Flow entered my life through the festival circuit, but it became meaningful when it followed me home. What started as performance grew into a daily grounding practice, a way to regulate my body, attention, and sense of self. Over time, flow shifted from something I did for others into something I did to stay present and well.
 

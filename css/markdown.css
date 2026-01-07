@@ -137,7 +137,11 @@
 .markdown img,
 .markdown iframe {
   max-inline-size: 100%;
-  margin-block: var(--space-3);
+  /* margin-block: var(--space-3); */
+  border-radius: var(--md-radius);
+  border: var(--md-border-color) var(--md-border-width) solid;
+  object-fit: cover;
+  max-height: 75dvh;
 }
 
 .markdown iframe {
