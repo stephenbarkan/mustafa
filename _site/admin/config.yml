@@ -77,9 +77,6 @@ collections:
         file: /page/about.njk
         icon: person
         fields:
-          - name: layout
-            widget: hidden
-            default: "layouts/page-cols-2.njk"
           - name: title
             label: Title
             widget: string
@@ -89,7 +86,7 @@ collections:
             buttons: [bold, italic, strikethrough, code, link]
             editor_components: []
           - name: bodyContent
-            label: Body
+            label: Body Content
             widget: richtext
             buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
           - name: photo
