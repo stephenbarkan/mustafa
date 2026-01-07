@@ -10,8 +10,8 @@
     "hint": "So I can message you back!"
   },
   "interestField": {
-    "label": "Contact info",
-    "hint": "So I can message you back!",
+    "label": "What are you interested in?",
+    "hint": "Check all that apply.",
     "options": [
       {
         "label": "Get updates on future events",
