@@ -1,0 +1,21 @@
+{% extends "layouts/page.njk" %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set title = aboutPage.title %}
+{% set elaboration = aboutPage.elaboration %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+
+{% block pageContent %}
+    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 items-center justify-items-center md:px-16"}) %}
+        <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden max-lg:row-start-2"><img class="max-w-full shrink" src="{{ aboutPage.photo }}" alt="{{ slide.caption }}"></div>
+        {{ markdown({content: aboutPage.body, transform: true}, attrs={class:"w-full max-w-content"}) }}
+    {% endcall %}
+{% endblock %}
+
+{% block blobs %}
+    {{ blobDefaultTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 rotate-y-180 min-w-[620px]"}) }}
+    {{ blobDefaultBottom({class:"bottom-0 h-[40vh] w-full left-1/2 -translate-x-1/2 rotate-y-180 min-w-[620px]"}) }}
+{% endblock %}

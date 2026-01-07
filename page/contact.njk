@@ -16,13 +16,10 @@
 {% set showNavbar = true %}
 {% set showBottomLine = true %}
 
-
-
-
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-8 justify-items-center"}) %}
+    {% call container(props={size: "content", type: "cols-1"}) %}
         {{ textLockup({
             title: contactPage.title,
             elaboration: contactPage.elaboration

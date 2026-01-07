@@ -1620,6 +1620,21 @@
       padding-bottom: calc(var(--spacing) * 24);
     }
   }
+  .lg\:pb-40 {
+    @media (width >= 56rem) {
+      padding-bottom: calc(var(--spacing) * 40);
+    }
+  }
+  .lg\:pb-56 {
+    @media (width >= 56rem) {
+      padding-bottom: calc(var(--spacing) * 56);
+    }
+  }
+  .lg\:pb-64 {
+    @media (width >= 56rem) {
+      padding-bottom: calc(var(--spacing) * 64);
+    }
+  }
   .lg\:max-xl\:block {
     @media (width >= 56rem) {
       @media (width < 70rem) {

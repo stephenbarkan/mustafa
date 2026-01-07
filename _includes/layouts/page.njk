@@ -3,6 +3,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
+{% from "components/container.njk" import container %}
 {% from "components/markdown.njk" import markdown %}
 {% from "components/textLockup.njk" import textLockup %}
 {% from "components/divider.njk" import divider %}
@@ -10,21 +11,26 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set mainStyles = "pt-40 pb-56 gap-24" %}
+{% set mainStyles = "pt-24 pb-12 gap-12 lg:pt-40 lg:pb-56 lg:gap-24" %}
 {% set showBottomLine = true %}
 {% set showNavbar = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-8 justify-items-center"}) %}
+    {% call container(props={size: "content", type: "cols-1"}) %}
         {{ textLockup({
             title: title,
             elaboration: elaboration
         }) }}
     {% endcall %}
-    {{ divider({},{class:"hidden lg:block"}) }}
-    {% call container(props={size: "content", type: "cols-1"}, attrs={class:""}) %}
-        {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
-    {% endcall %}
+    {{ divider({},{class:""}) }}
+
+    {% block pageContent %}{% endblock %}
+
 {% endblock %}
+
+{# {% block blobs %}
+    {{ blobDefaultTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 rotate-y-180 min-w-[620px]"}) }}
+    {{ blobDefaultBottom({class:"bottom-0 h-[40vh] w-full left-1/2 -translate-x-1/2 rotate-y-180 min-w-[620px]"}) }}
+{% endblock %} #}

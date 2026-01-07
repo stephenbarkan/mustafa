@@ -74,7 +74,7 @@ collections:
                   - "8:5"
       - name: about
         label: About page
-        file: /page/about.md
+        file: /_data/aboutPage.json
         icon: person
         fields:
           - name: layout
@@ -97,12 +97,12 @@ collections:
             widget: image
       - name: sponsorsGear
         label: Sponsors and Gear page
-        file: /page/sponsors-gear.md
+        file: /_data/sponsorsGearPage.json
         icon: wand_stars
         fields:
           - name: layout
             widget: hidden
-            default: "layouts/page.njk"
+            default: "layouts/page-cols-1.njk"
           - label: Title
             name: title
             widget: string

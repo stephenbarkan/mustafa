@@ -45,13 +45,6 @@
   </url>
 
   <url>
-    <loc>https://mustafaanwar.com/sponsors-gear/</loc>
-    <lastmod>2026-01-07</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
     <loc>https://mustafaanwar.com/contact/</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -66,6 +59,13 @@
   </url>
 
   <url>
+    <loc>https://mustafaanwar.com/offering/flow-art/</loc>
+    <lastmod>2026-01-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://mustafaanwar.com/about/</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>monthly</changefreq>
@@ -73,7 +73,7 @@
   </url>
 
   <url>
-    <loc>https://mustafaanwar.com/offering/flow-art/</loc>
+    <loc>https://mustafaanwar.com/sponsors-gear/</loc>
     <lastmod>2026-01-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
