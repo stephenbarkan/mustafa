@@ -85,8 +85,8 @@ collections:
             widget: richtext
             buttons: [bold, italic, strikethrough, code, link]
             editor_components: []
-          - name: bodyContent
-            label: Body Content
+          - name: content
+            label: Content
             widget: richtext
             buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
           - name: photo
