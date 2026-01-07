@@ -4,6 +4,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
+{% from "components/textLockup.njk" import textLockup %}
 {% from "components/input.njk" import input %}
 {% from "components/checkbox.njk" import checkbox %}
 {% from "components/textarea.njk" import textarea %}
@@ -25,13 +26,13 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-
     {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-8 justify-items-center"}) %}
-        <h1 class="text-heading-lg text-hue text-center">{{ contactPage.title }}</h1>
-        {% if contactPage.elaboration %}
-            <p class="text-body-lg text-pretty text-center">Fill out the form below and I'll get back to you soon!</p>
-        {% endif %}
+        {{ textLockup({
+            title: contactPage.title,
+            elaboration: contactPage.elaboration
+        }) }}
     {% endcall %}
+
     {% call container(props={size: "narrow", type: "cols-1"}, attrs={class:"gap-16"}) %}
         <div
             x-data="{

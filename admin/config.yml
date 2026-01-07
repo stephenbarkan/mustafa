@@ -30,6 +30,29 @@ singletons:
             options:
               - "4:5"
               - "8:5"
+  - name: about
+    label: About page
+    file: /page/about.md
+    icon: person
+    fields:
+      - name: layout
+        widget: hidden
+        default: "layouts/page.njk"
+      - name: title
+        label: Title
+        widget: string
+      - name: elaboration
+        label: Elaboration
+        widget: richtext
+        buttons: [bold, italic, strikethrough, code, link]
+        editor_components: []
+      - name: body
+        label: Body
+        widget: richtext
+        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
+      - name: photo
+        label: Photo
+        widget: image
   - name: sponsorsGear
     label: Sponsors and Gear page
     file: /page/sponsors-gear.md
@@ -41,10 +64,15 @@ singletons:
       - label: Title
         name: title
         widget: string
+      - name: elaboration
+        label: Elaboration
+        widget: richtext
+        buttons: [bold, italic, strikethrough, code, link]
+        editor_components: []
       - label: Body
         name: body
         widget: richtext
-        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote]
+        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
   - name: contactPage
     label: Contact page
     file: _data/contactPage.json
@@ -152,7 +180,7 @@ collections:
       - label: Body
         name: body
         widget: richtext
-        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote]
+        buttons: [heading-two, heading-three, bulleted-list, numbered-list, quote, bold, italic, strikethrough, code, link]
       - label: Photo carousel
         name: photos
         widget: list

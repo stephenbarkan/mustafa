@@ -158,7 +158,7 @@
   --color-neutral: #f3f0e8;
   --color-hue: color(display-p3 0.839216 0.32549 0.839216 / 1);
   --color-action: color(display-p3 0.337255 0.898039 0.776471 / 1);
-  --color-validation: var(--color-hue);
+  --color-validation: var(--color-fill-yellow);
 
   /* Text ------------------------------------ */
 
@@ -276,4 +276,8 @@
   font-family: var(--font-display);
   letter-spacing: 0.08em;
   --icon-size: 1em;
+}
+
+@utility text-validation {
+  mix-blend-mode: plus-lighter;
 }
