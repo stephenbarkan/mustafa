@@ -10,7 +10,7 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set mainStyles = "pt-40 pb-56 gap-24" %}
+{% set mainStyles = "pt-24 pb-12 gap-12 lg:pt-40 lg:pb-24 lg:gap-24" %}
 {% set showBottomLine = true %}
 {% set showNavbar = true %}
 
@@ -23,13 +23,18 @@
             elaboration: elaboration
         }) }}
     {% endcall %}
-    {{ divider() }}
-    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 items-center md:px-16"}) %}
-        <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden"><img class="max-w-full shrink" src="{{ photo }}" alt="{{ slide.caption }}"></div>
-        {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
+    {{ divider({},{class:""}) }}
+    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 items-center justify-items-center md:px-16"}) %}
+        <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden max-lg:row-start-2"><img class="max-w-full shrink" src="{{ photo }}" alt="{{ slide.caption }}"></div>
+        {{ markdown({content: content, transform: false}, attrs={class:"w-full max-w-content"}) }}
     {% endcall %}
-    {{ divider() }}
+    {# {{ divider() }}
     {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-8 justify-items-center"}) %}
         {{ button({label: "Contact me", type:"button", variant:"action", size:"lg"},{href:"/contact"})}}
-    {% endcall %}
+    {% endcall %} #}
+{% endblock %}
+
+{% block blobs %}
+    {{ blobDefaultTop({class:"top-0 max-h-[25vh] w-full left-1/2 -translate-x-1/2 rotate-y-180 min-w-[620px]"}) }}
+    {{ blobDefaultBottom({class:"bottom-0 h-[40vh] w-full left-1/2 -translate-x-1/2 rotate-y-180 min-w-[620px]"}) }}
 {% endblock %}

@@ -1,10 +1,21 @@
 {% from "components/container.njk" import container %}
 {% from "components/button.njk" import button %}
+{% from "components/markdown.njk" import markdown %}
 
 {% macro textLockup(props={}, attrs={}) %}
         <h1 class="text-heading-lg text-hue text-center">{{ props.title }}</h1>
         {% if props.elaboration %}
-            <p class="text-body-lg text-balance text-center">{{ props.elaboration }}</p>
+            {# <p class="text-body-lg text-balance text-center">{{ props.elaboration }}</p> #}
+            {{ markdown(
+                props={
+                    content: props.elaboration,
+                    transform: true,
+                    overrides: {
+                        fontSize: "text-body-lg"
+                    }
+                },
+                attrs={class:"w-full text-center text-balance"}
+            ) }}
         {% endif %}
         {% if props.button %}
             {{ button(props.button.props, props.button.attrs) }}

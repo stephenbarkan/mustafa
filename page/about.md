@@ -1,6 +1,6 @@
 ---
 layout: layouts/page-cols-2.njk
-title: About Mustafa!
+title: About Me
 elaboration: Hi! I’m Mustafa, a Chicago-based performer, poet, educator, and community organizer.
 photo: /assets/uploads/homepage-01.png
 ---

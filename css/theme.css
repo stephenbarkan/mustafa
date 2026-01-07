@@ -182,7 +182,7 @@
 
   --color-bg-space: color-mix(in oklab, var(--color-surface), transparent 0%);
   --color-bg-surface: color-mix(in oklab, var(--color-surface), transparent 0%);
-  --color-bg-neutral-lighter: color-mix(in oklab, var(--color-neutral) 2%, var(--color-surface) 20%);
+  --color-bg-neutral-lighter: color-mix(in oklab, var(--color-neutral) 2%, var(--color-surface) 35%);
   --color-bg-neutral-light: color-mix(in oklab, var(--color-neutral) 3%, var(--color-surface) 70%);
   --color-bg-neutral: color-mix(in oklab, var(--color-neutral) 9%, var(--color-surface) 70%);
   --color-bg-action-lighter: color-mix(in oklab, var(--color-action) 10%, var(--color-bg-neutral));

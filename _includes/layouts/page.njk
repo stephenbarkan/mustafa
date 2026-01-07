@@ -23,8 +23,8 @@
             elaboration: elaboration
         }) }}
     {% endcall %}
-    {{ divider() }}
-    {% call container(props={size: "content", type: "cols-1"}, attrs={class:"md:px-16"}) %}
+    {{ divider({},{class:"hidden lg:block"}) }}
+    {% call container(props={size: "content", type: "cols-1"}, attrs={class:""}) %}
         {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
     {% endcall %}
 {% endblock %}
