@@ -1528,6 +1528,16 @@
       padding-inline: var(--space-site-inline);
     }
   }
+  .lg\:py-24 {
+    @media (width >= 56rem) {
+      padding-block: calc(var(--spacing) * 24);
+    }
+  }
+  .lg\:py-32 {
+    @media (width >= 56rem) {
+      padding-block: calc(var(--spacing) * 32);
+    }
+  }
   .lg\:pt-40 {
     @media (width >= 56rem) {
       padding-top: calc(var(--spacing) * 40);

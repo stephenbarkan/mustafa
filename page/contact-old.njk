@@ -1,24 +1,32 @@
 
-{% extends "layouts/page.njk" %}
+{% extends "layouts/base.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
+{% from "components/button.njk" import button %}
+{% from "components/textLockup.njk" import textLockup %}
 {% from "components/input.njk" import input %}
 {% from "components/checkbox.njk" import checkbox %}
 {% from "components/textarea.njk" import textarea %}
-{% from "assets.njk" import blobContactRight, blobContactLeft %}
+{% from "assets.njk" import logo, sparkle, blobContactRight, blobContactLeft %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set data = contactPage %}{% set mainStyles = "pt-24 pb-12 gap-12 lg:pt-40 lg:pb-56 lg:gap-24" %}
-
-{% set mainStyles = "py-12 gap-8 lg:py-24" %}
-{% set showDivider = false %}
+{% set mainStyles = "py-section gap-16" %}
+{% set showNavbar = true %}
+{% set showBottomLine = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% block pageContent %}
-    {% call container(props={size: "wide", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center md:px-16"}) %}
+{% block content %}
+    {% call container(props={size: "content", type: "cols-1"}) %}
+        {{ textLockup({
+            title: contactPage.title,
+            elaboration: contactPage.elaboration
+        }) }}
+    {% endcall %}
+
+    {% call container(props={size: "narrow", type: "cols-1"}, attrs={class:"gap-16"}) %}
         <div
             x-data="{
                     name: '',
@@ -82,11 +90,19 @@
                 ) }}
                 {{ button({label: "Submit", type:"button", size:"lg", variant: "action"}, {type:"submit", class:"mx-auto"}) }}
             </form>
-        </div>
+    </div>
+
     {% endcall %}
+
 {% endblock %}
+
+{% block footer %}
+{% endblock footer %}
 
 {% block blobs %}
     {{ blobContactLeft({class:"fixed left-0 bottom-0 w-[50vw] max-w-[646px]"}) }}
     {{ blobContactRight({class:"fixed right-0 bottom-0 w-[50vw] max-w-[712px]"}) }}
 {% endblock %}
+
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
