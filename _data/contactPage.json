@@ -28,7 +28,7 @@
     }
   ],
   "messageField": {
-    "label": "Your message",
+    "label": "(Optional) A message",
     "hint": ""
   }
 }
