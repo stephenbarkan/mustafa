@@ -74,9 +74,12 @@ collections:
                   - "8:5"
       - name: about
         label: About page
-        file: /page/about.md
+        file: /page/about.njk
         icon: person
         fields:
+          - name: layout
+            widget: hidden
+            default: "layouts/page-cols-2.njk"
           - name: title
             label: Title
             widget: string
