@@ -37,7 +37,7 @@ singletons:
     fields:
       - name: layout
         widget: hidden
-        default: "layouts/page.njk"
+        default: "layouts/page-cols-2.njk"
       - name: title
         label: Title
         widget: string
