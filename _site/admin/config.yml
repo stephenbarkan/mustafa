@@ -27,6 +27,7 @@ singletons:
       - label: Browser Icon
         name: favicon
         widget: image
+
   - name: navLinks
     label: Navigation links
     file: /_data/navLinks.json
@@ -195,6 +196,7 @@ collections:
             label: Elaboration
             widget: string
             required: false
+
   - name: offerings
     label: Offerings
     folder: /offering

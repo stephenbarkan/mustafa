@@ -15,16 +15,24 @@
 {% set showBottomLine = true %}
 {% set showNavbar = true %}
 
+{% set title = data.title %}
+{% set elaboration = data.elaboration %}
+{% set body = data.body %}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
     {% call container(props={size: "content", type: "cols-1"}) %}
         {{ textLockup({
             title: title,
-            elaboration: elaboration
+            elaboration: elaboration,
+            button: button
         }) }}
     {% endcall %}
-    {{ divider({},{class:""}) }}
+
+    {% if showDivider %}
+        {{ divider({},{class:""}) }}
+    {% endif %}
 
     {% block pageContent %}{% endblock %}
 

@@ -20,7 +20,7 @@
 
 <div data-textLockup
     {{ loopAttrs(attrs) }}
-    class="flex flex-col {{ attrs.class }} {{ textLockupStyles }}">
+    class="flex flex-col items-center {{ attrs.class }} {{ textLockupStyles }}">
     <h1 class="text-heading-lg text-hue text-center">{{ props.title }}</h1>
     {% if props.elaboration %}
         {{ markdown(

@@ -11,6 +11,7 @@
 {% set mainStyles = "py-section gap-section" %}
 {% set showBottomLine = false %}
 {% set showNavbar = true %}
+{% set data = homePage %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -26,9 +27,9 @@
             attrs={class:"w-full"}
         ) %}
             <div class="flex gap-6 pr-site-inline h-[350px] lg:h-[450px]">
-                {% for photo in homepage.photos %}
+                {% for photo in data.photos %}
                     <div
-                        style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{homepage.photos.length}}*2)"
+                        style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{data.photos.length}}*2)"
                         class="flex animate-wave flex-col rounded-base border border-neutral-light overflow-hidden {% if photo.aspect ==="8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
                         <img src="{{ photo.image }}" alt="{{ photo.altText }}">
                     </div>

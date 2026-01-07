@@ -2,13 +2,13 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set data = sponsorsGearPage %}
+{% set data = _pageTemplatePage %}
 {% set showDivider = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block pageContent %}
     {% call container(props={size: "wide", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center md:px-16"}) %}
-        {{ markdown({content: body, transform: true}, attrs={class:"w-full max-w-content"}) }}
+        {# {{ markdown({content: body, transform: true}, attrs={class:"w-full max-w-content"}) }} #}
     {% endcall %}
 {% endblock %}
