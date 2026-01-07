@@ -51,7 +51,7 @@ collections:
     files:
       - name: homepage
         label: Home page
-        file: /_data/homepage.json
+        file: /_data/homePage.json
         icon: home
         fields:
           - label: Photos
