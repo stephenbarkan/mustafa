@@ -877,6 +877,9 @@
   .py-12 {
     padding-block: calc(var(--spacing) * 12);
   }
+  .py-16 {
+    padding-block: calc(var(--spacing) * 16);
+  }
   .py-section {
     padding-block: var(--space-section);
   }
@@ -1415,6 +1418,17 @@
       opacity: 60%;
     }
   }
+  .max-xl\:gap-8 {
+    @media (width < 70rem) {
+      gap: calc(var(--spacing) * 8);
+    }
+  }
+  .max-xl\:border-t {
+    @media (width < 70rem) {
+      border-top-style: var(--tw-border-style);
+      border-top-width: 1px;
+    }
+  }
   .max-lg\:row-start-2 {
     @media (width < 56rem) {
       grid-row-start: 2;
@@ -1598,6 +1612,11 @@
       display: block;
     }
   }
+  .xl\:flex {
+    @media (width >= 70rem) {
+      display: flex;
+    }
+  }
   .xl\:hidden {
     @media (width >= 70rem) {
       display: none;
@@ -1648,6 +1667,14 @@
       background-color: color-mix(in srgb, #f3f0e8 3%, color(display-p3 0.094118 0.070588 0.129412 / 1) 70%);
       @supports (color: color-mix(in lab, red, red)) {
         background-color: color-mix(in oklab, var(--color-neutral) 3%, var(--color-surface) 70%);
+      }
+    }
+  }
+  .pointer-coarse\:bg-neutral-lighter {
+    @media (pointer: coarse) {
+      background-color: color-mix(in srgb, #f3f0e8 2%, color(display-p3 0.094118 0.070588 0.129412 / 1) 35%);
+      @supports (color: color-mix(in lab, red, red)) {
+        background-color: color-mix(in oklab, var(--color-neutral) 2%, var(--color-surface) 35%);
       }
     }
   }
