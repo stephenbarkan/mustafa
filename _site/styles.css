@@ -408,6 +408,9 @@
   .h-full {
     height: 100%;
   }
+  .h-lvh {
+    height: 100lvh;
+  }
   .h-site-inline {
     height: var(--space-site-inline);
   }
