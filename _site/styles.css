@@ -261,6 +261,9 @@
   .bottom-full {
     bottom: 100%;
   }
+  .bottom-site-inline {
+    bottom: var(--space-site-inline);
+  }
   .left-0 {
     left: calc(var(--spacing) * 0);
   }
@@ -387,6 +390,18 @@
   }
   .h-\[1\.3em\] {
     height: 1.3em;
+  }
+  .h-\[25vh\] {
+    height: 25vh;
+  }
+  .h-\[30vh\] {
+    height: 30vh;
+  }
+  .h-\[40vh\] {
+    height: 40vh;
+  }
+  .h-\[309vh\] {
+    height: 309vh;
   }
   .h-\[382px\] {
     height: 382px;
@@ -797,6 +812,15 @@
     }
   }
   .bg-space {
+    background-color: color-mix(in srgb, color(display-p3 0.094118 0.070588 0.129412 / 1), transparent 0%);
+    @supports (color: color-mix(in lab, red, red)) {
+      background-color: color-mix(in oklab, var(--color-surface), transparent 0%);
+    }
+  }
+  .bg-surface {
+    background-color: color(display-p3 0.094118 0.070588 0.129412 / 1);
+  }
+  .bg-surface {
     background-color: color-mix(in srgb, color(display-p3 0.094118 0.070588 0.129412 / 1), transparent 0%);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-surface), transparent 0%);
