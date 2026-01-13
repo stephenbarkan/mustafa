@@ -1,6 +1,5 @@
 :root {
   color-scheme: dark;
-
   --icon-size: 1.45em;
 
   --body-sm: 18px;
@@ -9,11 +8,18 @@
 
   --heading-sm: 21px;
   --heading-base: 24px;
-  --heading-lg: 64px;
+  --heading-lg: 60px;
 
   --button-sm: 26px;
   --button-base: 29px;
   --button-lg: 32px;
+
+  --space-site-inline: 0.5rem;
+  --space-section: 4rem;
+
+  @media screen and (min-width: 36rem) {
+    --space-site-inline: 0.75rem;
+  }
 
   @media screen and (min-width: 44rem) {
     --body-sm: 20px;
@@ -26,6 +32,12 @@
 
     --button-base: 30px;
     --button-lg: 40px;
+  }
+
+  /* > lg */
+  @media screen and (min-width: 56rem) {
+    --space-section: 6rem;
+    --space-site-inline: 1.5rem;
   }
 }
 
@@ -90,7 +102,7 @@
   /* Spacing --------------------------------------------------------------------------------------------------------------------------- */
 
   --spacing-site-inline: var(--space-site-inline);
-  --spacing-site-inline-half: calc(var(--space-site-inline) / 2);
+  --spacing-site-inline-2: calc(var(--space-site-inline) * 2);
   --spacing-navbar-height: var(--space-navbar-height);
   --spacing-section: var(--space-section);
   --spacing-indent: 1.5ch;

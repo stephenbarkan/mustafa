@@ -54,7 +54,7 @@
             size: "narrow",
             type: "cols-1"
         },
-        attrs={class:"px-site-inline"}
+        attrs={class:"px-site-inline-2"}
     ) %}
         <div class="grid lg:grid-cols-2 gap-4 lg:gap-6 relative ">
             {% for link in navLinks %}
@@ -72,7 +72,7 @@
             size: "full",
             type: "flex"
         },
-        attrs={class:"text-body-sm gap-6 relative border-t border-neutral-lighter bg-neutral-lighter hover:bg-neutral-light focus-within:bg-neutral-light focus-within:backdrop-blur-base transition duration-600 backdrop-blur-sm flex-col xl:flex-row items-center justify-center pt-4 pb-8 xl:py-4 text-center gap-4 xl:gap-6 hover:bg-neutral-light hover:backdrop-blur-base"}
+        attrs={class:"px-site-inline-2 text-body-sm gap-6 relative border-t border-neutral-lighter bg-neutral-lighter hover:bg-neutral-light focus-within:bg-neutral-light focus-within:backdrop-blur-base pointer-coarse:bg-neutral-light pointer-coarse:backdrop-blur-base transition duration-600 backdrop-blur-sm flex-col xl:flex-row items-center justify-center pt-4 pb-8 xl:py-4 text-center gap-4 xl:gap-6 hover:bg-neutral-light hover:backdrop-blur-base"}
     ) %}
     <span>Copyright {{ helpers.currentYear() }} {{ global.siteTitle }}</span>
     {{ sparkle({class:"fill-hue h-3.5 order-first xl:order-none"}) }}

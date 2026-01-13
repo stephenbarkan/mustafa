@@ -1,10 +1,6 @@
 @import "tailwindcss";
 @import "./theme.css";
 
-[x-cloak] {
-  display: none !important;
-}
-
 @font-face {
   font-family: MysterionBohemian;
   font-style: normal;
@@ -16,34 +12,15 @@
 @layer components {
   @import "./markdown.css";
 
-  :root {
-    --bp-xs: var(--breakpoint-xs);
-    --bp-sm: var(--breakpoint-sm);
-    --bp-md: var(--breakpoint-md);
-    --bp-lg: var(--breakpoint-lg);
-    --bp-xl: var(--breakpoint-xl);
-
-    --space-site-inline: 0.75rem;
-    --space-section: 4rem;
-
-    /* > md */
-    @media screen and (min-width: 44rem) {
-    }
-
-    /* > lg */
-    @media screen and (min-width: 56rem) {
-      --space-section: 6rem;
-      --space-site-inline: 1.5rem;
-    }
-
-    /* > xl */
-    @media screen and (min-width: 70rem) {
-    }
-  }
-
+  /* todo: reformat this when using it next to be a utility class please! */
   [data-button-card]::before {
     content: "";
     position: absolute;
     inset: 0;
+  }
+
+  /* todo: move this to theme file */
+  [x-cloak] {
+    display: none !important;
   }
 }

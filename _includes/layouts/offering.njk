@@ -22,7 +22,7 @@
 {% block content %}
     {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"relative"}) %}
         <section class="flex flex-col">
-            <div class="flex flex-col gap-12 py-16 px-site-inline md:px-16">
+            <div class="flex flex-col gap-12 py-16 px-site-inline-2 md:px-16">
                 <div data-breadcrumbs class="flex items-center gap-3">
                     {{ button({type:"link", size:"sm", variant:"action", label:"All offerings", icon:"chevron_backward"},{href:"/offerings"}) }}
                     <span>/</span>
@@ -31,7 +31,7 @@
                 <h1 class="text-heading-lg text-hue text-pretty">{{ title }}</h1>
                 {{ markdown({content: content, transform: false}, attrs={class:"w-full"}) }}
             </div>
-            <div class="hidden xl:flex items-center gap-6 py-6 px-site-inline border-t border-neutral-lighter">
+            <div class="hidden xl:flex items-center gap-6 py-6 px-site-inline-2 border-t border-neutral-lighter">
                 {% if previousOffering %}{{ button({type:"link", size:"base", variant:"action", label:previousOffering.data.title, icon:"chevron_backward"}, {href:previousOffering.url, class:"mr-auto"}) }}{% endif %}
                 {% if nextOffering %}{{ button({type:"link", size:"base", variant:"action", label:nextOffering.data.title, icon:"chevron_forward", iconPosition:"end"}, {href:nextOffering.url, class:"ml-auto"}) }}{% endif %}
             </div>

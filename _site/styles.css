@@ -8,10 +8,6 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --spacing: 0.25rem;
-    --breakpoint-sm: 36rem;
-    --breakpoint-md: 44rem;
-    --breakpoint-lg: 56rem;
-    --breakpoint-xl: 70rem;
     --text-sm: 0.875rem;
     --text-sm--line-height: calc(1.25 / 0.875);
     --text-base: 1rem;
@@ -19,7 +15,6 @@
     --leading-relaxed: 1.625;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
-    --breakpoint-xs: 28rem;
     --font-display: MysterionBohemian, serif;
     --font-body: Fraunces, serif;
     --text-body-base: var(--body-base);
@@ -393,9 +388,6 @@
   .h-\[1\.3em\] {
     height: 1.3em;
   }
-  .h-\[350px\] {
-    height: 350px;
-  }
   .h-\[382px\] {
     height: 382px;
   }
@@ -410,9 +402,6 @@
   }
   .h-full {
     height: 100%;
-  }
-  .h-lvh {
-    height: 100lvh;
   }
   .h-site-inline {
     height: var(--space-site-inline);
@@ -498,9 +487,6 @@
   .max-w-content {
     max-width: 53ch;
   }
-  .max-w-cqi {
-    max-width: 100cqi;
-  }
   .max-w-full {
     max-width: 100%;
   }
@@ -565,6 +551,10 @@
   }
   .-translate-y-2 {
     --tw-translate-y: calc(var(--spacing) * -2);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .-translate-y-4 {
+    --tw-translate-y: calc(var(--spacing) * -4);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
   .-translate-y-full {
@@ -875,6 +865,9 @@
   }
   .px-site-inline {
     padding-inline: var(--space-site-inline);
+  }
+  .px-site-inline-2 {
+    padding-inline: calc(var(--space-site-inline) * 2);
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -1455,6 +1448,11 @@
       }
     }
   }
+  .sm\:px-16 {
+    @media (width >= 36rem) {
+      padding-inline: calc(var(--spacing) * 16);
+    }
+  }
   .sm\:max-md\:block {
     @media (width >= 36rem) {
       @media (width < 44rem) {
@@ -1514,11 +1512,6 @@
       display: none;
     }
   }
-  .lg\:h-\[450px\] {
-    @media (width >= 56rem) {
-      height: 450px;
-    }
-  }
   .lg\:h-\[482px\] {
     @media (width >= 56rem) {
       height: 482px;
@@ -1565,9 +1558,9 @@
       padding: calc(var(--spacing) * 24);
     }
   }
-  .lg\:px-site-inline {
+  .lg\:px-site-inline-2 {
     @media (width >= 56rem) {
-      padding-inline: var(--space-site-inline);
+      padding-inline: calc(var(--space-site-inline) * 2);
     }
   }
   .lg\:py-24 {
@@ -1686,10 +1679,15 @@
   --body-lg: 20.5px;
   --heading-sm: 21px;
   --heading-base: 24px;
-  --heading-lg: 64px;
+  --heading-lg: 60px;
   --button-sm: 26px;
   --button-base: 29px;
   --button-lg: 32px;
+  --space-site-inline: 0.5rem;
+  --space-section: 4rem;
+  @media screen and (min-width: 36rem) {
+    --space-site-inline: 0.75rem;
+  }
   @media screen and (min-width: 44rem) {
     --body-sm: 20px;
     --body-base: 22px;
@@ -1700,9 +1698,10 @@
     --button-base: 30px;
     --button-lg: 40px;
   }
-}
-[x-cloak] {
-  display: none !important;
+  @media screen and (min-width: 56rem) {
+    --space-section: 6rem;
+    --space-site-inline: 1.5rem;
+  }
 }
 @font-face {
   font-family: MysterionBohemian;
@@ -1913,23 +1912,13 @@
       break-inside: avoid;
     }
   }
-  :root {
-    --bp-xs: var(--breakpoint-xs);
-    --bp-sm: var(--breakpoint-sm);
-    --bp-md: var(--breakpoint-md);
-    --bp-lg: var(--breakpoint-lg);
-    --bp-xl: var(--breakpoint-xl);
-    --space-site-inline: 0.75rem;
-    --space-section: 4rem;
-    @media screen and (min-width: 56rem) {
-      --space-section: 6rem;
-      --space-site-inline: 1.5rem;
-    }
-  }
   [data-button-card]::before {
     content: "";
     position: absolute;
     inset: 0;
+  }
+  [x-cloak] {
+    display: none !important;
   }
 }
 @property --tw-translate-x {
