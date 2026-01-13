@@ -6,7 +6,7 @@
 
 {% set directionStyles = {
     row: "grid gap-2 items-center",
-    column: "flex flex-col gap-5"
+    column: "flex flex-col gap-5 w-full"
 } %}
 
 {% set fieldLabelStyles = "text-hue text-heading-base text-pretty" %}
@@ -18,8 +18,27 @@
 {% set fieldsetInputStyles %} accent-action w-[1.3em] h-[1.3em] {% endset %}
 {% set fieldsetOptionLabelStyles = "text-neutral" %}
 
-{% set fieldWrapperStyles = "grow flex" %}
-{% set fieldStyles = "grow min-w-px text-body-lg not-focus:bg-surface border border-neutral-light not-disabled:hover:border-neutral not-disabled:hover:bg-neutral-light not-disabled:focus:bg-neutral-light not-disabled:focus:border-action not-disabled:valid:backdrop-blur-base outline-none disabled:opacity-60 min-h-tube-lg rounded-lg px-8 py-6" %}
+{% set fieldWrapperStyles = "grow flex w-inherit" %}
+{% set fieldStyles = "
+  grow
+  min-w-px
+  w-inherit
+  text-body-lg
+  not-focus:bg-surface
+  border
+  border-neutral-light
+  not-disabled:hover:border-neutral
+  not-disabled:hover:bg-neutral-light
+  not-disabled:focus:bg-neutral-light
+  not-disabled:focus:border-action
+  not-disabled:valid:backdrop-blur-base
+  outline-none
+  disabled:opacity-60
+  min-h-tube-lg
+  rounded-lg
+  px-8
+  py-6
+" %}
 
 {# Macros ------------------------------------------------------------------------------------------------------------------------------ #}
 

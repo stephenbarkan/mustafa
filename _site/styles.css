@@ -465,6 +465,9 @@
   .w-full {
     width: 100%;
   }
+  .w-inherit {
+    width: inherit;
+  }
   .w-screen {
     width: 100vw;
   }
@@ -486,11 +489,11 @@
   .max-w-content {
     max-width: 53ch;
   }
+  .max-w-cqi {
+    max-width: 100cqi;
+  }
   .max-w-full {
     max-width: 100%;
-  }
-  .min-w-\[620px\] {
-    min-width: 620px;
   }
   .min-w-max {
     min-width: max-content;
@@ -660,6 +663,9 @@
   }
   .gap-16 {
     gap: calc(var(--spacing) * 16);
+  }
+  .gap-inherit {
+    gap: inherit;
   }
   .gap-inherit {
     gap: inherit;

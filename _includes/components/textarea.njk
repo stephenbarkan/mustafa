@@ -1,7 +1,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
-{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionStyles, fieldStyles %}
+{% from "components/_fieldParts.njk" import fieldLabel, fieldDescription, directionStyles, fieldStyles, fieldWrapperStyles %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -20,7 +20,7 @@
             name="{{ props.name }}"
             id="{{ props.name }}"
             {{ loopAttrs(props.fieldAttrs) }}
-            class="w-full {{ fieldStyles }} {{ props.fieldAttrs.class }}"></textarea>
+            class="{{ fieldStyles }} {{ props.fieldAttrs.class }}"></textarea>
     </span>
 
     {% if props.description %}{{ fieldDescription(props) }}{% endif %}
