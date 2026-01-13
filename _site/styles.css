@@ -1522,6 +1522,11 @@
       gap: calc(var(--spacing) * 6);
     }
   }
+  .lg\:gap-16 {
+    @media (width >= 56rem) {
+      gap: calc(var(--spacing) * 16);
+    }
+  }
   .lg\:gap-24 {
     @media (width >= 56rem) {
       gap: calc(var(--spacing) * 24);
