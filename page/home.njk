@@ -17,7 +17,7 @@
 
 {% block content %}
 
-    {% call container(props={size: "full", type: "cols-1"}, attrs={class:"overflow-hidden"}) %}
+    {% call container(props={size: "full", type: "cols-1"}, attrs={class:"overflow-x-hidden"}) %}
         {% call marquee(
             props={
                 speed: "45s",
@@ -26,7 +26,7 @@
             },
             attrs={class:"w-full"}
         ) %}
-            <div class="flex gap-6 pr-site-inline h-[350px] lg:h-[450px]">
+            <div class="flex gap-6 py-4 pr-site-inline h-[382px] lg:h-[482px]">
                 {% for photo in data.photos %}
                     <div
                         style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{data.photos.length}}*2)"
