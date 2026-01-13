@@ -468,6 +468,9 @@
   .w-\[var\(--container-wide\)\] {
     width: var(--container-wide);
   }
+  .w-fit {
+    width: fit-content;
+  }
   .w-full {
     width: 100%;
   }
