@@ -7,7 +7,7 @@
 {% macro icon(props={},attrs={}) %}
 
     <svg class="{{ attrs.class }} text-icon w-(--icon-size) h-(--icon-size) -mx-[.25em]" {{ loopAttrs(attrs) }} viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle">{{ props.icon }}</text>
+        <text x="-1px" y="50%" dominant-baseline="middle" text-anchor="left">{{ props.icon }}</text>
     </svg>
 
 {% endmacro %}
