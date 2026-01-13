@@ -19,7 +19,7 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container(props={size: "content", type: "cols-1"}) %}
+    {% call container({size: "content", type: "cols-1"}, {class:"px-site-inline"}) %}
         {{ textLockup({
             title: title,
             elaboration: elaboration,

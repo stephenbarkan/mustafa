@@ -12,14 +12,15 @@
 
 {% set data = contactPage %}{% set mainStyles = "pt-24 pb-12 gap-12 lg:pt-40 lg:pb-56 lg:gap-24" %}
 
-{% set mainStyles = "py-12 gap-8 lg:py-24" %}
+{% set mainStyles = "pt-12 gap-8 lg:py-24" %}
 {% set showDivider = false %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block pageContent %}
-    {% call container(props={size: "wide", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center md:px-16"}) %}
+    {% call container(props={size: "narrow", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center lg:px-site-inline"}) %}
         <div
+            class="w-full"
             x-data="{
                     name: '',
                     contactMethod: '',
@@ -32,7 +33,7 @@
                 action="/success"
                 netlify
                 tabindex="0"
-                class="w-full gap-16 grid border border-neutral-lighter bg-neutral-light backdrop-blur-base p-24">
+                class="w-full gap-16 grid border-y lg:border border-neutral-lighter bg-neutral-light backdrop-blur-base py-16 px-8 lg:p-24">
                 {{ input(
                     props={
                         name: "name",
