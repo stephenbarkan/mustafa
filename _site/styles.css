@@ -702,6 +702,9 @@
   .overflow-x-hidden {
     overflow-x: hidden;
   }
+  .overflow-y-auto {
+    overflow-y: auto;
+  }
   .overflow-y-hidden {
     overflow-y: hidden;
   }
@@ -914,8 +917,14 @@
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
   }
+  .py-navbar-height {
+    padding-block: var(--space-navbar-height);
+  }
   .py-section {
     padding-block: var(--space-section);
+  }
+  .py-site-inline-2 {
+    padding-block: calc(var(--space-site-inline) * 2);
   }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
@@ -1137,6 +1146,10 @@
   .duration-200 {
     --tw-duration: 200ms;
     transition-duration: 200ms;
+  }
+  .duration-300 {
+    --tw-duration: 300ms;
+    transition-duration: 300ms;
   }
   .duration-500 {
     --tw-duration: 500ms;

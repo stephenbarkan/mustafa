@@ -18,18 +18,16 @@
 {% block content %}
 
     {% call container(props={size: "full", type: "cols-1"}, attrs={class:"overflow-x-hidden"}) %}
-        {# <div x-ref="marqueeList" class="flex items-center justify-around w-fit flex-nowrap">
-            <div class="flex gap-6 py-4 pr-site-inline w-fit h-[382px] lg:h-[482px]">
+                    <div class="flex gap-6 py-4 pr-site-inline shrink-0 h-[382px] lg:h-[482px]">
                 {% for photo in data.photos %}
                     <div
                         style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{data.photos.length}}*2)"
-                        class="flex animate-wave flex-col rounded-base border border-neutral-light overflow-hidden {% if photo.aspect ==="8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
+                        class="flex animate-wave flex-col shrink-0 rounded-base border border-neutral-light overflow-hidden {% if photo.aspect ==="8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
                         <img src="{{ photo.image }}" alt="{{ photo.altText }}">
                     </div>
                 {% endfor %}
             </div>
-        </div> #}
-        {% call marquee(
+        {# {% call marquee(
             props={
                 speed: "30s",
                 pauseOnHover: false,
@@ -46,7 +44,7 @@
                     </div>
                 {% endfor %}
             </div>
-        {% endcall %}
+        {% endcall %} #}
     {% endcall %}
 
     {% call container(

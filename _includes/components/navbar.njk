@@ -31,7 +31,7 @@
 {% endset %}
 
 {% set drawerContents %}
-    {% call container({size:"base", type:"flex"},{class:"flex-col gap-4 px-site-inline-2"}) %}
+    {% call container({size:"base", type:"flex"},{class:"flex-col gap-4 px-site-inline-2 py-site-inline-2"}) %}
         {{ button({type:"button", size:"base", variant:"neutral", label:"home"},{href:"/home"}) }}
         {% for link in navLinks %}
             {{ button({type:"button", size:"base", variant:"neutral", label:link.label},{href:link.href}) }}
