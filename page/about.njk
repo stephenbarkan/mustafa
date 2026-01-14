@@ -14,8 +14,8 @@
 
 
 {% block pageContent %}
-    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 items-center justify-items-center px-site-inline-2 md:px-16"}) %}
-        <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden max-lg:row-start-2"><img class="max-w-full shrink" src="{{ aboutPage.photo }}" alt="{{ slide.caption }}"></div>
+    {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 md:gap-16 items-center justify-items-center px-site-inline-2 md:px-16"}) %}
+        <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden max-xl:row-start-2"><img class="max-w-full shrink" src="{{ aboutPage.photo }}" alt="{{ slide.caption }}"></div>
         {{ markdown({content: data.body, transform: true}, attrs={class:"w-full max-w-content"}) }}
     {% endcall %}
 {% endblock %}

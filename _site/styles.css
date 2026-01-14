@@ -505,6 +505,9 @@
   .max-w-full {
     max-width: 100%;
   }
+  .min-w-fit {
+    min-width: fit-content;
+  }
   .min-w-max {
     min-width: max-content;
   }
@@ -1449,6 +1452,11 @@
       opacity: 60%;
     }
   }
+  .max-xl\:row-start-2 {
+    @media (width < 70rem) {
+      grid-row-start: 2;
+    }
+  }
   .max-xl\:border-t {
     @media (width < 70rem) {
       border-top-style: var(--tw-border-style);
@@ -1457,6 +1465,11 @@
   }
   .max-lg\:row-start-2 {
     @media (width < 56rem) {
+      grid-row-start: 2;
+    }
+  }
+  .max-md\:row-start-2 {
+    @media (width < 44rem) {
       grid-row-start: 2;
     }
   }
@@ -1502,6 +1515,11 @@
   .md\:gap-7 {
     @media (width >= 44rem) {
       gap: calc(var(--spacing) * 7);
+    }
+  }
+  .md\:gap-16 {
+    @media (width >= 44rem) {
+      gap: calc(var(--spacing) * 16);
     }
   }
   .md\:rounded-lg {

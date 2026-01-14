@@ -9,13 +9,6 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-<style>
-    [data-marquee] > * {
-        --px-width: tan(atan2(1512px, 1px));
-        --marquee-duration: calc(var(--px-width) / 1500 * {{ props.speed }})
-    }
-</style>
-
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div
@@ -28,29 +21,27 @@
             });
         }
     }"
-    class="relative @container {{ attrs.class }}"
+    class="relative {{ attrs.class }}"
     {{ loopAttrs(attrs) }}
 >
     {% if props.fadeEdges %}
         <div aria-hidden="true" class="absolute inset-y-0 z-(--z-elevated) w-[5%] start-0 bg-linear-to-r from-surface to-transparent"></div>
         <div aria-hidden="true" class="absolute inset-y-0 z-(--z-elevated) w-[5%] end-0 bg-linear-to-l from-surface to-transparent"></div>
     {% endif %}
-  <div
-    x-ref="marqueeTrack"
-    style="--animate-duration: var(--marquee-duration)"
-    class="
-      relative
-      flex
-      min-w-max
-      w-full
-      animate-marquee
-    "
-    {% if props.pauseOnHover %}x-bind:class="{ 'hover:[animation-play-state:paused]': pauseOnHover }"{% endif %}
-  >
-    <div x-ref="marqueeList" class="flex items-center justify-around w-fit flex-nowrap">
-        {{ caller() | safe }}
+
+    <div
+        x-ref="marqueeTrack"
+        style="
+            --px-width: tan(atan2(1512px, 1px));
+            --marquee-duration: calc(var(--px-width) / 1500 * {{ props.speed }});
+            --animate-duration: var(--marquee-duration);
+        "
+        class="relative flex animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}"
+    >
+        <div x-ref="marqueeList">
+            {{ caller() | safe }}
+        </div>
     </div>
-  </div>
 </div>
 
 {% endmacro %}
