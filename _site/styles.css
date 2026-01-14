@@ -288,6 +288,9 @@
   .z-\(--z-top-elevated\) {
     z-index: var(--z-top-elevated);
   }
+  .z-\[-1111111\] {
+    z-index: -1111111;
+  }
   .order-first {
     order: -9999;
   }

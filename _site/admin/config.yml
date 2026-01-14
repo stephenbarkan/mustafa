@@ -15,6 +15,7 @@ singletons:
       - label: Site Domain
         name: siteDomain
         widget: string
+        hint: Do not include the trailing "/"
       - label: Site Title
         name: siteTitle
         widget: string
