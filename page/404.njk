@@ -3,28 +3,15 @@ eleventyExcludeFromCollections: true
 permalink: /404.html
 ---
 
-{% extends "layouts/base.njk" %}
+{% extends "layouts/page.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/container.njk" import container %}
-{% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, blobDefaultTop, blobDefaultBottom %}
-
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set showNavbar = false %}
-{% set mainStyles = "py-section gap-section" %}
-{% set showTopLine = true %}
-{% set showBottomLine = true %}
+{% set data = 404Page %}
+{% set showDivider = false %}
+{% set mainStyles = "py-12 gap-12 lg:py-32" %}
+{% set title = "404" %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% block content %}
-    {% call container({type:"cols-1", size:"content"}, {class:"text-pretty flex flex-col gap-10 px-site-inline"}) %}
-            <h1 class="text-heading-lg text-hue">
-                404
-            </h1>
-            <p class="text-body-base">Page not found. Return to the {{ button({label:"homepage", variant:"action", type:"link", size:"inherit"},{href:"/home", class:"inline-block"}) }}?</p>
-    {% endcall %}
-{% endblock %}
