@@ -137,7 +137,6 @@
 .markdown img,
 .markdown iframe {
   max-inline-size: 100%;
-  /* margin-block: var(--space-3); */
   border-radius: var(--md-radius);
   border: var(--md-border-color) var(--md-border-width) solid;
   object-fit: cover;
@@ -147,6 +146,7 @@
 .markdown iframe {
   border-radius: var(--md-radius);
   inline-size: 100%;
+  margin-block: var(--space-3);
 }
 
 .markdown li img {

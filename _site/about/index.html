@@ -1,23 +1,23 @@
 <!doctype html><html x-data="{
-        scrollable: true,
-        navbarHidden: false,
-        hasScrolled: false,
-        lastScrollY: window.scrollY,
-        setHasScrolled() {
-            if (this.lastScrollY > 83) {
-                this.hasScrolled = true
-            } else {
-                this.hasScrolled = false
+            scrollable: true,
+            navbarHidden: false,
+            hasScrolled: false,
+            lastScrollY: window.scrollY,
+            setHasScrolled() {
+                if (this.lastScrollY > 83) {
+                    this.hasScrolled = true
+                } else {
+                    this.hasScrolled = false
+                }
+            },
+            getNavbarHeight() {
+                let navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+                if (this.navbarHidden) {
+                    navbarHeight = 0;
+                }
+                return {'--space-navbar-height': navbarHeight+'px'}
             }
-        },
-        getNavbarHeight() {
-            let navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
-            if (this.navbarHidden) {
-                navbarHeight = 0;
-            }
-            return {'--space-navbar-height': navbarHeight+'px'}
-        }
-    }" :class="!scrollable && ''" :style="getNavbarHeight" @scroll.window="setHasScrolled" lang="en" class="scroll-smooth scroll-p-section-title relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>About Me! – Mustafa Anwar</title><meta name="description" content="
+        }" :style="getNavbarHeight" @scroll.window="setHasScrolled" lang="en" class="scroll-smooth scroll-p-site-block relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>About Me! – Mustafa Anwar</title><meta name="description" content="
      Movement, Fire, and Embodied Presence | Chicago"><link rel="canonical" href="https://mustafaanwar.netlify.app/about/"><meta property="og:title" content="
         About Me! –
     Mustafa Anwar"><meta property="og:description" content="

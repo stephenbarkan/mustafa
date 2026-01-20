@@ -41,7 +41,6 @@
 
 {# Theme styles ----------- #}
 
-
 {% set themeAlignment = "left" %}
 {% set drawerOnNarrow = true %}
 
@@ -78,7 +77,7 @@
     class="w-full flex flex-col relative {{ attrs.class }} {{ navbarStyles }}
     {% if props.sticky %}{{ stickyStyles }}{% endif %}">
 
-    <div class="{%if drawerOnNarrow %}hidden xl:block{% endif %}">
+    <div {% if drawerOnNarrow %}class="hidden xl:block"{% endif %}>
         {% call container({size: "base", type:"flex"},{class:"items-center justify-between"}) %}
 
             <div data-slot="left"
@@ -107,7 +106,7 @@
         {% endcall %}
     </div>
 
-    {% if drawerOnNarrow %}
+    {% if drawerOnNarrow %} {# the narrow screen container that has the drawer #}
         <div class="xl:hidden">
             {% call container({size: "base", type:"flex"},{class:"items-center justify-between"}) %}
                 {{ navbarLogo | safe }}
@@ -116,7 +115,7 @@
                         {% if drawerContents %}
                             {{ drawerContents | safe }}
                         {% else %}
-                            {{ props.leftSide | safe }}
+                            {% if props.leftSide %}{{ props.leftSide | safe }}{% else %}{{ leftSide | safe }}{% endif %}
                             {% if props.rightSide %}{{ props.rightSide | safe }}{% else %}{{ rightSide | safe }}{% endif %}
                         {% endif %}
                     {% endcall %}
