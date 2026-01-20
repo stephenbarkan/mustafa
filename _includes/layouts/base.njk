@@ -20,7 +20,7 @@
 {% endset %}
 
 {% set pageDescription %}
-    {% if description %}{{- description -}}{% endif %} {{global.siteDescription -}}
+    {% if seoDescription %}{{- seoDescription -}}{% endif %} {{global.siteDescription -}}
 {% endset %}
 
 {% set ogImage %}
@@ -63,6 +63,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{{ pageTitle | safe }}</title>
         <meta name="description" content="{{ pageDescription }}">
+        <link rel="canonical" href="{{ global.siteDomain }}{{ page.url }}">
         <meta property="og:title" content="{{ pageTitle | safe }}"/>
         <meta property="og:description" content="{{ pageDescription }}"/>
         <meta property="og:url" content="{{ global.siteDomain }}{{ page.url }}">

@@ -11,16 +11,7 @@
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-<div
-    data-marquee
-    x-data="{
-        pauseOnHover: true,
-        init() {
-            this.$nextTick(() => {
-                this.$refs.marqueeTrack.appendChild(this.$refs.marqueeList.cloneNode(true));
-            });
-        }
-    }"
+<div data-marquee
     class="relative {{ attrs.class }}"
     {{ loopAttrs(attrs) }}
 >
@@ -38,7 +29,8 @@
         "
         class="relative flex animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}"
     >
-        <div x-ref="marqueeList">
+        <div x-ref="marqueeList" class="{{ props.itemWrapperStyles }}">
+            {{ caller() | safe }}
             {{ caller() | safe }}
         </div>
     </div>
@@ -53,7 +45,8 @@
     props={
         speed: "25s",
         pauseOnHover: boolean,
-        fadeEdges: boolean
+        fadeEdges: boolean,
+        itemWrapperStyles:""
     },
     attrs={}
 ) %}
