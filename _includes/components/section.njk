@@ -1,0 +1,50 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/button.njk" import button %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro section(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set sectionStyles = "w-full @container" %}
+{% set paddingStyles =
+    {
+        "site": "px-site-inline",
+        "lines": "px-lines",
+        "none": ""
+    }
+ %}
+
+{# Other ------------------ #}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<section data-section
+    {{ loopAttrs(attrs) }}
+    class="{{ attrs.class }} {{ sectionStyles }} {% if props.padding %}{{paddingStyles[props.padding]}}{% else %}{{ paddingStyles.site }}{% endif %}">
+    {{ caller() | safe }}
+</section>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set sectionMeta = {
+    args: '{% call section(
+    props={
+        padding: boolean,
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+-
+-
+-
+"
+} %}

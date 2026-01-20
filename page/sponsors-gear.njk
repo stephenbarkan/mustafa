@@ -13,7 +13,9 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block pageContent %}
-    {% call container(props={size: "wide", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center px-site-inline-2 md:px-16"}) %}
-        {{ markdown({content: body, transform: true}, attrs={class:"w-full max-w-content"}) }}
+    {% call section({padding: "site"}) %}
+        {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center"}) %}
+            {{ markdown({content: body, transform: true}, attrs={class:"w-full"}) }}
+        {% endcall %}
     {% endcall %}
 {% endblock %}

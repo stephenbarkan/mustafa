@@ -6,6 +6,7 @@
 {% from "components/container.njk" import container %}
 {% from "components/textLockup.njk" import textLockup %}
 {% from "components/divider.njk" import divider %}
+{% from "components/section.njk" import section %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -19,12 +20,14 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call container({size: "content", type: "cols-1"}, {class:"px-site-inline-2"}) %}
-        {{ textLockup({
-            title: title,
-            elaboration: elaboration,
-            button: button
-        }) }}
+    {% call section({padding: "site"}) %}
+        {% call container({size: "content", type: "cols-1"}) %}
+            {{ textLockup({
+                title: title,
+                elaboration: elaboration,
+                button: button
+            }) }}
+        {% endcall %}
     {% endcall %}
 
     {% if showDivider %}

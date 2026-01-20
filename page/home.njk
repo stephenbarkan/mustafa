@@ -2,6 +2,7 @@
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
+{% from "components/section.njk" import section %}
 {% from "components/marquee.njk" import marquee %}
 {% from "components/button.njk" import button %}
 {% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
@@ -16,55 +17,48 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-
-    {% call container(props={size: "full", type: "cols-1"}, attrs={class:"overflow-x-hidden"}) %}
-        {% call marquee(
-            props={
-                speed: "30s",
-                pauseOnHover: false,
-                fadeEdges: false,
-                itemWrapperStyles: "flex gap-6 py-4 shrink-0 h-[382px] lg:h-[482px]"
-            },
-            attrs={class:"w-full"}
-        ) %}
-            {% for photo in data.photos %}
-                <div
-                    style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{data.photos.length}}*2)"
-                    class="flex animate-wave flex-col shrink-0 rounded-base border border-neutral-light overflow-hidden {% if photo.aspect ==="8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
-                    <img src="{{ photo.image }}" alt="{{ photo.altText }}">
-                </div>
-            {% endfor %}
+    {% call section({padding: "none"}) %}
+        {% call container(props={size: "full", type: "cols-1"}, attrs={class:"overflow-x-hidden"}) %}
+            {% call marquee(
+                props={
+                    speed: "30s",
+                    pauseOnHover: false,
+                    fadeEdges: false,
+                    itemWrapperStyles: "flex gap-6 py-4 shrink-0 h-[382px] lg:h-[482px]"
+                },
+                attrs={class:"w-full"}
+            ) %}
+                {% for photo in data.photos %}
+                    <div
+                        style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{data.photos.length}}*2)"
+                        class="flex animate-wave flex-col shrink-0 rounded-base border border-neutral-light overflow-hidden {% if photo.aspect ==="8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
+                        <img src="{{ photo.image }}" alt="{{ photo.altText }}">
+                    </div>
+                {% endfor %}
+            {% endcall %}
         {% endcall %}
     {% endcall %}
 
-    {% call container(
-        props={
-            size: "narrow",
-            type: "cols-1"
-        },
-        attrs={class:"px-site-inline-2"}
-    ) %}
-        <div class="grid lg:grid-cols-2 gap-4 lg:gap-6 relative ">
-            {% for link in navLinks %}
-                {{ button({type:"button", size:"base", variant:"neutral", label:link.label},{href:link.href}) }}
-            {% endfor %}
-            {{ sparkle({class:"fill-hue h-6 absolute left-1/2 top-1/2 -translate-1/2 hidden lg:block"})}}
-        </div>
+    {% call section({padding: "site"}) %}
+        {% call container(props={size: "narrow",type: "cols-1"}) %}
+            <div class="grid lg:grid-cols-2 gap-4 lg:gap-6 relative ">
+                {% for link in navLinks %}
+                    {{ button({type:"button", size:"base", variant:"neutral", label:link.label},{href:link.href}) }}
+                {% endfor %}
+                {{ sparkle({class:"fill-hue h-6 absolute left-1/2 top-1/2 -translate-1/2 hidden lg:block"})}}
+            </div>
+        {% endcall %}
     {% endcall %}
 
 {% endblock %}
 
 {% block footer %}
-    {% call container(
-        props={
-            size: "full",
-            type: "flex"
-        },
-        attrs={class:"px-site-inline-2 text-body-sm gap-6 relative border-t border-neutral-lighter bg-neutral-lighter hover:bg-neutral-light focus-within:bg-neutral-light focus-within:backdrop-blur-base pointer-coarse:bg-neutral-light pointer-coarse:backdrop-blur-base transition duration-600 backdrop-blur-sm flex-col xl:flex-row items-center justify-center pt-4 pb-8 xl:py-4 text-center gap-4 xl:gap-6 hover:bg-neutral-light hover:backdrop-blur-base"}
-    ) %}
-    <span>Copyright {{ helpers.currentYear() }} {{ global.siteTitle }}</span>
-    {{ sparkle({class:"fill-hue h-3.5 order-first xl:order-none"}) }}
-    <span>Website design and development by {{ button({type:"link", size:"inherit", variant:"action", label:"Chicago Design Cooperative"},{href:"https://drive.proton.me/urls/VVVEAKPAF0#I10aLlkKDSvR", target:"_blank"}) }}</span>
+    {% call section({padding: "site"}, {class:"border-t border-neutral-lighter bg-neutral-lighter hover:bg-neutral-light focus-within:bg-neutral-light focus-within:backdrop-blur-base pointer-coarse:bg-neutral-light pointer-coarse:backdrop-blur-base transition duration-600 backdrop-blur-sm hover:bg-neutral-light hover:backdrop-blur-base"}) %}
+        {% call container(props={size: "base",type: "flex"},attrs={class:"text-body-sm gap-6 relative flex-col xl:flex-row items-center justify-center pt-4 pb-8 xl:py-4 text-center gap-4 xl:gap-6"}) %}
+            <span>Copyright {{ helpers.currentYear() }} {{ global.siteTitle }}</span>
+            {{ sparkle({class:"fill-hue h-3.5 order-first xl:order-none"}) }}
+            <span>Website design and development by {{ button({type:"link", size:"inherit", variant:"action", label:"Chicago Design Cooperative"},{href:"https://drive.proton.me/urls/VVVEAKPAF0#I10aLlkKDSvR", target:"_blank"}) }}</span>
+        {% endcall %}
     {% endcall %}
 {% endblock footer %}
 

@@ -3,6 +3,7 @@
 {% from "components/toaster.njk" import toaster %}
 {% from "components/announcementBanner.njk" import announcementBanner with context %}
 {% from "components/container.njk" import container %}
+{% from "components/section.njk" import section %}
 {% from "components/button.njk" import button %}
 {% from "components/navbar.njk" import navbar with context %}
 {% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
@@ -87,7 +88,7 @@
         {% endblock %}
 
         {% if showTopLine %}
-            <div class="hidden lg:block z-(--z-top) w-screen h-site-inline border-b border-neutral-lighter"></div>
+            <div class="hidden lg:block z-(--z-top) w-screen h-lines border-b border-neutral-lighter"></div>
         {% endif %}
 
         {% if global.bannerContent %}
@@ -107,10 +108,10 @@
 
         {% block footer %}{% endblock %}
 
-        <div class="block z-(--z-top) fixed pointer-events-none border-x border-neutral-lighter h-dvh w-[calc(100vw-2*var(--space-site-inline))]"></div>
+        <div class="block z-(--z-top) fixed pointer-events-none border-x border-neutral-lighter h-dvh w-[calc(100vw-2*var(--space-lines))]"></div>
 
         {% if showBottomLine %}
-            <div class="block z-(--z-top) w-screen h-site-inline border-t border-neutral-lighter"></div>
+            <div class="block z-(--z-top) w-screen h-lines border-t border-neutral-lighter"></div>
         {% endif %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

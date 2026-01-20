@@ -16,19 +16,20 @@
 {% block content %}
 
 <h1 class="sr-only">My Offerings</h1>
+{% call section({padding: "site"}) %}
+    {% call container(props={size: "base", type: "cols-1"}) %}
+        <ul class="text-heading-lg flex flex-col items-center gap-8 lg:gap-16">
+            {% set joinerSparkle %}
+                {{ sparkle({class:"fill-hue h-4 md:h-6"}) }}
+            {% endset%}
+            {% set divider = joiner(joinerSparkle | safe) %}
 
-{% call container(props={size: "wide", type: "cols-1"}, attrs={class:"px-site-inline-2"}) %}
-    <ul class="text-heading-lg flex flex-col items-center gap-8 lg:gap-16">
-        {% set joinerSparkle %}
-            {{ sparkle({class:"fill-hue h-4 md:h-6"}) }}
-        {% endset%}
-        {% set divider = joiner(joinerSparkle | safe) %}
-
-        {% for offering in collections.offering %}
-            {{ divider() }}
-            <li>{{ button({type:"link", size:"inherit", variant:"action", label:offering.data.title },{href:offering.url, class:"text-center"}) }}</li>
-        {% endfor %}
-    </ul>
+            {% for offering in collections.offering %}
+                {{ divider() }}
+                <li>{{ button({type:"link", size:"inherit", variant:"action", label:offering.data.title },{href:offering.url, class:"text-center"}) }}</li>
+            {% endfor %}
+        </ul>
+    {% endcall %}
 {% endcall %}
 {% endblock %}
 

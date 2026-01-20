@@ -21,7 +21,6 @@
     --text-body-lg: var(--body-lg);
     --container-narrow: 56rem;
     --container-base: 91.5rem;
-    --container-wide: 100vw;
     --container-content: 53ch;
     --z-lowered: -10;
     --z-elevated: 20;
@@ -29,6 +28,7 @@
     --z-top: 40;
     --z-top-elevated: 50;
     --spacing-site-inline: var(--space-site-inline);
+    --spacing-lines: var(--space-lines);
     --spacing-indent: 1.5ch;
     --spacing-tube-sm: 4rem;
     --spacing-tube-base: 5rem;
@@ -409,23 +409,17 @@
   .h-full {
     height: 100%;
   }
+  .h-lines {
+    height: var(--space-lines);
+  }
   .h-site-inline {
     height: var(--space-site-inline);
   }
   .max-h-\[90dvh\] {
     max-height: 90dvh;
   }
-  .max-h-\[500px\] {
-    max-height: 500px;
-  }
-  .max-h-dvh--navbar {
-    max-height: calc(100dvh - var(--space-navbar-height));
-  }
   .max-h-full {
     max-height: 100%;
-  }
-  .max-h-screen {
-    max-height: 100vh;
   }
   .min-h-dvh {
     min-height: 100dvh;
@@ -451,6 +445,9 @@
   .w-\[50vw\] {
     width: 50vw;
   }
+  .w-\[calc\(100vw-2\*var\(--space-lines\)\)\] {
+    width: calc(100vw - 2 * var(--space-lines));
+  }
   .w-\[calc\(100vw-2\*var\(--space-site-inline\)\)\] {
     width: calc(100vw - 2 * var(--space-site-inline));
   }
@@ -462,9 +459,6 @@
   }
   .w-\[var\(--container-narrow\)\] {
     width: var(--container-narrow);
-  }
-  .w-\[var\(--container-wide\)\] {
-    width: var(--container-wide);
   }
   .w-full {
     width: 100%;
@@ -492,6 +486,9 @@
   }
   .max-w-content {
     max-width: 53ch;
+  }
+  .max-w-cqi {
+    max-width: 100cqi;
   }
   .max-w-full {
     max-width: 100%;
@@ -670,6 +667,9 @@
   }
   .self-center {
     align-self: center;
+  }
+  .self-start {
+    align-self: flex-start;
   }
   .justify-self-center {
     justify-self: center;
@@ -859,11 +859,14 @@
   .px-8 {
     padding-inline: calc(var(--spacing) * 8);
   }
+  .px-lines {
+    padding-inline: var(--space-lines);
+  }
   .px-site-inline {
     padding-inline: var(--space-site-inline);
   }
-  .px-site-inline-2 {
-    padding-inline: calc(var(--space-site-inline) * 2);
+  .px-site-inline--lines {
+    padding-inline: calc(var(--space-site-inline) - var(--spacing-lines));
   }
   .py-2 {
     padding-block: calc(var(--spacing) * 2);
@@ -889,8 +892,8 @@
   .py-site-block {
     padding-block: var(--space-site-block);
   }
-  .py-site-inline-2 {
-    padding-block: calc(var(--space-site-inline) * 2);
+  .py-site-inline {
+    padding-block: var(--space-site-inline);
   }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
@@ -1525,11 +1528,6 @@
       height: 482px;
     }
   }
-  .lg\:max-h-\[500px\] {
-    @media (width >= 56rem) {
-      max-height: 500px;
-    }
-  }
   .lg\:grid-cols-2 {
     @media (width >= 56rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1569,11 +1567,6 @@
   .lg\:p-24 {
     @media (width >= 56rem) {
       padding: calc(var(--spacing) * 24);
-    }
-  }
-  .lg\:px-site-inline-2 {
-    @media (width >= 56rem) {
-      padding-inline: calc(var(--space-site-inline) * 2);
     }
   }
   .lg\:py-24 {
@@ -1663,6 +1656,11 @@
       padding-block: calc(var(--spacing) * 4);
     }
   }
+  .xl\:py-6 {
+    @media (width >= 70rem) {
+      padding-block: calc(var(--spacing) * 6);
+    }
+  }
   .xl\:py-site-inline {
     @media (width >= 70rem) {
       padding-block: var(--space-site-inline);
@@ -1701,10 +1699,12 @@
   --button-sm: 26px;
   --button-base: 29px;
   --button-lg: 32px;
-  --space-site-inline: 0.5rem;
+  --space-site-inline: 1rem;
+  --space-lines: 0.25rem;
   --space-site-block: 4rem;
   @media screen and (min-width: 36rem) {
-    --space-site-inline: 0.75rem;
+    --space-site-inline: 1.5rem;
+    --space-lines: 0.5rem;
   }
   @media screen and (min-width: 44rem) {
     --body-sm: 20px;
@@ -1718,7 +1718,8 @@
   }
   @media screen and (min-width: 56rem) {
     --space-site-block: 6rem;
-    --space-site-inline: 1.5rem;
+    --space-site-inline: 3.5rem;
+    --space-lines: 1.5rem;
   }
 }
 @font-face {

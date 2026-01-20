@@ -14,11 +14,13 @@
   --button-base: 29px;
   --button-lg: 32px;
 
-  --space-site-inline: 0.5rem;
+  --space-site-inline: 1rem;
+  --space-lines: 0.25rem;
   --space-site-block: 4rem;
 
   @media screen and (min-width: 36rem) {
-    --space-site-inline: 0.75rem;
+    --space-site-inline: 1.5rem;
+    --space-lines: 0.5rem;
   }
 
   @media screen and (min-width: 44rem) {
@@ -37,7 +39,8 @@
   /* > lg */
   @media screen and (min-width: 56rem) {
     --space-site-block: 6rem;
-    --space-site-inline: 1.5rem;
+    --space-site-inline: 3.5rem;
+    --space-lines: 1.5rem;
   }
 }
 
@@ -102,7 +105,8 @@
   /* Spacing --------------------------------------------------------------------------------------------------------------------------- */
 
   --spacing-site-inline: var(--space-site-inline);
-  --spacing-site-inline-2: calc(var(--space-site-inline) * 2);
+  --spacing-lines: var(--space-lines);
+  --spacing-site-inline--lines: calc(var(--space-site-inline) - var(--spacing-lines));
   --spacing-navbar-height: var(--space-navbar-height);
   --spacing-site-block: var(--space-site-block);
   --spacing-indent: 1.5ch;

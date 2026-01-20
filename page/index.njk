@@ -19,12 +19,14 @@ permalink: /index.html
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-{% call container({type:"cols-1", size:"narrow"},{class:"justify-items-center gap-16 px-site-inline"}) %}
-    <div class="flex items-center justify-center flex-col gap-8 w-full">
-        {{ logo({class:"fill-neutral max-w-[760px]"}) }}
-        <h1 class="sr-only">{{ global.siteTitle }}</h1>
-        <p class="text-hue text-center text-heading-base text-balance">{{ global.siteDescription }}</p>
-    </div>
-    {{ button({type:"button", size:"lg", variant:"action", label:"Enter site"},{href:"/home"}) }}
+{% call section({padding: "site"}) %}
+    {% call container({type:"cols-1", size:"narrow"},{class:"justify-items-center gap-16"}) %}
+        <div class="flex items-center justify-center flex-col gap-8 w-full">
+            {{ logo({class:"fill-neutral max-w-[760px]"}) }}
+            <h1 class="sr-only">{{ global.siteTitle }}</h1>
+            <p class="text-hue text-center text-heading-base text-balance">{{ global.siteDescription }}</p>
+        </div>
+        {{ button({type:"button", size:"lg", variant:"action", label:"Enter site"},{href:"/home"}) }}
+    {% endcall %}
 {% endcall %}
 {% endblock %}
