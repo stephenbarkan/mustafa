@@ -2,6 +2,8 @@
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
+{# {% from "components/**.njk" import ** %} #}
+
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set data = _pageTemplatePage %}
@@ -23,7 +25,7 @@
 
 {% block pageContent %}
     {% call section({padding: "site"}) %}
-        {% call container(props={size: "wide", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center md:px-16"}) %}
+        {% call container(props={size: "base", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center md:px-16"}) %}
             {# {{ markdown({content: body, transform: true}, attrs={class:"w-full max-w-content"}) }} #}
         {% endcall %}
     {% endcall %}
