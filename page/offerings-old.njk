@@ -1,0 +1,46 @@
+---
+eleventyExcludeFromCollections: true
+---
+
+{% extends "layouts/base.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/button.njk" import button %}
+{% from "assets.njk" import logo, sparkle, blobOfferingsLeft, blobOfferingsRight %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set mainStyles = "py-site-block gap-site-block" %}
+{% set showBottomLine = true %}
+{% set showNavbar = true %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block content %}
+
+<h1 class="sr-only">My Offerings</h1>
+{% call section({padding: "site"}) %}
+    {% call container(props={size: "base", type: "cols-1"}) %}
+        <ul class="text-heading-lg flex flex-col items-center gap-8 lg:gap-16">
+            {% set joinerSparkle %}
+                {{ sparkle({class:"fill-hue h-4 md:h-6"}) }}
+            {% endset%}
+            {% set divider = joiner(joinerSparkle | safe) %}
+
+            {% for offering in collections.offering %}
+                {{ divider() }}
+                <li>{{ button({type:"link", size:"inherit", variant:"action", label:offering.data.title },{href:offering.url, class:"text-center"}) }}</li>
+            {% endfor %}
+        </ul>
+    {% endcall %}
+{% endcall %}
+{% endblock %}
+
+{% block blobs %}
+    {{ blobOfferingsLeft({class:"hidden lg:block top-0 left-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
+    {{ blobOfferingsRight({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
+
+    {{ blobDefaultTop({class:"lg:hidden top-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+    {{ blobDefaultBottom({class:"lg:hidden bottom-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+{% endblock %}

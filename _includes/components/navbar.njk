@@ -62,18 +62,6 @@
 <nav
     data-navbar
     x-ref="navbar"
-    x-data="{
-        setNavbarHidden() {
-            const currentScrollY = window.scrollY;
-            if (currentScrollY > lastScrollY && hasScrolled) {
-                navbarHidden = true
-            } else if (currentScrollY < lastScrollY + 100  && hasScrolled) {
-                navbarHidden = false
-            }
-
-            lastScrollY = currentScrollY
-        }
-    }"
     :class="{'-translate-y-full' : navbarHidden, '{{ onScrollStyles }}' : hasScrolled | !scrollable }"
     @scroll.window="setNavbarHidden()"
     {{ loopAttrs(attrs) }}

@@ -3,10 +3,6 @@
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
 
-{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% macro carousel(props={}, attrs={}) %}
-
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {# Theme styles ----------- #}
@@ -29,7 +25,9 @@
 } %}
 {% set buttonStyles = "grow" %}
 
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro carousel(props={}, attrs={}) %}
 
 <div
     data-carousel
@@ -55,18 +53,9 @@
     {{ loopAttrs(attrs) }}
     class="@container relative w-full flex flex-col grow {{ attrs.class }} {{ carouselStyles }}">
 
-    <div class="relative grid grid-overlap overflow-hidden grow ">
+    <div class="relative grid grid-overlap overflow-hidden grow">
         {% for slide in props.slides %}
-            <figure
-                x-show="currentSlideIndex == {{ loop.index }}"
-                x-transition.opacity.duration.600ms
-                {{ loopAttrs(attrs) }}
-                class="flex flex-col {{ slideStyles }}">
-                <div class="grow {{ slideImageStyles }}">
-                    <img src="{{ slide.image }}" alt="{{ slide.caption }}" class="h-full w-full object-cover">
-                </div>
-                {% if slide.caption %}<figcaption class="{{ slideCaptionStyles }}">{{slide.caption}}</figcaption>{% endif %}
-            </figure>
+            {{ carouselIFrame({loop:loop, embed:slide.embed, title:slide.title }) }}
         {% endfor %}
     </div>
     <div class="flex {{ controlsStyles }}">
@@ -122,7 +111,7 @@
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% macro carouselSlide(props={}, attrs={}) %}
+{% macro carouselImage(props={}, attrs={}) %}
 
     <div
         x-show="currentSlideIndex == {{ props.loop.index }}"
@@ -133,6 +122,29 @@
     </div>
 
 {% endmacro %}
+
+{% macro carouselIFrame(props={}, attrs={}) %}
+    <figure
+        x-show="currentSlideIndex == {{ props.loop.index }}"
+        x-transition.opacity.duration.600ms
+        {{ loopAttrs(attrs) }}
+        class="flex flex-col {{ slideStyles }}">
+        <div class="grow {{ slideImageStyles }}">
+            <iframe
+                class="h-full w-full object-cover"
+                src="https://www.youtube.com/embed/{{ props.embed }}"
+                title="{{ props.title }}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        </div>
+        {% if props.title %}<figcaption class="{{ slideCaptionStyles }}">{{ props.title }}</figcaption>{% endif %}
+    </figure>
+{% endmacro %}
+
+
 
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 

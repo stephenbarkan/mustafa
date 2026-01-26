@@ -51,7 +51,9 @@
                             {% for slide in photos %}
                                 {% call carouselSlide({loop:loop}) %}
                                     <figure>
-                                        <div class="border border-neutral-lighter bg-neutral rounded-square overflow-hidden"><img class="max-w-full shrink" src="{{ slide.image }}" alt="{{ slide.caption }}"></div>
+                                        <div class="border border-neutral-lighter bg-neutral rounded-square overflow-hidden">
+                                            <img class="max-w-full shrink" src="{{ slide.image }}" alt="{{ slide.caption }}">
+                                        </div>
                                         <figcaption>{{slide.caption}} </figcaption>
                                     </figure>
                                 {% endcall %}

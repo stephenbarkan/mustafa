@@ -37,8 +37,8 @@
             scrollable: true,
             navbarHidden: false,
             navbarHeight: 0,
-            hasScrolled: false,
             lastScrollY: window.scrollY,
+            hasScrolled: false,
             setHasScrolled() {
                 if (this.lastScrollY > this.navbarHeight) {
                     this.hasScrolled = true
@@ -48,13 +48,24 @@
             },
             setNavbarHeight() {
                 setTimeout(() => {
-                    this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
                     if (this.navbarHidden) {
                         this.navbarHeight = 0;
+                    } else {
+                        this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
                     }
-                }, 500);
+                }, 10);
             },
-            init() {
+            setNavbarHidden() {
+                const currentScrollY = window.scrollY;
+                if (currentScrollY > this.lastScrollY && this.hasScrolled) {
+                    this.navbarHidden = true
+                } else if (currentScrollY < this.lastScrollY + 100  && this.hasScrolled) {
+                    this.navbarHidden = false
+                }
+                this.setNavbarHeight()
+                this.lastScrollY = currentScrollY
+            },
+            init() { {# sets navbar height on js load #}
                 this.setNavbarHeight()
             }
         }"
