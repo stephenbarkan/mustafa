@@ -6,7 +6,7 @@ eleventyExcludeFromCollections: true
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/newMarquee.njk" import newMarquee %}
+{% from "components/marquee.njk" import marquee %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -30,9 +30,9 @@ eleventyExcludeFromCollections: true
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block pageContent %}
-    {% call section({padding: "none"}) %}
+    {# {% call section({padding: "none"}) %}
         {% call container(props={size: "full", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center"}) %}
-            {% call newMarquee({
+            {% call marquee({
                 mask: false,
                 itemGap:"gap-6",
                 duration: "45s"
@@ -48,5 +48,5 @@ eleventyExcludeFromCollections: true
                 {% endfor %}
             {% endcall %}
         {% endcall %}
-    {% endcall %}
+    {% endcall %} #}
 {% endblock %}

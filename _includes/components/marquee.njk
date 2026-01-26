@@ -9,44 +9,45 @@
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
+{# Theme styles ----------- #}
+
+{% set marqueeStyles = "overflow-hidden select-none" %}
+{% set maskStyles = "mask-x-from-80% mask-x-to-100%" %}
+
+{# Other ------------------ #}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <div data-marquee
-    class="relative {{ attrs.class }}"
     {{ loopAttrs(attrs) }}
->
-    {% if props.fadeEdges %}
-        <div aria-hidden="true" class="absolute inset-y-0 z-(--z-elevated) w-[5%] start-0 bg-linear-to-r from-surface to-transparent"></div>
-        <div aria-hidden="true" class="absolute inset-y-0 z-(--z-elevated) w-[5%] end-0 bg-linear-to-l from-surface to-transparent"></div>
-    {% endif %}
-
-    <div
-        x-ref="marqueeTrack"
-        style="
-            --px-width: tan(atan2(1512px, 1px));
-            --marquee-duration: calc(var(--px-width) / 1500 * {{ props.speed }});
-            --animate-duration: var(--marquee-duration);
-        "
-        class="relative flex animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}"
-    >
-        <div x-ref="marqueeList" class="{{ props.itemWrapperStyles }}">
-            {{ caller() | safe }}
-            {{ caller() | safe }}
-        </div>
-    </div>
+    style="--gap: {{ props.itemGap | replace("gap-", "") * 4 }}px" {# used to calculate the marquee animation #}
+    class="
+        flex w-full
+        {{ props.itemGap }}
+        {{ attrs.class }}
+        {{ marqueeStyles }}
+        {% if props.mask %}{{ maskStyles }}{% endif %}
+        ">
+    <ul class="shrink-0 flex {{ props.itemGap }} justify-around min-w-full animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
+        {{ caller() | safe }}
+    </ul>
+    <ul aria-hidden="true" class="shrink-0 flex {{ props.itemGap }} justify-around min-w-full animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
+        {{ caller() | safe }}
+    </ul>
 </div>
-
 {% endmacro %}
+
+
 
 {# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
 
 {% set marqueeMeta = {
     args: '{% call marquee(
     props={
-        speed: "25s",
+        duration: "45s",
+        itemGap: "gap-6"
+        mask: boolean,
         pauseOnHover: boolean,
-        fadeEdges: boolean,
-        itemWrapperStyles:""
     },
     attrs={}
 ) %}
