@@ -1,4 +1,4 @@
-{% extends "layouts/page.njk" %}
+{% extends "layouts/pageTwoColumn.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
@@ -9,32 +9,17 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set data = offeringsPage %}
-{% set mainStyles = "" %}
-{% set showDivider = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% block pageContent %}
-    {% call section({padding: "lines"}, {class:""}) %}
-        {% call container(props={size: "full", type: "cols-2"}, attrs={class:"relative"}) %}
-            <div class="flex flex-col gap-12 py-16 px-site-inline--lines w-full max-w-content self-center">
-                {{ markdown({content: data.body, transform: true}, attrs={class:"w-full"}) }}
-                {{ button(props={type: "button", size: "base", variant: "action", label: "Get in contact"},attrs={href:"/contact"}) }}
-            </div>
-            <div class="xl:h-dvh--navbar h-[75dvh] transition-all duration-600 xl:sticky top-navbar-height flex shrink-0 flex-col max-xl:border-t border-neutral-lighter">
-                <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col max-h-full">
-                    {{ carousel(
-                        props={
-                            slides: data.videos,
-                            indicators: true
-                        },
-                        attrs={class:"grow max-h-full"}
-                    ) }}
-                </div>
-            </div>
-            {{ divider({direction:"vertical"},{class:"hidden xl:block absolute top-0 left-1/2 h-full"}) }}
-        {% endcall %}
-    {% endcall %}
+{% block panelContent %}
+    {{ carousel(
+        props={
+            slides: data.figures,
+            indicators: true
+        },
+        attrs={class:"grow max-h-full"}
+    ) }}
 {% endblock %}
 
 {% block blobs %}

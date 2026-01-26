@@ -1,26 +1,25 @@
-{% extends "layouts/pageTwoColumn.njk" %}
+{% extends "layouts/page.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/markdown.njk" import markdown %}
-{% from "components/carousel.njk" import carousel %}
-{% from "assets.njk" import logo, sparkle, blobOffering %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set data = aboutPage %}
-{% set colReverse = true %}
+{% set showDivider = true %}
+{% set mainStyles = "pb-32" %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% block panelContent %}
+
+{% block pageContent %}
+    {% call section({padding: "site"},{class:"py-section"}) %}
+        {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 md:gap-16 items-center justify-items-center"}) %}
             <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden self-start max-xl:row-start-2">
                 <img class="max-w-full shrink" src="{{ aboutPage.photo }}" alt="{{ slide.caption }}">
             </div>
-{% endblock %}
-
-{% block blobs %}
-    {{ blobOffering({class:"hidden xl:block top-0 left-0 rotate-180 bottom-0 h-dvh fixed"}) }}
-    {{ blobDefaultTop({class:"xl:hidden top-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
-    {{ blobDefaultBottom({class:"xl:hidden bottom-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+            {{ markdown({content: data.body, transform: true}, attrs={class:"w-full max-w-content"}) }}
+        {% endcall %}
+    {% endcall %}
 {% endblock %}

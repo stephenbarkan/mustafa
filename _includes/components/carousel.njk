@@ -62,7 +62,7 @@
 
     <div class="relative grid grid-overlap overflow-hidden grow">
         {% for slide in props.slides %}
-            {{ carouselIFrame({loop:loop, embed:slide.embed, title:slide.title }) }}
+            {{ carouselIFrame({loop:loop, embed:slide.image, title:slide.caption }) }}
         {% endfor %}
         <div data-loader class="animate-spin text-neutral text-body-lg place-self-center z-(--z-lowered)">{{ icon({icon:"progress_activity"}) }}</div>
     </div>

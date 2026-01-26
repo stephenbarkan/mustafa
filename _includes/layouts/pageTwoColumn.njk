@@ -1,0 +1,33 @@
+{% extends "layouts/page.njk" %}
+
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "components/markdown.njk" import markdown %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set cta = data.cta %}
+{% set showDivider = true %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% block pageContent %}
+    {% call section({padding: "lines"}, {class:""}) %}
+        {% call container(props={size: "full", type: "cols-2"}, attrs={class:"relative grid-flow-dense"}) %}
+
+            {# content #}
+            <div class="flex flex-col gap-12 py-16 px-site-inline--lines w-full max-w-content self-center {% if colReverse %}col-2{% endif %}">
+                {{ markdown({content: data.body, transform: true}, attrs={class:"w-full"}) }}
+                {% if cta %}{{ button(props=cta.props,attrs=cta.attrs) }}{% endif %}
+            </div>
+
+            {# panel #}
+            <div class="xl:h-dvh--navbar h-[75dvh] transition-all duration-600 xl:sticky top-navbar-height flex shrink-0 flex-col max-xl:border-t border-neutral-lighter {% if colReverse %}col-1{% endif %}">
+                <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col max-h-full">
+                    {% block panelContent %}{% endblock %}
+                </div>
+            </div>
+            {{ divider({direction:"vertical"},{class:"hidden xl:block absolute top-0 left-1/2 h-full"}) }}
+        {% endcall %}
+    {% endcall %}
+{% endblock %}
