@@ -20,12 +20,12 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-    {% call section({padding: "site"}) %}
+    {% call section({padding: "site"}, {class:"py-section"}) %}
         {% call container({size: "content", type: "cols-1"}) %}
             {{ textLockup({
                 title: title,
                 elaboration: elaboration,
-                button: button
+                button: data.button
             }) }}
         {% endcall %}
     {% endcall %}

@@ -3,19 +3,28 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/markdown.njk" import markdown %}
+{% from "assets.njk" import logo, sparkle, blobOfferingsLeft, blobOfferingsRight %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set data = sponsorsGearPage %}
-{% set mainStyles = "pt-24 pb-12 gap-12 lg:pt-40 lg:pb-56" %}
+{% set mainStyles = "pb-32" %}
 {% set showDivider = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block pageContent %}
-    {% call section({padding: "site"}) %}
+    {% call section({padding: "site"}, {class:"py-section"}) %}
         {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center"}) %}
             {{ markdown({content: body, transform: true}, attrs={class:"w-full"}) }}
         {% endcall %}
     {% endcall %}
+{% endblock %}
+
+{% block blobs %}
+    {{ blobOfferingsLeft({class:"hidden lg:block top-0 left-0 bottom-0 h-dvh fixed max-w-[15vw]"}) }}
+    {{ blobOfferingsRight({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed max-w-[15vw]"}) }}
+
+    {{ blobDefaultTop({class:"lg:hidden top-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+    {{ blobDefaultBottom({class:"lg:hidden bottom-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
 {% endblock %}

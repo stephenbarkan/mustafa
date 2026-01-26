@@ -1,46 +1,50 @@
----
-eleventyExcludeFromCollections: true
----
-
 {% extends "layouts/base.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/button.njk" import button %}
-{% from "assets.njk" import logo, sparkle, blobOfferingsLeft, blobOfferingsRight %}
+{% from "components/markdown.njk" import markdown %}
+{% from "components/carousel.njk" import carousel %}
+{% from "components/divider.njk" import divider %}
+{% from "assets.njk" import logo, sparkle, blobOffering %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set mainStyles = "py-site-block gap-site-block" %}
+{% set data = offeringPage %}
+{% set mainStyles = "" %}
 {% set showBottomLine = true %}
 {% set showNavbar = true %}
+
+{% set previousOffering = collections.offering | getPreviousCollectionItem %}
+{% set nextOffering = collections.offering | getNextCollectionItem %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
-
-<h1 class="sr-only">My Offerings</h1>
-{% call section({padding: "site"}) %}
-    {% call container(props={size: "base", type: "cols-1"}) %}
-        <ul class="text-heading-lg flex flex-col items-center gap-8 lg:gap-16">
-            {% set joinerSparkle %}
-                {{ sparkle({class:"fill-hue h-4 md:h-6"}) }}
-            {% endset%}
-            {% set divider = joiner(joinerSparkle | safe) %}
-
-            {% for offering in collections.offering %}
-                {{ divider() }}
-                <li>{{ button({type:"link", size:"inherit", variant:"action", label:offering.data.title },{href:offering.url, class:"text-center"}) }}</li>
-            {% endfor %}
-        </ul>
+{% call section({padding: "lines"}) %}
+        {% call container(props={size: "full", type: "cols-2"}, attrs={class:"relative"}) %}
+            <div class="flex flex-col gap-12 py-16 px-site-inline--lines w-full max-w-content self-center">
+                <h1 class="text-heading-lg text-hue text-pretty">{{ data.title }}</h1>
+                {{ markdown({content: data.body, transform: true}, attrs={class:"w-full"}) }}
+            </div>
+            <div class="xl:h-dvh--navbar h-[75dvh] transition-all duration-600 xl:sticky top-navbar-height flex shrink-0 flex-col max-xl:border-t border-neutral-lighter">
+                <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col max-h-full">
+                    {{ carousel(
+                        props={
+                            slides: data.videos,
+                            indicators: true
+                        },
+                        attrs={class:"grow max-h-full"}
+                    ) }}
+                </div>
+            </div>
+            {{ divider({direction:"vertical"},{class:"hidden xl:block absolute top-0 left-1/2 h-full"}) }}
+        {% endcall %}
     {% endcall %}
-{% endcall %}
 {% endblock %}
 
 {% block blobs %}
-    {{ blobOfferingsLeft({class:"hidden lg:block top-0 left-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
-    {{ blobOfferingsRight({class:"hidden lg:block top-0 right-0 bottom-0 h-dvh fixed max-w-[25vw]"}) }}
-
-    {{ blobDefaultTop({class:"lg:hidden top-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
-    {{ blobDefaultBottom({class:"lg:hidden bottom-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+    {{ blobOffering({class:"hidden xl:block top-0 right-0 bottom-0 h-dvh fixed"}) }}
+    {{ blobDefaultTop({class:"xl:hidden top-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
+    {{ blobDefaultBottom({class:"xl:hidden bottom-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
 {% endblock %}

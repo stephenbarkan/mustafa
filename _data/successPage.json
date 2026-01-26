@@ -1,4 +1,15 @@
 {
   "title": "Success!",
-  "elaboration": "I'll get back to you soon."
+  "elaboration": "I'll get back to you soon.",
+  "button": {
+    "props": {
+      "type": "button",
+      "size": "base",
+      "variant": "action",
+      "label": "Return home"
+    },
+    "attrs": {
+      "href": "/home"
+    }
+  }
 }

@@ -18,7 +18,7 @@
     --font-display: MysterionBohemian, serif;
     --font-body: Fraunces, serif;
     --text-body-base: var(--body-base);
-    --text-body-base--line-height: 1.55;
+    --text-body-base--line-height: 1.45;
     --text-body-lg: var(--body-lg);
     --text-body-lg--line-height: 1.35;
     --container-narrow: 56rem;
@@ -263,9 +263,6 @@
   .left-site-inline {
     left: var(--space-site-inline);
   }
-  .z-\(--top\) {
-    z-index: var(--top);
-  }
   .z-\(--z-elevated\) {
     z-index: var(--z-elevated);
   }
@@ -362,12 +359,6 @@
   .aspect-\[8\/5\] {
     aspect-ratio: 8/5;
   }
-  .aspect-square {
-    aspect-ratio: 1 / 1;
-  }
-  .aspect-square {
-    aspect-ratio: 1;
-  }
   .size-3 {
     width: calc(var(--spacing) * 3);
     height: calc(var(--spacing) * 3);
@@ -389,6 +380,9 @@
   }
   .h-\[1\.3em\] {
     height: 1.3em;
+  }
+  .h-\[20vh\] {
+    height: 20vh;
   }
   .h-\[25vh\] {
     height: 25vh;
@@ -473,6 +467,15 @@
   }
   .w-screen {
     width: 100vw;
+  }
+  .max-w-\[2-vw\] {
+    max-width: 2-vw;
+  }
+  .max-w-\[15vw\] {
+    max-width: 15vw;
+  }
+  .max-w-\[20vw\] {
+    max-width: 20vw;
   }
   .max-w-\[25vw\] {
     max-width: 25vw;
@@ -899,8 +902,14 @@
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
   }
+  .py-24 {
+    padding-block: calc(var(--spacing) * 24);
+  }
   .py-navbar-height {
     padding-block: var(--space-navbar-height);
+  }
+  .py-section {
+    padding-block: var(--space-section);
   }
   .py-site-block {
     padding-block: var(--space-site-block);
@@ -911,12 +920,6 @@
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
   }
-  .pt-12 {
-    padding-top: calc(var(--spacing) * 12);
-  }
-  .pt-24 {
-    padding-top: calc(var(--spacing) * 24);
-  }
   .pr-2 {
     padding-right: calc(var(--spacing) * 2);
   }
@@ -925,6 +928,15 @@
   }
   .pb-12 {
     padding-bottom: calc(var(--spacing) * 12);
+  }
+  .pb-24 {
+    padding-bottom: calc(var(--spacing) * 24);
+  }
+  .pb-28 {
+    padding-bottom: calc(var(--spacing) * 28);
+  }
+  .pb-32 {
+    padding-bottom: calc(var(--spacing) * 32);
   }
   .pb-\[calc\(env\(safe-area-inset-bottom\)\+var\(--announcementBannerBlockSize\)\)\] {
     padding-bottom: calc(env(safe-area-inset-bottom) + var(--announcementBannerBlockSize));
@@ -966,7 +978,7 @@
   }
   .text-body-base {
     font-size: var(--body-base);
-    line-height: var(--tw-leading, 1.55);
+    line-height: var(--tw-leading, 1.45);
   }
   .text-body-lg {
     font-size: var(--body-lg);
@@ -994,11 +1006,41 @@
   }
   .text-heading-lg {
     font-size: var(--heading-lg);
-    line-height: var(--tw-leading, 0.9);
+    line-height: var(--tw-leading, 0.85);
   }
   .text-sm {
     font-size: var(--text-sm);
     line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-base {
+    line-height: var(--text-base--line-height);
+  }
+  .text-body-base {
+    line-height: 1.45;
+  }
+  .text-body-lg {
+    line-height: 1.35;
+  }
+  .text-body-sm {
+    line-height: 1.35;
+  }
+  .text-button-base {
+    line-height: 0.9;
+  }
+  .text-button-lg {
+    line-height: 0.9;
+  }
+  .text-button-sm {
+    line-height: 0.9;
+  }
+  .text-heading-base {
+    line-height: 1.3;
+  }
+  .text-heading-lg {
+    line-height: 0.85;
+  }
+  .text-sm {
+    line-height: var(--text-sm--line-height);
   }
   .text-body-base {
     font-weight: 400;
@@ -1145,12 +1187,6 @@
   .select-none {
     -webkit-user-select: none;
     user-select: none;
-  }
-  .animate-duration-1 {
-    --animate-duration: calc(1 * 1s);
-  }
-  .animate-duration-1000 {
-    --animate-duration: calc(1000 * 1s);
   }
   .\*\:ml-\[1\.25ch\] {
     :is(& > *) {
@@ -1571,15 +1607,10 @@
       gap: calc(var(--spacing) * 16);
     }
   }
-  .lg\:gap-24 {
+  .lg\:border-x {
     @media (width >= 56rem) {
-      gap: calc(var(--spacing) * 24);
-    }
-  }
-  .lg\:border {
-    @media (width >= 56rem) {
-      border-style: var(--tw-border-style);
-      border-width: 1px;
+      border-inline-style: var(--tw-border-style);
+      border-inline-width: 1px;
     }
   }
   .lg\:p-12 {
@@ -1592,19 +1623,19 @@
       padding: calc(var(--spacing) * 24);
     }
   }
-  .lg\:py-24 {
-    @media (width >= 56rem) {
-      padding-block: calc(var(--spacing) * 24);
-    }
-  }
   .lg\:py-32 {
     @media (width >= 56rem) {
       padding-block: calc(var(--spacing) * 32);
     }
   }
-  .lg\:pt-40 {
+  .lg\:pb-32 {
     @media (width >= 56rem) {
-      padding-top: calc(var(--spacing) * 40);
+      padding-bottom: calc(var(--spacing) * 32);
+    }
+  }
+  .lg\:pb-48 {
+    @media (width >= 56rem) {
+      padding-bottom: calc(var(--spacing) * 48);
     }
   }
   .lg\:pb-56 {
@@ -1723,8 +1754,9 @@
   --button-base: 27px;
   --button-lg: 32px;
   --space-site-inline: 1rem;
-  --space-lines: 0.25rem;
+  --space-lines: 0.35rem;
   --space-site-block: 4rem;
+  --space-section: 4rem;
   --space-tube-sm: 4rem;
   --space-tube-base: 4.5rem;
   --space-tube-lg: 5.25rem;
@@ -1749,6 +1781,7 @@
     --space-site-block: 6rem;
     --space-site-inline: 3.5rem;
     --space-lines: 1.5rem;
+    --space-section: 6rem;
   }
 }
 @font-face {

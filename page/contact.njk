@@ -11,9 +11,8 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set data = contactPage %}
-{% set mainStyles = "pt-24 pb-12 gap-12 lg:pt-40 lg:pb-56 lg:gap-24" %}
-{% set mainStyles = "pt-12 gap-8 lg:py-24" %}
-{% set showDivider = false %}
+{% set mainStyles = "" %}
+{% set showDivider = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -33,7 +32,20 @@
                     action="/success"
                     netlify
                     tabindex="0"
-                    class="w-full gap-16 grid border-y lg:border border-neutral-lighter bg-neutral-light backdrop-blur-base py-16 px-8 sm:px-16 lg:p-24">
+                    class="
+                      w-full
+                      gap-16
+                      grid
+                      border-b
+                      lg:border-x
+                      border-neutral-lighter
+                      bg-neutral-light
+                      backdrop-blur-base
+                      py-16
+                      px-8
+                      sm:px-16
+                      lg:p-24
+                    ">
                     {{ input(
                         props={
                             name: "name",

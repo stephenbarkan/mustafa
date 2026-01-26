@@ -1,31 +1,25 @@
-{% extends "layouts/base.njk" %}
+{% extends "layouts/page.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/button.njk" import button %}
 {% from "components/markdown.njk" import markdown %}
 {% from "components/carousel.njk" import carousel %}
-{% from "components/divider.njk" import divider %}
 {% from "assets.njk" import logo, sparkle, blobOffering %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set data = offeringPage %}
+{% set data = offeringsPage %}
 {% set mainStyles = "" %}
-{% set showBottomLine = true %}
-{% set showNavbar = true %}
-
-{% set previousOffering = collections.offering | getPreviousCollectionItem %}
-{% set nextOffering = collections.offering | getNextCollectionItem %}
+{% set showDivider = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% block content %}
-{% call section({padding: "lines"}) %}
+{% block pageContent %}
+    {% call section({padding: "lines"}, {class:""}) %}
         {% call container(props={size: "full", type: "cols-2"}, attrs={class:"relative"}) %}
             <div class="flex flex-col gap-12 py-16 px-site-inline--lines w-full max-w-content self-center">
-                <h1 class="text-heading-lg text-hue text-pretty">{{ data.title }}</h1>
                 {{ markdown({content: data.body, transform: true}, attrs={class:"w-full"}) }}
+                {{ button(props={type: "button", size: "base", variant: "action", label: "Get in contact"},attrs={href:"/contact"}) }}
             </div>
             <div class="xl:h-dvh--navbar h-[75dvh] transition-all duration-600 xl:sticky top-navbar-height flex shrink-0 flex-col max-xl:border-t border-neutral-lighter">
                 <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col max-h-full">

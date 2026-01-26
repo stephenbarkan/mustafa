@@ -8,13 +8,13 @@
 
 {% set data = aboutPage %}
 {% set showDivider = true %}
-{% set mainStyles = "pt-24 pb-12 gap-12 lg:pt-40 lg:pb-56" %}
+{% set mainStyles = "pb-32" %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 
 {% block pageContent %}
-    {% call section({padding: "site"}) %}
+    {% call section({padding: "site"},{class:"py-section"}) %}
         {% call container(props={size: "wide", type: "cols-2"}, attrs={class:"gap-12 md:gap-16 items-center justify-items-center"}) %}
             <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden self-start max-xl:row-start-2">
                 <img class="max-w-full shrink" src="{{ aboutPage.photo }}" alt="{{ slide.caption }}">
