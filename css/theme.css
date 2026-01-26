@@ -2,21 +2,25 @@
   color-scheme: dark;
   --icon-size: 1.45em;
 
-  --body-sm: 18px;
-  --body-base: 19.5px;
-  --body-lg: 20.5px;
+  --body-sm: 17.5px;
+  --body-base: 19px;
+  --body-lg: 20px;
 
   --heading-sm: 21px;
   --heading-base: 24px;
   --heading-lg: 60px;
 
-  --button-sm: 26px;
-  --button-base: 29px;
+  --button-sm: 25px;
+  --button-base: 27px;
   --button-lg: 32px;
 
   --space-site-inline: 1rem;
   --space-lines: 0.25rem;
   --space-site-block: 4rem;
+
+  --space-tube-sm: 4rem;
+  --space-tube-base: 4.5rem;
+  --space-tube-lg: 5.25rem;
 
   @media screen and (min-width: 36rem) {
     --space-site-inline: 1.5rem;
@@ -32,8 +36,12 @@
     --heading-base: 28px;
     --heading-lg: 96px;
 
+    --button-sm: 26px;
     --button-base: 30px;
     --button-lg: 40px;
+
+    --space-tube-lg: 6rem;
+    --space-tube-base: 5rem;
   }
 
   /* > lg */
@@ -63,7 +71,7 @@
   --text-body-base: var(--body-base);
   --text-body-base--line-height: 1.55;
   --text-body-lg: var(--body-lg);
-  --text-body-lg--line-height: 1.5;
+  --text-body-lg--line-height: 1.35;
 
   --text-heading-sm: var(--heading-sm);
   --text-heading-sm--line-height: 1.4;
@@ -121,9 +129,9 @@
 
   /* Tube ------------------------------------------------------------------------------------------------------------------------------ */
 
-  --spacing-tube-sm: 4rem;
-  --spacing-tube-base: 5rem;
-  --spacing-tube-lg: 6rem;
+  --spacing-tube-sm: var(--space-tube-sm);
+  --spacing-tube-base: var(--space-tube-base);
+  --spacing-tube-lg: var(--space-tube-lg);
 
   /* Radii ----------------------------------------------------------------------------------------------------------------------------- */
 
@@ -139,6 +147,7 @@
   --default-transition-timing-function: cubic-bezier(0.2, 0.8, 0.2, 1);
   --default-transition-duration: 100ms;
   --animate-marquee: marquee var(--animate-duration, 1s) infinite linear;
+  --animate-spin: spin var(--animate-duration, 1s) infinite linear;
   --animate-wave: wave var(--animate-duration, 1s) infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
 
   @keyframes marquee {
@@ -160,6 +169,14 @@
     }
     75% {
       transform: translateY(1rem);
+    }
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(359deg);
     }
   }
 

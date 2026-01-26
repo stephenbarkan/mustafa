@@ -18,7 +18,9 @@
     --font-display: MysterionBohemian, serif;
     --font-body: Fraunces, serif;
     --text-body-base: var(--body-base);
+    --text-body-base--line-height: 1.55;
     --text-body-lg: var(--body-lg);
+    --text-body-lg--line-height: 1.35;
     --container-narrow: 56rem;
     --container-base: 91.5rem;
     --container-content: 53ch;
@@ -30,9 +32,9 @@
     --spacing-site-inline: var(--space-site-inline);
     --spacing-lines: var(--space-lines);
     --spacing-indent: 1.5ch;
-    --spacing-tube-sm: 4rem;
-    --spacing-tube-base: 5rem;
-    --spacing-tube-lg: 6rem;
+    --spacing-tube-sm: var(--space-tube-sm);
+    --spacing-tube-base: var(--space-tube-base);
+    --spacing-tube-lg: var(--space-tube-lg);
     --radius-sm: calc(var(--spacing-tube-sm) * 0.475);
     --color-surface: color(display-p3 0.094118 0.070588 0.129412 / 1);
     --color-neutral: #f3f0e8;
@@ -261,6 +263,9 @@
   .left-site-inline {
     left: var(--space-site-inline);
   }
+  .z-\(--top\) {
+    z-index: var(--top);
+  }
   .z-\(--z-elevated\) {
     z-index: var(--z-elevated);
   }
@@ -357,6 +362,12 @@
   .aspect-\[8\/5\] {
     aspect-ratio: 8/5;
   }
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+  .aspect-square {
+    aspect-ratio: 1;
+  }
   .size-3 {
     width: calc(var(--spacing) * 3);
     height: calc(var(--spacing) * 3);
@@ -422,13 +433,13 @@
     min-height: 100dvh;
   }
   .min-h-tube-base {
-    min-height: 5rem;
+    min-height: var(--space-tube-base);
   }
   .min-h-tube-lg {
-    min-height: 6rem;
+    min-height: var(--space-tube-lg);
   }
   .min-h-tube-sm {
-    min-height: 4rem;
+    min-height: var(--space-tube-sm);
   }
   .w-\(--icon-size\) {
     width: var(--icon-size);
@@ -497,10 +508,10 @@
     min-width: 1px;
   }
   .min-w-tube-base {
-    min-width: 5rem;
+    min-width: var(--space-tube-base);
   }
   .min-w-tube-sm {
-    min-width: 4rem;
+    min-width: var(--space-tube-sm);
   }
   .shrink {
     flex-shrink: 1;
@@ -562,6 +573,9 @@
   }
   .animate-marquee {
     animation: marquee var(--animate-duration, 1s) infinite linear;
+  }
+  .animate-spin {
+    animation: spin var(--animate-duration, 1s) infinite linear;
   }
   .animate-wave {
     animation: wave var(--animate-duration, 1s) infinite cubic-bezier(0.45, 0.05, 0.55, 0.95);
@@ -664,6 +678,9 @@
   }
   .gap-site-block {
     gap: var(--space-site-block);
+  }
+  .place-self-center {
+    place-self: center;
   }
   .self-center {
     align-self: center;
@@ -953,7 +970,7 @@
   }
   .text-body-lg {
     font-size: var(--body-lg);
-    line-height: var(--tw-leading, 1.5);
+    line-height: var(--tw-leading, 1.35);
   }
   .text-body-sm {
     font-size: var(--body-sm);
@@ -1128,6 +1145,12 @@
   .select-none {
     -webkit-user-select: none;
     user-select: none;
+  }
+  .animate-duration-1 {
+    --animate-duration: calc(1 * 1s);
+  }
+  .animate-duration-1000 {
+    --animate-duration: calc(1000 * 1s);
   }
   .\*\:ml-\[1\.25ch\] {
     :is(& > *) {
@@ -1473,12 +1496,12 @@
   }
   .md\:min-h-tube-lg {
     @media (width >= 44rem) {
-      min-height: 6rem;
+      min-height: var(--space-tube-lg);
     }
   }
   .md\:min-w-tube-lg {
     @media (width >= 44rem) {
-      min-width: 6rem;
+      min-width: var(--space-tube-lg);
     }
   }
   .md\:gap-7 {
@@ -1690,18 +1713,21 @@
 :root {
   color-scheme: dark;
   --icon-size: 1.45em;
-  --body-sm: 18px;
-  --body-base: 19.5px;
-  --body-lg: 20.5px;
+  --body-sm: 17.5px;
+  --body-base: 19px;
+  --body-lg: 20px;
   --heading-sm: 21px;
   --heading-base: 24px;
   --heading-lg: 60px;
-  --button-sm: 26px;
-  --button-base: 29px;
+  --button-sm: 25px;
+  --button-base: 27px;
   --button-lg: 32px;
   --space-site-inline: 1rem;
   --space-lines: 0.25rem;
   --space-site-block: 4rem;
+  --space-tube-sm: 4rem;
+  --space-tube-base: 4.5rem;
+  --space-tube-lg: 5.25rem;
   @media screen and (min-width: 36rem) {
     --space-site-inline: 1.5rem;
     --space-lines: 0.5rem;
@@ -1713,8 +1739,11 @@
     --heading-sm: 24px;
     --heading-base: 28px;
     --heading-lg: 96px;
+    --button-sm: 26px;
     --button-base: 30px;
     --button-lg: 40px;
+    --space-tube-lg: 6rem;
+    --space-tube-base: 5rem;
   }
   @media screen and (min-width: 56rem) {
     --space-site-block: 6rem;
@@ -2111,6 +2140,11 @@
   inherits: false;
   initial-value: 1;
 }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
 @keyframes marquee {
   0% {
     transform: translateX(0);
@@ -2128,6 +2162,14 @@
   }
   75% {
     transform: translateY(1rem);
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(359deg);
   }
 }
 @layer properties {
