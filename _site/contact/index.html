@@ -12,18 +12,13 @@
                 }
             },
             
-            getNavbarHeight() {
-                this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
-                if (this.navbarHidden) {
-                    this.navbarHeight = 0;
-                }
-                
-            },
+            
             init() {
-                
-                this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+                setTimeout(() => {
+                    this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+                }, 500);
             }
-        }" x-effect="getNavbarHeight" @resize.window="getNavbarHeight" @scroll.window="setHasScrolled" :style="{'--space-navbar-height': navbarHeight + 'px'}" lang="en" class="scroll-smooth scroll-p-site-block relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact Mustafa! – Mustafa Anwar</title><meta name="description" content="
+        }" @scroll.window="setHasScrolled" :style="{'--space-navbar-height': navbarHeight + 'px'}" lang="en" class="scroll-smooth scroll-p-site-block relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact Mustafa! – Mustafa Anwar</title><meta name="description" content="
      Movement, Fire, and Embodied Presence | Chicago"><link rel="canonical" href="https://mustafaanwar.netlify.app/contact/"><meta property="og:title" content="
         Contact Mustafa! –
     Mustafa Anwar"><meta property="og:description" content="

@@ -55,22 +55,20 @@
                     return {'--space-navbar-height': navbarHeight+'px'}
                 }, 150);
             } #}
-            getNavbarHeight() {
+            {# getNavbarHeight() {
                 this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
                 if (this.navbarHidden) {
                     this.navbarHeight = 0;
                 }
-                {# $el.style.setProperty('--space-navbar-height', this.navbarHeight+'px') #}
-            },
+            }, #}
             init() {
-                {# setTimeout(() => {
-                    this.getNavbarHeight();;
-                }, 250); #}
-                this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+                setTimeout(() => {
+                    this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+                }, 500);
             }
         }"
-        x-effect="getNavbarHeight"
-        @resize.window="getNavbarHeight"
+        {# x-effect="getNavbarHeight"
+        @resize.window="getNavbarHeight" #}
         @scroll.window="setHasScrolled"
         :style="{'--space-navbar-height': navbarHeight + 'px'}"
     {% endif %}
