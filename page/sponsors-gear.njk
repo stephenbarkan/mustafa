@@ -3,6 +3,7 @@
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
 {% from "components/markdown.njk" import markdown %}
+{% from "components/copyToClipboard.njk" import copyToClipboard %}
 {% from "assets.njk" import logo, sparkle, blobOfferingsLeft, blobOfferingsRight %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
@@ -15,8 +16,33 @@
 
 {% block pageContent %}
     {% call section({padding: "site"}, {class:"py-section"}) %}
-        {% call container(props={size: "content", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center"}) %}
-            {{ markdown({content: body, transform: true}, attrs={class:"w-full"}) }}
+        {% call container(props={size: "narrow", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center"}) %}
+
+            {% set div = joiner(divider({direction:"horizontal"})) %}
+            {% for sponsor in data.sponsors %}
+                {{ div() }}
+                <div class="grid lg:grid-cols-3 w-full gap-site-inline">
+                    <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden self-start max-h-[50dvh] lg:h-full">
+                        <img class="w-full h-full object-cover shrink" src="{{ sponsor.image }}" alt="{{ slide.caption }}">
+                    </div>
+                    {% call markdown({transform: false}, attrs={class:"col-span-2"}) %}
+                        <h2>{{ sponsor.title }}</h2>
+                        <p><a href="{{ sponsor.link }}">{{ sponsor.link }}</a></p>
+                        <p>{{ sponsor.elaboration }}</p>
+                        {% if sponsor.discountCode %}<p><b>Discount Code:</b>
+                        {{ copyToClipboard(
+                            props={
+                                input: sponsor.discountCode,
+                                trigger: { macro:button, props:{label:sponsor.discountCode, type:"link", variant:"action", size:"inherit"}, attrs:{"@click":"copy"} },
+                                toastMessage: "Copied code to clipboard!",
+                                toasterId: ""
+                            },
+                            attrs={}
+                        ) }}</p>
+                        {% endif %}
+                    {% endcall %}
+                </div>
+            {% endfor %}
         {% endcall %}
     {% endcall %}
 {% endblock %}
