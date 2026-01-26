@@ -1,8 +1,0 @@
-{
-  "ogType": "article",
-  "layout": "layouts/offering",
-  "date": "Last Modified",
-  "ogImage": "/og-image.jpg",
-  "permalink": "/offering/{{ page.fileSlug }}/",
-  "tags": ["offering"]
-}

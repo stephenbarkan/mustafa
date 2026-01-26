@@ -296,12 +296,6 @@
   .col-2 {
     grid-column: 2;
   }
-  .col-start-1 {
-    grid-column-start: 1;
-  }
-  .col-start-2 {
-    grid-column-start: 2;
-  }
   .container {
     width: 100%;
     @media (width >= 28rem) {
@@ -480,17 +474,14 @@
   .w-screen {
     width: 100vw;
   }
-  .max-w-\[2-vw\] {
-    max-width: 2-vw;
-  }
   .max-w-\[15vw\] {
     max-width: 15vw;
   }
-  .max-w-\[20vw\] {
-    max-width: 20vw;
-  }
   .max-w-\[25vw\] {
     max-width: 25vw;
+  }
+  .max-w-\[40vw\] {
+    max-width: 40vw;
   }
   .max-w-\[646px\] {
     max-width: 646px;
@@ -583,19 +574,8 @@
     --tw-translate-y: -100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
-  .rotate-160 {
-    rotate: 160deg;
-  }
   .rotate-180 {
     rotate: 180deg;
-  }
-  .rotate-y-180 {
-    --tw-rotate-y: rotateY(180deg);
-    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
-  }
-  .rotate-z-180 {
-    --tw-rotate-z: rotateZ(180deg);
-    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -749,9 +729,6 @@
   }
   .rounded-sm {
     border-radius: calc(var(--spacing-tube-sm) * 0.475);
-  }
-  .rounded-square {
-    border-radius: 160px;
   }
   .rounded-l-none {
     border-top-left-radius: 0;
@@ -931,9 +908,6 @@
   .py-16 {
     padding-block: calc(var(--spacing) * 16);
   }
-  .py-24 {
-    padding-block: calc(var(--spacing) * 24);
-  }
   .py-navbar-height {
     padding-block: var(--space-navbar-height);
   }
@@ -954,15 +928,6 @@
   }
   .pb-8 {
     padding-bottom: calc(var(--spacing) * 8);
-  }
-  .pb-12 {
-    padding-bottom: calc(var(--spacing) * 12);
-  }
-  .pb-24 {
-    padding-bottom: calc(var(--spacing) * 24);
-  }
-  .pb-28 {
-    padding-bottom: calc(var(--spacing) * 28);
   }
   .pb-32 {
     padding-bottom: calc(var(--spacing) * 32);
@@ -1208,12 +1173,6 @@
   .duration-600 {
     --tw-duration: 600ms;
     transition-duration: 600ms;
-  }
-  .will-change-auto {
-    will-change: auto;
-  }
-  .will-change-transform {
-    will-change: transform;
   }
   .outline-none {
     --tw-outline-style: none;
@@ -1661,21 +1620,6 @@
   .lg\:py-32 {
     @media (width >= 56rem) {
       padding-block: calc(var(--spacing) * 32);
-    }
-  }
-  .lg\:pb-32 {
-    @media (width >= 56rem) {
-      padding-bottom: calc(var(--spacing) * 32);
-    }
-  }
-  .lg\:pb-48 {
-    @media (width >= 56rem) {
-      padding-bottom: calc(var(--spacing) * 48);
-    }
-  }
-  .lg\:pb-56 {
-    @media (width >= 56rem) {
-      padding-bottom: calc(var(--spacing) * 56);
     }
   }
   .lg\:max-xl\:block {
