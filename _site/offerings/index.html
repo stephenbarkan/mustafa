@@ -1,7 +1,7 @@
 <!doctype html><html x-data="{
             scrollable: true,
             navbarHidden: false,
-            navbarHeight: 89,
+            navbarHeight: 0,
             hasScrolled: false,
             lastScrollY: window.scrollY,
             setHasScrolled() {
@@ -18,8 +18,11 @@
                     this.navbarHeight = 0;
                 }
                 $el.style.setProperty('--space-navbar-height', this.navbarHeight+'px')
+            },
+            init() {
+                this.getNavbarHeight()
             }
-        }" x-init="getNavbarHeight" x-effect="getNavbarHeight" x-on:resize.window="getNavbarHeight" @scroll.window="setHasScrolled" lang="en" class="scroll-smooth scroll-p-site-block relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mustafa Anwar</title><meta name="description" content="
+        }" x-effect="getNavbarHeight" @resize.window="getNavbarHeight" @scroll.window="setHasScrolled" :style="{'--space-navbar-height': navbarHeight + 'px'}" lang="en" class="scroll-smooth scroll-p-site-block relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Mustafa Anwar</title><meta name="description" content="
      Movement, Fire, and Embodied Presence | Chicago"><link rel="canonical" href="https://mustafaanwar.netlify.app/offerings/"><meta property="og:title" content="Mustafa Anwar"><meta property="og:description" content="
      Movement, Fire, and Embodied Presence | Chicago"><meta property="og:url" content="https://mustafaanwar.netlify.app/offerings/"><meta property="og:image" content="https://mustafaanwar.netlify.app/assets/uploads/og-image-1.jpg
 "><meta property="og:image:secure_url" content="https://mustafaanwar.netlify.app/assets/uploads/og-image-1.jpg

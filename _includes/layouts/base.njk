@@ -36,7 +36,7 @@
         x-data="{
             scrollable: true,
             navbarHidden: false,
-            navbarHeight: 89,
+            navbarHeight: 0,
             hasScrolled: false,
             lastScrollY: window.scrollY,
             setHasScrolled() {
@@ -61,12 +61,15 @@
                     this.navbarHeight = 0;
                 }
                 $el.style.setProperty('--space-navbar-height', this.navbarHeight+'px')
+            },
+            init() {
+                this.getNavbarHeight()
             }
         }"
-        x-init="getNavbarHeight"
         x-effect="getNavbarHeight"
-        x-on:resize.window="getNavbarHeight"
+        @resize.window="getNavbarHeight"
         @scroll.window="setHasScrolled"
+        :style="{'--space-navbar-height': navbarHeight + 'px'}"
     {% endif %}
     lang="en"
     class="scroll-smooth scroll-p-site-block relative">
