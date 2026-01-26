@@ -27,25 +27,14 @@
                 <h1 class="text-heading-lg text-hue text-pretty">{{ data.title }}</h1>
                 {{ markdown({content: data.body, transform: true}, attrs={class:"w-full"}) }}
             </div>
-            <div class="
-              xl:h-dvh--navbar
-              transition-all
-              duration-600
-              xl:sticky
-              top-navbar-height
-              flex
-              shrink-0
-              flex-col
-              max-xl:border-t
-              border-neutral-lighter
-            ">
+            <div class="xl:h-dvh--navbar h-[75dvh] transition-all duration-600 xl:sticky top-navbar-height flex shrink-0 flex-col max-xl:border-t border-neutral-lighter">
                 <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col max-h-full">
                     {{ carousel(
                         props={
                             slides: data.videos,
                             indicators: true
                         },
-                        attrs={class:"grow max-h-[90dvh] xl:max-h-[500px] xl:max-h-full"}
+                        attrs={class:"grow max-h-full"}
                     ) }}
                 </div>
             </div>

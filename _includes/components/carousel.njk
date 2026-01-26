@@ -33,6 +33,10 @@
     data-carousel
     x-data="{
         currentSlideIndex: 1,
+        stopVideos() {
+            document.querySelectorAll('iframe').forEach(v => { v.src = v.src });
+            document.querySelectorAll('video').forEach(v => { v.pause() });
+        },
         previous() {
             if (this.currentSlideIndex > 1) {
                 this.currentSlideIndex = this.currentSlideIndex - 1
@@ -40,6 +44,7 @@
                 // If it's the first slide, go to the last slide
                 this.currentSlideIndex = {{ props.slides | length }}
             }
+            this.stopVideos()
         },
         next() {
             if (this.currentSlideIndex < {{ props.slides | length }}) {
@@ -48,6 +53,7 @@
                 // If it's the last slide, go to the first slide
                 this.currentSlideIndex = 1
             }
+            this.stopVideos()
         },
     }"
     {{ loopAttrs(attrs) }}
