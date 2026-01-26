@@ -46,29 +46,20 @@
                     this.hasScrolled = false
                 }
             },
-            {# getNavbarHeight() {
-                setTimeout(() => {
-                    let navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
-                    if (this.navbarHidden) {
-                        navbarHeight = 0;
-                    }
-                    return {'--space-navbar-height': navbarHeight+'px'}
-                }, 150);
-            } #}
-            {# getNavbarHeight() {
-                this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
-                if (this.navbarHidden) {
-                    this.navbarHeight = 0;
-                }
-            }, #}
-            init() {
+            setNavbarHeight() {
                 setTimeout(() => {
                     this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+                    if (this.navbarHidden) {
+                        this.navbarHeight = 0;
+                    }
                 }, 500);
+            },
+            init() {
+                this.setNavbarHeight()
             }
         }"
-        {# x-effect="getNavbarHeight"
-        @resize.window="getNavbarHeight" #}
+        x-effect="setNavbarHeight()"
+        @resize.window="setNavbarHeight()"
         @scroll.window="setHasScrolled"
         :style="{'--space-navbar-height': navbarHeight + 'px'}"
     {% endif %}
