@@ -88,7 +88,7 @@
         {% endblock %}
 
         {% if showTopLine %}
-            <div class="hidden lg:block z-(--z-top) w-screen h-lines border-b border-neutral-lighter"></div>
+            <div class="hidden lg:block z-(--z-top-elevated) w-screen h-lines border-b border-neutral-lighter"></div>
         {% endif %}
 
         {% if global.bannerContent %}
@@ -108,10 +108,10 @@
 
         {% block footer %}{% endblock %}
 
-        <div class="block z-(--z-top) fixed pointer-events-none border-x border-neutral-lighter h-dvh w-[calc(100vw-2*var(--space-lines))]"></div>
+        <div class="block z-(--z-top-elevated) fixed pointer-events-none border-x border-neutral-lighter h-dvh w-[calc(100vw-2*var(--space-lines))]"></div>
 
         {% if showBottomLine %}
-            <div class="block z-(--z-top) w-screen h-lines border-t border-neutral-lighter"></div>
+            <div class="block z-(--z-top-elevated) w-screen h-lines border-t border-neutral-lighter"></div>
         {% endif %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}

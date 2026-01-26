@@ -33,7 +33,7 @@
 
 {% set drawerContents %}
     {% call section() %}
-        {% call container({size:"base", type:"flex"},{class:"flex-col gap-4 py-site-inline"}) %}
+        {% call container({size:"base", type:"flex"},{class:"flex-col gap-4"}) %}
             {{ button({type:"button", size:"base", variant:"neutral", label:"home"},{href:"/home"}) }}
             {% for link in navLinks %}
                 {{ button({type:"button", size:"base", variant:"neutral", label:link.label},{href:link.href}) }}
@@ -47,25 +47,7 @@
 {% set themeAlignment = "left" %}
 {% set drawerOnNarrow = true %}
 
-{% set navbarStyles = "
-  @container
-  z-(--z-top)
-  border-b
-  border-neutral-lighter
-  py-3
-  xl:py-6
-  bg-neutral-lighter
-  backdrop-blur-sm
-  hover:bg-neutral-light
-  hover:backdrop-blur-base
-  pointer-coarse:bg-neutral-light
-  focus-within:bg-neutral-light
-  pointer-coarse:bg-neutral-light
-  pointer-coarse:backdrop-blur-base
-  focus-within:backdrop-blur-base
-  transition
-  duration-600
-" %}
+{% set navbarStyles = "@container z-(--z-top) border-b border-neutral-lighter py-3 xl:py-6 bg-neutral-lighter backdrop-blur-sm hover:bg-neutral-light hover:backdrop-blur-base pointer-coarse:bg-neutral-light focus-within:bg-neutral-light pointer-coarse:bg-neutral-light pointer-coarse:backdrop-blur-base focus-within:backdrop-blur-base transition duration-600" %}
 {% set containerStyles = "" %}
 {% set stickyStyles = "sticky top-0 !bg-neutral-light" %}
 {% set onScrollStyles = "!bg-neutral-light !backdrop-blur-base" %}
@@ -99,7 +81,7 @@
     {% if props.sticky %}{{ stickyStyles }}{% endif %}">
 
     {% call section({padding: "site"}) %}
-        <div {% if drawerOnNarrow %}class="hidden xl:block"{% endif %}>
+        <div {% if drawerOnNarrow %}class="hidden xl:block"{% endif %}> {# wide screen container #}
             {% call container({size: "base", type:"flex"},{class:"items-center justify-between"}) %}
 
                 <div data-slot="left"
@@ -133,7 +115,10 @@
                 {% call container({size: "base", type:"flex"},{class:"items-center justify-between"}) %}
                     {{ navbarLogo | safe }}
                     {% if leftSide or rightSide or props.leftSide or props.rightSide %}
-                        {% call drawer({ alignment:"top", triggerProps:{ icon:{off:"menu", on:"close"}, type:"button", variant:"neutral", size:"sm"} }) %}
+                        {% call drawer({
+                            alignment:"top",
+                            triggerProps:{ icon:{off:"menu", on:"close"}, type:"button", variant:"neutral", size:"sm"}
+                        }) %}
                             {% if drawerContents %}
                                 {{ drawerContents | safe }}
                             {% else %}

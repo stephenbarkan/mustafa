@@ -12,19 +12,19 @@
 
 {# Theme styles ----------- #}
 
-{% set drawerStyles = "left-0 w-full h-dvh overflow-hidden transition duration-300 bg-neutral-light" %}
-{% set panelAlignmentStyles %}
+{% set drawerStyles = "left-0 w-full h-dvh--navbar overflow-hidden" %} {# applied to the wrapper for the panel and backdrop #}
+{% set panelAlignmentStyles %} {# applied to the wrapper for the panel and backdrop #}
     {% if props.alignment === "bottom" %}bottom-0 flex-col-reverse
-    {% elseif props.alignment === "top" %}top-0
+    {% elseif props.alignment === "top" %}top-navbar-height
     {% elseif props.alignment === "right" %}top-0 right-0
     {% endif %}
 {% endset %}
-{% set panelStyles %}@container grow top-0 relative bg-neutral-light border-neutral-lighter py-navbar-height backdrop-blur-base {% if props.alignment === "bottom" %}border-t{% else %}border-y{% endif %}{% endset %}
+{% set panelStyles %}grow relative bg-neutral-light border-neutral-lighter py-site-inline backdrop-blur-base {% if props.alignment === "bottom" %}border-t{% else %}border-b{% endif %}{% endset %}
 {% set backdropStyles %} bg-space shrink-0 h-site-inline{% endset %}
 
 {# Other ------------------ #}
 
-
+{% set newProps = {toggleValue:"drawerOpen", label:props.triggerProps.label, icon:props.triggerProps.icon, size:props.triggerProps.size, type:props.triggerProps.type, variant:props.triggerProps.variant}  %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -51,39 +51,41 @@
     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
     class="flex {{ attrs.class }}">
 
-    {% set newProps = {toggleValue:"drawerOpen", label:props.triggerProps.label, icon:props.triggerProps.icon, size:props.triggerProps.size, type:props.triggerProps.type, variant:props.triggerProps.variant}  %}
+
     {{ button(props=newProps, attrs={class:"grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
-    <div
-        x-cloak
-        x-show="drawerOpen"
-        {% if props.alignment === "top" %}
-            x-transition:enter-start="opacity-0"
-            x-transition:leave-end="opacity-0"
-        {% elseif props.alignment === "bottom" %}
-            x-transition:enter-start="opacity-0"
-            x-transition:leave-end="opacity-0"
-        {% elseif props.alignment === "right" %}
-            x-transition:enter-start="opacity-0"
-            x-transition:leave-end="opacity-0"
-        {% endif %}
-        class="flex z-(--z-lowered) flex-col grow fixed overflow-y-auto {{ drawerStyles }} {{ panelAlignmentStyles }}">
-        <nav
-            x-ref="panel"
-            @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
-            @click.outside="close($refs.trigger)"
-            class="grid content-center items-stretch {{ panelStyles }}">
-            {% if caller %}
-                {{ caller() | safe }}
-            {% else %}
-                <ul>
-                    {% for item in props.drawerItems %}
-                        <li>{{ item.macro(item.props, item.attrs) }}</li>
-                    {% endfor %}
-                </ul>
-            {% endif %}
-        </nav>
-        <div class="{{ backdropStyles }}"></div>
-    </div>
+    <template x-teleport="body">
+        <div {# wrapper for panel and backdrop #}
+            x-cloak
+            x-show="drawerOpen"
+            {# {% if props.alignment === "top" %}
+                x-transition:enter-start="opacity-0"
+                x-transition:leave-end="opacity-0"
+            {% elseif props.alignment === "bottom" %}
+                x-transition:enter-start="opacity-0"
+                x-transition:leave-end="opacity-0"
+            {% elseif props.alignment === "right" %}
+                x-transition:enter-start="opacity-0"
+                x-transition:leave-end="opacity-0"
+            {% endif %} #}
+            class="flex z-(--z-top) flex-col grow fixed overflow-y-auto {{ drawerStyles }} {{ panelAlignmentStyles }}">
+            <nav
+                x-ref="panel"
+                @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
+                @click.outside="close($refs.trigger)"
+                class="grid content-center items-stretch {{ panelStyles }}">
+                {% if caller %}
+                    {{ caller() | safe }}
+                {% else %}
+                    <ul>
+                        {% for item in props.drawerItems %}
+                            <li>{{ item.macro(item.props, item.attrs) }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </nav>
+            <div class="{{ backdropStyles }}"></div>
+        </div>
+    </template>
 </div>
 
 {% endmacro %}

@@ -403,6 +403,9 @@
   .h-dvh {
     height: 100dvh;
   }
+  .h-dvh--navbar {
+    height: calc(100dvh - var(--space-navbar-height));
+  }
   .h-fit {
     height: fit-content;
   }
