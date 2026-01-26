@@ -1,23 +1,25 @@
 <!doctype html><html x-data="{
             scrollable: true,
             navbarHidden: false,
+            navbarHeight: 89,
             hasScrolled: false,
             lastScrollY: window.scrollY,
             setHasScrolled() {
-                if (this.lastScrollY > 83) {
+                if (this.lastScrollY > this.navbarHeight) {
                     this.hasScrolled = true
                 } else {
                     this.hasScrolled = false
                 }
             },
+            
             getNavbarHeight() {
-                let navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
+                this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
                 if (this.navbarHidden) {
-                    navbarHeight = 0;
+                    this.navbarHeight = 0;
                 }
-                return {'--space-navbar-height': navbarHeight+'px'}
+                $el.style.setProperty('--space-navbar-height', this.navbarHeight+'px')
             }
-        }" :style="getNavbarHeight" @scroll.window="setHasScrolled" lang="en" class="scroll-smooth scroll-p-site-block relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 – Mustafa Anwar</title><meta name="description" content="
+        }" x-init="getNavbarHeight" x-effect="getNavbarHeight" x-on:resize.window="getNavbarHeight" @scroll.window="setHasScrolled" lang="en" class="scroll-smooth scroll-p-site-block relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>404 – Mustafa Anwar</title><meta name="description" content="
      Movement, Fire, and Embodied Presence | Chicago"><link rel="canonical" href="https://mustafaanwar.netlify.app/404.html"><meta property="og:title" content="
         404 –
     Mustafa Anwar"><meta property="og:description" content="
