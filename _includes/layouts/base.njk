@@ -60,10 +60,13 @@
                 if (this.navbarHidden) {
                     this.navbarHeight = 0;
                 }
-                $el.style.setProperty('--space-navbar-height', this.navbarHeight+'px')
+                {# $el.style.setProperty('--space-navbar-height', this.navbarHeight+'px') #}
             },
             init() {
-                this.getNavbarHeight()
+                {# setTimeout(() => {
+                    this.getNavbarHeight();;
+                }, 250); #}
+                this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
             }
         }"
         x-effect="getNavbarHeight"

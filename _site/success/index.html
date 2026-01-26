@@ -17,10 +17,11 @@
                 if (this.navbarHidden) {
                     this.navbarHeight = 0;
                 }
-                $el.style.setProperty('--space-navbar-height', this.navbarHeight+'px')
+                
             },
             init() {
-                this.getNavbarHeight()
+                
+                this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
             }
         }" x-effect="getNavbarHeight" @resize.window="getNavbarHeight" @scroll.window="setHasScrolled" :style="{'--space-navbar-height': navbarHeight + 'px'}" lang="en" class="scroll-smooth scroll-p-site-block relative"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Success! – Mustafa Anwar</title><meta name="description" content="
      Movement, Fire, and Embodied Presence | Chicago"><link rel="canonical" href="https://mustafaanwar.netlify.app/success/"><meta property="og:title" content="
