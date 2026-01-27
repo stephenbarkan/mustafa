@@ -57,7 +57,7 @@
         <div {# wrapper for panel and backdrop #}
             x-cloak
             x-show="drawerOpen"
-            {# {% if props.alignment === "top" %}
+            {% if props.alignment === "top" %}
                 x-transition:enter-start="opacity-0"
                 x-transition:leave-end="opacity-0"
             {% elseif props.alignment === "bottom" %}
@@ -66,7 +66,7 @@
             {% elseif props.alignment === "right" %}
                 x-transition:enter-start="opacity-0"
                 x-transition:leave-end="opacity-0"
-            {% endif %} #}
+            {% endif %}
             class="flex z-(--z-top) flex-col grow fixed overflow-y-auto {{ drawerStyles }} {{ panelAlignmentStyles }}">
             <nav
                 x-ref="panel"

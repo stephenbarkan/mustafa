@@ -9,7 +9,7 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set data = sponsorsGearPage %}
-{% set mainStyles = "" %}
+{% set mainStyles = "max-lg:pb-32" %}
 {% set showDivider = true %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
@@ -22,8 +22,8 @@
             {% for sponsor in data.sponsors %}
                 {{ div() }}
                 <div class="grid lg:grid-cols-3 w-full gap-site-inline">
-                    <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden self-start max-h-[50dvh] lg:h-full">
-                        <img class="w-full h-full object-cover shrink" src="{{ sponsor.image }}" alt="{{ slide.caption }}">
+                    <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden self-start max-h-[50vh] lg:h-full">
+                        <img class="w-full h-full object-cover" src="{{ sponsor.image }}" alt="{{ slide.caption }}">
                     </div>
                     {% call markdown({transform: false}, attrs={class:"col-span-2"}) %}
                         <h2>{{ sponsor.title }}</h2>
