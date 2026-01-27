@@ -70,7 +70,7 @@
         remove(toast) {
             this.toasts = this.toasts.filter(i => i.id !== toast.id)
         }
-    }" @notify.window="add($event)" id="toaster" data-toaster="" role="status" aria-live="polite" class="fixed flex items-center flex-col-reverse justify-center z-(--z-top-elevated) pointer-events-none gap-2 top-lines right-site-inline left-site-inline"><template x-for="toast in toasts" :key="toast.id"><div x-data="{
+    }" @notify.window="add($event)" id="toaster" data-toaster="" role="status" aria-live="polite" class="fixed flex items-center flex-col-reverse justify-center z-(--z-top-elevated) pointer-events-none gap-2 top-lines bottom-lines right-site-inline left-site-inline"><template x-for="toast in toasts" :key="toast.id"><div x-data="{
                 show: false,
                 init() {
                     this.$nextTick(() => this.show = true)
@@ -80,7 +80,7 @@
                     this.show = false
                     setTimeout(() => this.remove(this.toast), 300)
                 }
-            }" x-show="show" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:leave-end="opacity-0 -translate-y-2" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition text-button-base min-w-tube-base min-h-tube-base rounded-base gap-4 px-7 border-action-light bg-action border-neutral-lighter text-surface"><span class="text-button-base" x-text="toast.content"></span></div></template></div><main id="main" class="@container flex flex-col justify-center w-full grow py-site-block gap-site-block"><h1 class="sr-only">My Offerings</h1><section data-section="" class="w-full @container px-site-inline"><div data-container="" class="mx-auto w-[var(--container-base)] max-w-cqi grid"><ul class="text-heading-lg flex flex-col items-center gap-8 lg:gap-16"></ul></div></section></main><div class="block z-(--z-top-elevated) fixed pointer-events-none border-x border-neutral-lighter h-lvh w-[calc(100vw-2*var(--space-lines))]"></div><div class="block z-(--z-top-elevated) w-screen h-lines border-t border-neutral-lighter"></div><div x-data="{
+            }" x-show="show" x-transition:enter-start="opacity-0 scale-[1.1]" x-transition:leave-end="opacity-0 scale-[.9]" class="flex items-center pointer-events-auto text-center duration-200 delay-100 transition text-button-lg min-w-tube-lg min-h-tube-lg rounded-lg gap-4 px-7 border border-neutral-light bg-neutral text-neutral backdrop-blur-base"><span class="text-button-base" x-text="toast.content"></span></div></template></div><main id="main" class="@container flex flex-col justify-center w-full grow py-site-block gap-site-block"><h1 class="sr-only">My Offerings</h1><section data-section="" class="w-full @container px-site-inline"><div data-container="" class="mx-auto w-[var(--container-base)] max-w-cqi grid"><ul class="text-heading-lg flex flex-col items-center gap-8 lg:gap-16"></ul></div></section></main><div class="block z-(--z-top-elevated) fixed pointer-events-none border-x border-neutral-lighter h-lvh w-[calc(100vw-2*var(--space-lines))]"></div><div class="block z-(--z-top-elevated) w-screen h-lines border-t border-neutral-lighter"></div><div x-data="{
         expanded: false,
         windowWidth: window.innerWidth,
         getWidth() {
