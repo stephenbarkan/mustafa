@@ -1,3 +1,26 @@
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set pageDescription %}
+    {# {% if data.seoDescription %}{{- data.seoDescription -}}{{ else }}{{ global.siteDescription }}{% endif %} #}
+    {{- global.siteDescription -}}
+{% endset %}
+
+{% set pageTitle %}
+    {% if data.seoTitle %}
+        {{ data.seoTitle }} •
+    {% elseif title %}
+        {{ title }} •
+    {% endif %}
+    {{ global.siteTitle }} – {{ pageDescription }}
+{% endset %}
+
+{% set ogImage %}
+    {{- global.siteDomain -}}{% if seo.ogImage %}{{- page.fileSlug -}}{{- seo.ogImage -}}{% else %}{{- global.siteImage -}}{% endif %}
+{% endset %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ pageTitle | safe }}</title>
