@@ -2,6 +2,7 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
+{% from "components/figure.njk" import figure %}
 {% from "components/icon.njk" import icon %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
@@ -43,12 +44,12 @@
                 this.currentSlideIndex = this.currentSlideIndex - 1
             } else {
                 // If it's the first slide, go to the last slide
-                this.currentSlideIndex = {{ props.slides | length }}
+                this.currentSlideIndex = {{ props.figures | length }}
             }
             this.stopVideos()
         },
         next() {
-            if (this.currentSlideIndex < {{ props.slides | length }}) {
+            if (this.currentSlideIndex < {{ props.figures | length }}) {
                 this.currentSlideIndex = this.currentSlideIndex + 1
             } else {
                 // If it's the last slide, go to the first slide
@@ -60,13 +61,23 @@
     {{ loopAttrs(attrs) }}
     class="@container relative w-full flex flex-col grow {{ attrs.class }} {{ carouselStyles }}">
 
-    <div class="relative grid grid-overlap overflow-hidden grow">
-        {% for slide in props.slides %}
-            {{ carouselIFrame({loop:loop, embed:slide.image, title:slide.caption }) }}
+    <div class="relative grid grid-overlap overflow-hidden grow"> {# figures #}
+        {% for item in props.figures %}
+            <div
+                class="flex w-full"
+                x-show="currentSlideIndex == {{ loop.index }}"
+                x-transition.opacity.duration.600ms
+                {{ loopAttrs(attrs) }}>
+                {{ figure({
+                    iframe: item.iframe,
+                    caption: item.caption
+                },{class:"w-full"}) }}
+            </div>
         {% endfor %}
         <div data-loader class="animate-spin text-neutral text-body-lg place-self-center z-(--z-lowered)">{{ icon({icon:"progress_activity"}) }}</div>
     </div>
-    <div class="flex {{ controlsStyles }}">
+
+    <div class="flex {{ controlsStyles }}"> {# controls bar #}
         {{ button(
             props={
                 type: buttonProps.type,
@@ -83,7 +94,7 @@
         ) }}
         {% if props.indicators %}
             <div class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}" role="group" aria-label="slides" >
-                {% for slide in props.slides %}
+                {% for slide in props.figures %}
                     <div x-data="{ id: $id('carousel-radio')}" class="flex">
                         <input
                             :checked="currentSlideIndex === {{ loop.index }}"
@@ -125,7 +136,7 @@
         x-show="currentSlideIndex == {{ props.loop.index }}"
         x-transition.opacity.duration.600ms
         {{ loopAttrs(attrs) }}
-        class="{{ carouselSlideStyles }} {{ attrs.class }}">
+        class="flex {{ carouselSlideStyles }} {{ attrs.class }}">
         {{ caller() }}
     </div>
 

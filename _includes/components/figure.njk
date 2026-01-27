@@ -21,9 +21,26 @@
 
 <figure data-figure
     {{ loopAttrs(attrs) }}
-    class="flex flex-col{{ attrs.class }} {{ figureStyles }}">
+    class="flex flex-col {{ attrs.class }} {{ figureStyles }}">
     <div class="grow {{ figureImageStyles }}">
-        <img class="w-full h-full object-cover {{ props.focus }}" src="{{ props.image }}" alt="{{ props.alt }}">
+
+        {% if props.image %}
+            <img loading="lazy" class="w-full h-full object-cover {{ props.focus }}" src="{{ props.image }}" alt="{{ props.alt }}">
+        {% endif %}
+
+        {% if props.iframe %}
+            <iframe
+                loading="lazy"
+                class="h-full w-full object-cover aspect-video"
+                src="{{ props.iframe }}"
+                title="{{ props.caption }}"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+        {% endif %}
+
     </div>
     {% if props.caption %}<figcaption class="{{ figureCaptionStyles }}">{{ props.caption }}</figcaption>{% endif %}
 </figure>

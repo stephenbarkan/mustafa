@@ -19,7 +19,6 @@
         {% for item in data.figures %}
             {{ figure(props={image:item.image, alt: item.alt, focus: item.focus, caption: item.caption}) }}
         {% endfor %}
-        {# <img class="max-w-full shrink" src="{{ aboutPage.photo }}" alt="{{ slide.caption }}"> #}
     </div>
 {% endblock %}
 
