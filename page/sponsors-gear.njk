@@ -15,7 +15,7 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block pageContent %}
-    {% call section({padding: "site"}, {class:"py-section"}) %}
+    {% call section({padding: "site"}, {class:"py-site-block"}) %}
         {% call container(props={size: "narrow", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center"}) %}
 
             {% set div = joiner(divider({direction:"horizontal"})) %}
@@ -27,7 +27,7 @@
                     </div>
                     {% call markdown({transform: false}, attrs={class:"col-span-2"}) %}
                         <h2>{{ sponsor.title }}</h2>
-                        <p><a href="{{ sponsor.link }}">{{ sponsor.link }}</a></p>
+                        <p>{{ button({label:sponsor.link, type:"link", variant:"neutral", size:"base"},{href:sponsor.link, target:"_blank"}) }}
                         <p>{{ sponsor.elaboration }}</p>
                         {% if sponsor.discountCode %}<p><b>Discount Code:</b>
                         {{ copyToClipboard(

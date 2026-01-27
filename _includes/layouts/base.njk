@@ -83,20 +83,7 @@
 
     <body
     :class="!scrollable && 'overflow-y-hidden'"
-    class="
-      bg-space
-      font-body
-      text-neutral
-      text-body-base
-      antialiased
-      flex
-      flex-col
-      min-h-dvh
-      w-screen
-      overflow-x-hidden
-      items-center
-      pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]
-    ">
+    class="bg-space font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh w-screen overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
         {# Skip to content link #}
         <a class="absolute top-0 left-0 opacity-0 z-[-1111111]" href="#main" aria-label="skip to main content">Click to skip to main content</a>
 
@@ -105,9 +92,6 @@
             {{ blobDefaultBottom({class:"bottom-0 h-[25vh] w-full left-1/2 -translate-x-1/2"}) }}
         {% endblock %}
 
-        {% if showTopLine %}
-            <div class="hidden lg:block z-(--z-top-elevated) w-screen h-lines border-b border-neutral-lighter"></div>
-        {% endif %}
 
         {% if global.bannerContent %}
             {{ announcementBanner({content: global.bannerContent }) }}
@@ -126,7 +110,14 @@
 
         {% block footer %}{% endblock %}
 
-        <div class="block z-(--z-top-elevated) fixed pointer-events-none border-x border-neutral-lighter h-dvh w-[calc(100vw-2*var(--space-lines))]"></div>
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+        {% if showTopLine %}
+            <div class="hidden lg:block z-(--z-top-elevated) w-screen h-lines border-b border-neutral-lighter"></div>
+        {% endif %}
+
+        <div class="block z-(--z-top-elevated) fixed pointer-events-none border-x border-neutral-lighter h-lvh w-[calc(100vw-2*var(--space-lines))]"></div>
 
         {% if showBottomLine %}
             <div class="block z-(--z-top-elevated) w-screen h-lines border-t border-neutral-lighter"></div>

@@ -16,14 +16,14 @@
         {% call container(props={size: "full", type: "cols-2"}, attrs={class:"relative grid-flow-dense"}) %}
 
             {# content #}
-            <div class="flex flex-col gap-12 py-16 px-site-inline--lines w-full max-w-content place-self-center {% if colReverse %}xl:col-2{% endif %}">
+            <div class="flex flex-col gap-12 py-16 px-site-inline w-full max-w-content place-self-center {% if colReverse %}xl:col-2{% endif %}">
                 {{ markdown({content: data.body, transform: true}, attrs={class:"w-full"}) }}
                 {% if cta %}{{ button(props=cta.props,attrs=cta.attrs) }}{% endif %}
             </div>
 
             {# panel #}
             <div class="max-h-dvh--navbar transition-all duration-600 xl:sticky top-navbar-height flex shrink-0 flex-col max-xl:border-t border-neutral-lighter {% if colReverse %}xl:col-1{% endif %}">
-                <div class="grow bg-neutral-light backdrop-blur-base p-8 lg:p-12 flex flex-col items-center h-full">
+                <div class="grow bg-neutral-light backdrop-blur-base py-16 px-site-inline flex flex-col items-center h-full">
                     {% block panelContent %}{% endblock %}
                 </div>
             </div>

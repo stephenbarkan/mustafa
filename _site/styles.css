@@ -409,9 +409,6 @@
   .h-\[75dvh\] {
     height: 75dvh;
   }
-  .h-\[90dvh\] {
-    height: 90dvh;
-  }
   .h-\[382px\] {
     height: 382px;
   }
@@ -430,11 +427,11 @@
   .h-lines {
     height: var(--space-lines);
   }
+  .h-lvh {
+    height: 100lvh;
+  }
   .h-site-inline {
     height: var(--space-site-inline);
-  }
-  .max-h-\[50dvh\] {
-    max-height: 50dvh;
   }
   .max-h-\[50vh\] {
     max-height: 50vh;
@@ -947,9 +944,6 @@
   }
   .py-navbar-height {
     padding-block: var(--space-navbar-height);
-  }
-  .py-section {
-    padding-block: var(--space-section);
   }
   .py-site-block {
     padding-block: var(--space-site-block);
@@ -1541,11 +1535,6 @@
       border-top-width: 1px;
     }
   }
-  .max-lg\:pb-24 {
-    @media (width < 56rem) {
-      padding-bottom: calc(var(--spacing) * 24);
-    }
-  }
   .max-lg\:pb-32 {
     @media (width < 56rem) {
       padding-bottom: calc(var(--spacing) * 32);
@@ -1821,7 +1810,6 @@
   --space-site-inline: 1.25rem;
   --space-lines: 0.35rem;
   --space-site-block: 4rem;
-  --space-section: 4rem;
   --space-tube-sm: 4rem;
   --space-tube-base: 4.5rem;
   --space-tube-lg: 5.25rem;
@@ -1846,7 +1834,6 @@
     --space-site-block: 6rem;
     --space-site-inline: 3.5rem;
     --space-lines: 1.5rem;
-    --space-section: 6rem;
   }
 }
 @font-face {
