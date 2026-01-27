@@ -611,6 +611,9 @@
   .grid-flow-dense {
     grid-auto-flow: dense;
   }
+  .grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
+  }
   .flex-col {
     flex-direction: column;
   }
@@ -872,6 +875,12 @@
   }
   .object-cover {
     object-fit: cover;
+  }
+  .object-center {
+    object-position: center;
+  }
+  .object-top {
+    object-position: top;
   }
   .px-4 {
     padding-inline: calc(var(--spacing) * 4);
@@ -1653,6 +1662,11 @@
   .xl\:hidden {
     @media (width >= 70rem) {
       display: none;
+    }
+  }
+  .xl\:max-h-dvh--navbar {
+    @media (width >= 70rem) {
+      max-height: calc(100dvh - var(--space-navbar-height));
     }
   }
   .xl\:grid-cols-2 {

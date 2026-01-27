@@ -5,5 +5,18 @@
     "props": { "label": "See my offerings", "type": "button", "size": "base", "variant": "neutral" },
     "attrs": { "href": "/offerings" }
   },
-  "photo": "/assets/uploads/homepage-01.png"
+  "figures": [
+    {
+      "image": "/assets/uploads/about-01.jpg",
+      "alt": "Mustafa flowing with a cool light pattern behind him",
+      "caption": "",
+      "focus": "object-center"
+    },
+    {
+      "image": "/assets/uploads/about-02.jpg",
+      "alt": "Mustafa with flow friends",
+      "caption": "",
+      "focus": "object-top"
+    }
+  ]
 }

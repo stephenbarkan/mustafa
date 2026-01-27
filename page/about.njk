@@ -4,6 +4,7 @@
 
 {% from "components/markdown.njk" import markdown %}
 {% from "components/carousel.njk" import carousel %}
+{% from "components/figure.njk" import figure %}
 {% from "assets.njk" import logo, sparkle, blobOffering %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
@@ -14,8 +15,11 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block panelContent %}
-    <div class="border border-neutral-lighter bg-neutral rounded-lg overflow-hidden max-xl:row-start-2">
-        <img class="max-w-full shrink" src="{{ aboutPage.photo }}" alt="{{ slide.caption }}">
+    <div class="grid grid-rows-2 max-h-full gap-12">
+        {% for item in data.figures %}
+            {{ figure(props={image:item.image, alt: item.alt, focus: item.focus, caption: item.caption}) }}
+        {% endfor %}
+        {# <img class="max-w-full shrink" src="{{ aboutPage.photo }}" alt="{{ slide.caption }}"> #}
     </div>
 {% endblock %}
 

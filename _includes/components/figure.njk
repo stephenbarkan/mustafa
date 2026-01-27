@@ -1,0 +1,48 @@
+{# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
+
+{% from "snippets/loopAttrs.njk" import loopAttrs %}
+{% from "components/button.njk" import button %}
+
+{# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
+
+{% macro figure(props={}, attrs={}) %}
+
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{# Theme styles ----------- #}
+
+{% set figureStyles = "gap-6 overflow-hidden" %}
+{% set figureImageStyles = "border border-neutral-lighter bg-neutral rounded-lg overflow-hidden" %}
+{% set figureCaptionStyles = "text-center text-body-base" %}
+
+{# Other ------------------ #}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
+<figure data-figure
+    {{ loopAttrs(attrs) }}
+    class="flex flex-col{{ attrs.class }} {{ figureStyles }}">
+    <div class="grow {{ figureImageStyles }}">
+        <img class="w-full h-full object-cover {{ props.focus }}" src="{{ props.image }}" alt="{{ props.alt }}">
+    </div>
+    {% if props.caption %}<figcaption class="{{ figureCaptionStyles }}">{{ props.caption }}</figcaption>{% endif %}
+</figure>
+
+{% endmacro %}
+
+{# Component Documentation ------------------------------------------------------------------------------------------------------------- #}
+
+{% set figureMeta = {
+    args: '{% call figure(
+    props={
+        input: "",
+    },
+    attrs={}
+) %}
+{% endcall %}',
+description: "
+-
+-
+-
+"
+} %}
