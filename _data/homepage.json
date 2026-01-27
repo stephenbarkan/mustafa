@@ -2,27 +2,27 @@
   "photos": [
     {
       "image": "/assets/uploads/homepage-01.jpg",
-      "alt": "Mustafa with a blue wand",
+      "altText": "Mustafa with a blue wand",
       "aspect": "4:5"
     },
     {
       "image": "/assets/uploads/homepage-02.jpg",
-      "alt": "Mustafa gifting his aura to his friends",
+      "altText": "Mustafa gifting his aura to his friends",
       "aspect": "8:5"
     },
     {
       "image": "/assets/uploads/homepage-03.jpg",
-      "alt": "Mustafa with fire!",
+      "altText": "Mustafa with fire!",
       "aspect": "4:5"
     },
     {
       "image": "/assets/uploads/homepage-04.jpg",
-      "alt": "Mustafa looking elegant with silks and the lake in the background.",
+      "altText": "Mustafa looking elegant with silks and the lake in the background.",
       "aspect": "8:5"
     },
     {
       "image": "/assets/uploads/homepage-05.jpg",
-      "alt": "Mustafa with fire! Again!",
+      "altText": "Mustafa with fire! Again!",
       "aspect": "4:5"
     }
   ]
