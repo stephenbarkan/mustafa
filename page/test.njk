@@ -1,21 +1,13 @@
----
-eleventyExcludeFromCollections: true
----
-
 {% extends "layouts/page.njk" %}
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/marquee.njk" import marquee %}
+{% from "assets.njk" import blobContactLeft, blobContactRight %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set data = {
-    title: "Testing"
-} %}
-{# {% set showDivider = true %} #}
 {% set mainStyles = "py-12 gap-12 lg:py-32" %}
-{# {% set button = {
+{% set button = {
     props: {
         type: "button",
         size: "base",
@@ -25,28 +17,13 @@ eleventyExcludeFromCollections: true
     attrs: {
         href: "/home"
     }
-} %} #}
+} %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
-{% block pageContent %}
-    {# {% call section({padding: "none"}) %}
-        {% call container(props={size: "full", type: "cols-1"}, attrs={class:"gap-12 items-center justify-items-center"}) %}
-            {% call marquee({
-                mask: false,
-                itemGap:"gap-6",
-                duration: "45s"
-            },{
-                class:"h-[382px] lg:h-[482px] py-4"
-            }) %}
-                {% for photo in homePage.photos %}
-                    <div
-                        style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{homePage.photos.length}}*2)"
-                        class="max-h-full animate-wave shrink-0 rounded-base border border-neutral-light overflow-hidden {% if photo.aspect ==="8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
-                        <img src="{{ photo.image }}" alt="{{ photo.altText }}">
-                    </div>
-                {% endfor %}
-            {% endcall %}
-        {% endcall %}
-    {% endcall %} #}
+{% block blobs %}
+    {{ blobContactLeft({class:"fixed left-0 bottom-0 w-[50vw] max-w-[646px]"}) }}
+    {{ blobContactRight({class:"fixed right-0 bottom-0 w-[50vw] max-w-[712px]"}) }}
 {% endblock %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
