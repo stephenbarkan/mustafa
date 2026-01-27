@@ -739,6 +739,9 @@
   .overflow-hidden {
     overflow: hidden;
   }
+  .overflow-x-auto {
+    overflow-x: auto;
+  }
   .overflow-x-hidden {
     overflow-x: hidden;
   }
@@ -1566,11 +1569,26 @@
       display: none;
     }
   }
+  .xs\:gap-3 {
+    @media (width >= 28rem) {
+      gap: calc(var(--spacing) * 3);
+    }
+  }
+  .xs\:px-6 {
+    @media (width >= 28rem) {
+      padding-inline: calc(var(--spacing) * 6);
+    }
+  }
   .xs\:max-sm\:block {
     @media (width >= 28rem) {
       @media (width < 36rem) {
         display: block;
       }
+    }
+  }
+  .sm\:gap-3 {
+    @media (width >= 36rem) {
+      gap: calc(var(--spacing) * 3);
     }
   }
   .sm\:px-16 {
@@ -1603,6 +1621,11 @@
   .md\:grid-cols-3 {
     @media (width >= 44rem) {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  .md\:gap-3 {
+    @media (width >= 44rem) {
+      gap: calc(var(--spacing) * 3);
     }
   }
   .md\:gap-7 {

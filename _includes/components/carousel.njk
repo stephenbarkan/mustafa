@@ -16,7 +16,7 @@
 
 {% set controlsStyles = "gap-6 justify-between items-center" %}
 
-{% set indicatorRowStyles = "min-w-tube-sm min-h-tube-sm rounded-sm gap-3 px-6 bg-neutral backdrop-blur-base border-neutral-lighter border" %}
+{% set indicatorRowStyles = "min-w-tube-sm min-h-tube-sm rounded-sm gap-2 xs:gap-3 px-4 xs:px-6 bg-neutral backdrop-blur-base border-neutral-lighter border" %}
 {% set indicatorStyles = "size-3 @md:size-2.5 checked:bg-action border border-neutral-light hover:bg-(--color-neutral) rounded-full" %}
 
 {% set buttonProps = {
@@ -82,7 +82,7 @@
             }
         ) }}
         {% if props.indicators %}
-            <div class="flex self-center justify-self-center justify-center items-center {{ indicatorRowStyles }}" role="group" aria-label="slides" >
+            <div class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}" role="group" aria-label="slides" >
                 {% for slide in props.slides %}
                     <div x-data="{ id: $id('carousel-radio')}" class="flex">
                         <input
