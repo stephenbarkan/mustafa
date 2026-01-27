@@ -414,6 +414,9 @@
   .h-\[75dvh\] {
     height: 75dvh;
   }
+  .h-\[90dvh\] {
+    height: 90dvh;
+  }
   .h-\[382px\] {
     height: 382px;
   }
@@ -1715,6 +1718,16 @@
   .xl\:order-none {
     @media (width >= 70rem) {
       order: 0;
+    }
+  }
+  .xl\:col-1 {
+    @media (width >= 70rem) {
+      grid-column: 1;
+    }
+  }
+  .xl\:col-2 {
+    @media (width >= 70rem) {
+      grid-column: 2;
     }
   }
   .xl\:block {
