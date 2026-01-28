@@ -425,9 +425,6 @@
   .max-h-\[50vh\] {
     max-height: 50vh;
   }
-  .max-h-dvh--navbar {
-    max-height: calc(100dvh - var(--space-navbar-height));
-  }
   .max-h-full {
     max-height: 100%;
   }
@@ -1472,11 +1469,6 @@
   .disabled\:opacity-60 {
     &:disabled {
       opacity: 60%;
-    }
-  }
-  .max-xl\:row-start-2 {
-    @media (width < 70rem) {
-      grid-row-start: 2;
     }
   }
   .max-xl\:border-t {
