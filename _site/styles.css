@@ -301,9 +301,6 @@
       grid-row: 1 / 1;
     }
   }
-  .col-span-2 {
-    grid-column: span 2 / span 2;
-  }
   .container {
     width: 100%;
     @media (width >= 28rem) {
@@ -373,14 +370,8 @@
   .table {
     display: table;
   }
-  .aspect-\[3\/5\] {
-    aspect-ratio: 3/5;
-  }
   .aspect-\[4\/5\] {
     aspect-ratio: 4/5;
-  }
-  .aspect-\[5\/3\] {
-    aspect-ratio: 5/3;
   }
   .aspect-\[8\/5\] {
     aspect-ratio: 8/5;
@@ -454,9 +445,6 @@
   }
   .h-lvh {
     height: 100lvh;
-  }
-  .max-h-\[50vh\] {
-    max-height: 50vh;
   }
   .max-h-full {
     max-height: 100%;
@@ -667,9 +655,6 @@
   .grid-flow-dense {
     grid-auto-flow: dense;
   }
-  .grid-rows-2 {
-    grid-template-rows: repeat(2, minmax(0, 1fr));
-  }
   .flex-col {
     flex-direction: column;
   }
@@ -762,9 +747,6 @@
   }
   .self-center {
     align-self: center;
-  }
-  .self-start {
-    align-self: flex-start;
   }
   .justify-self-center {
     justify-self: center;
@@ -955,9 +937,6 @@
   }
   .object-left {
     object-position: left;
-  }
-  .object-right {
-    object-position: right;
   }
   .object-top {
     object-position: top;
@@ -1678,11 +1657,6 @@
       height: 482px;
     }
   }
-  .lg\:h-full {
-    @media (width >= 56rem) {
-      height: 100%;
-    }
-  }
   .lg\:grid-cols-2 {
     @media (width >= 56rem) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1759,11 +1733,6 @@
   .xl\:hidden {
     @media (width >= 70rem) {
       display: none;
-    }
-  }
-  .xl\:max-h-dvh {
-    @media (width >= 70rem) {
-      max-height: 100dvh;
     }
   }
   .xl\:max-h-dvh--navbar {
