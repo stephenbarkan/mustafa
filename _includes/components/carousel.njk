@@ -96,12 +96,13 @@
             <div class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}" role="group" aria-label="slides" >
                 {% for slide in props.figures %}
                     <div x-data="{ id: $id('carousel-radio')}" class="flex">
+                        <label class="sr-only" :for="id">View slide {{ loop.index }}</label>
                         <input
                             :checked="currentSlideIndex === {{ loop.index }}"
                             x-on:change="currentSlideIndex = {{ loop.index }}"
                             :id="id"
                             type="radio"
-                            name="id"
+                            :name="id"
                             value="View slide {{ loop.index }}"
                             class="{{ indicatorStyles }} appearance-none pointer-events-auto"/>
                     </div>
