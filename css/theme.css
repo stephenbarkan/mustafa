@@ -262,18 +262,21 @@
   direction: ltr;
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
-  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0;
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0;
 }
 
 @utility bg-* {
-  background-color: --value(--color-bg- *);
+  background-color: --value(--color-bg-*);
 }
 @utility border-* {
-  border-color: --value(--color-border- *);
+  border-color: --value(--color-border-*);
 }
 @utility text-* {
-  color: --value(--color-t- *);
-  line-height: --value(--text- * --line-height);
+  color: --value(--color-t-*);
+  line-height: --value(--text-* --line-height);
 }
 
 @utility bg-space {
@@ -285,15 +288,21 @@
 
 @utility text-body-lg {
   font-weight: 400;
-  font-variation-settings: "SOFT" 75, "WONK" 1;
+  font-variation-settings:
+    "SOFT" 75,
+    "WONK" 1;
 }
 @utility text-body-base {
   font-weight: 400;
-  font-variation-settings: "SOFT" 50, "WONK" 1;
+  font-variation-settings:
+    "SOFT" 50,
+    "WONK" 1;
 }
 @utility text-body-sm {
   font-weight: 400;
-  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
 }
 @utility text-heading-lg {
   font-family: var(--font-display);
@@ -301,11 +310,15 @@
 }
 @utility text-heading-base {
   font-weight: 600;
-  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
 }
 @utility text-heading-sm {
   font-weight: 550;
-  font-variation-settings: "SOFT" 100, "WONK" 1;
+  font-variation-settings:
+    "SOFT" 100,
+    "WONK" 1;
 }
 @utility text-button-* {
   text-transform: uppercase;

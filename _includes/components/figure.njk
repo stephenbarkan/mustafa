@@ -35,7 +35,13 @@
         ">
 
         {% if props.image %}
-            <img loading="lazy" class="w-full h-full object-cover {{ props.focus }}" src="{{ props.image }}" alt="{{ props.alt }}">
+            <img
+                {% if props.priority %}
+                    fetchpriority="high"
+                {% else %}
+                    loading="lazy"
+                {% endif %}
+                class="w-full h-full object-cover {{ props.focus }}" src="{{ props.image }}" alt="{{ props.alt }}">
         {% endif %}
 
         {% if props.iframe %}

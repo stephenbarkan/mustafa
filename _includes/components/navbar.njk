@@ -16,7 +16,7 @@
 {# Nav content ------------ #}
 
 {% set navbarLogo %}
-   <a class="hover:scale-[1.05] active:scale-[.99] transition-transform" href="/home">{{ logo({class:"fill-neutral h-8.5"}) }}</a>
+   <a class="hover:scale-[1.05] active:scale-[.99] transition-transform" href="/home" aria-label="Home">{{ logo({class:"fill-neutral h-8.5"}) }}</a>
 {% endset %}
 
 {% set rightSide %}
@@ -105,7 +105,7 @@
                     {% if leftSide or rightSide or props.leftSide or props.rightSide %}
                         {% call drawer({
                             alignment:"top",
-                            triggerProps:{ icon:{off:"menu", on:"close"}, type:"button", variant:"neutral", size:"sm"}
+                            triggerProps:{ icon:{off:"menu", on:"close"}, ariaLabel:"Navigation menu", type:"button", variant:"neutral", size:"sm"}
                         }) %}
                             {% if drawerContents %}
                                 {{ drawerContents | safe }}

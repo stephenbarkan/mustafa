@@ -43,6 +43,7 @@
 {# ------------------ #}
 
 <{% if attrs.href %}a{% else %}button{% endif %} data-button
+    {% if not props.label and props.ariaLabel %}aria-label="{{ props.ariaLabel }}"{% endif %}
     {{ loopAttrs(attrs) }}
     {% if props.toggleValue %}
          {% if types[props.type].on %}

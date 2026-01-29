@@ -7,7 +7,7 @@
     "start": "npm-run-all -p  dev:*",
     "build": "run-s build:*",
     "dev:11ty": "cross-env ELEVENTY_ENV=dev eleventy --serve",
-    "dev:css": "npx @tailwindcss/cli -i ./css/styles.css -o ./_site/styles.css --watch",
+    "dev:css": "npx @tailwindcss/cli -i ./css/styles.css -o ./_site/styles.css --watch clean-css",
     "build:11ty": "cross-env ELEVENTY_ENV=prod eleventy",
     "build:css": "npx @tailwindcss/cli -i ./css/styles.css -o ./_site/styles.css"
   },
