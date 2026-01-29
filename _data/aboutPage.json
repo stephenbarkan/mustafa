@@ -17,7 +17,8 @@
       "image": "/assets/uploads/about-02.jpg",
       "alt": "Mustafa with flow friends",
       "caption": "",
-      "focus": "object-top"
+      "focus": "object-top",
+      "aspect": ""
     }
   ]
 }

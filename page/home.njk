@@ -28,12 +28,11 @@
             },{
                 class:"h-[382px] lg:h-[482px] py-4"
             }) %}
-                {% for photo in homePage.photos %}
-
+                {% for item in homePage.figures %}
                     <li
-                        style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{homePage.photos.length}}*2)"
-                        class="max-h-full animate-wave shrink-0 rounded-base border border-neutral-light overflow-hidden {% if photo.aspect ==="8:5" %}aspect-[8/5]{% else %}aspect-[4/5]{% endif %}">
-                        <img src="{{ photo.image }}" alt="{{ photo.caption }}">
+                        style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{ loop.length }}*2)"
+                        class="max-h-full animate-wave {{ item.aspect }}">
+                        {{ figure(props=item, attrs={class:"h-full "}) }}
                     </li>
                 {% endfor %}
             {% endcall %}
