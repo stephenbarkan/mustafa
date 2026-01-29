@@ -23,7 +23,7 @@
             {% for sponsor in data.sponsors %}
                 {{ div() }}
                 <div class="grid lg:grid-cols-3 w-full gap-site-inline">
-                    {{ figure({image: sponsor.figure.image, alt: sponsor.figure.alt, focus: sponsor.figure.focus },{class:"max-h-[50vh]"}) }}
+                    {{ figure(sponsor.figure) }}
                     {% call markdown({transform: false}, attrs={class:"lg:col-span-2"}) %}
                         <h2>{{ sponsor.title }}</h2>
                         <p>{{ button({label:sponsor.link, type:"link", variant:"neutral", size:"base"},{href:sponsor.link, target:"_blank"}) }}
