@@ -10,7 +10,8 @@
       "image": "/assets/uploads/about-01.jpg",
       "alt": "Mustafa flowing with a cool light pattern behind him",
       "caption": "",
-      "focus": "object-center"
+      "focus": "object-center",
+      "aspect": ""
     },
     {
       "image": "/assets/uploads/about-02.jpg",

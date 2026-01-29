@@ -22,7 +22,17 @@
 <figure data-figure
     {{ loopAttrs(attrs) }}
     class="flex flex-col {{ attrs.class }} {{ figureStyles }}">
-    <div class="grow {{ figureImageStyles }}">
+    <div
+        class="grow
+            {{ figureImageStyles }}
+            {{ figureImageStyles }}
+             {% if props.aspect %}
+                {{ props.aspect }}
+             {% else %}
+                {% if props.iframe %}aspect-video{% endif %}
+                {% if props.image %}aspect-square{% endif %}
+            {% endif %}
+        ">
 
         {% if props.image %}
             <img loading="lazy" class="w-full h-full object-cover {{ props.focus }}" src="{{ props.image }}" alt="{{ props.alt }}">
@@ -52,11 +62,12 @@
 {% set figureMeta = {
     args: '{% call figure(
     props={
-        image: "",
-        iframe: "",
+        image: "/assets/uploads/",
+        iframe: "https://www.youtube.com/embed/",
         alt: "",
         caption: "",
-        focus: ""
+        focus: "object-",
+        aspect: "aspect-"
     },
     attrs={}
 ) %}

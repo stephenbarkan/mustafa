@@ -15,9 +15,9 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block panelContent %}
-    <div class="grid grid-rows-2 max-h-full gap-12">
+    <div class="grid max-h-full gap-12">
         {% for item in data.figures %}
-            {{ figure(props={image:item.image, alt: item.alt, focus: item.focus, caption: item.caption}) }}
+            {{ figure(props={image:item.image, alt: item.alt, focus: item.focus, aspect: item.aspect, caption: item.caption}) }}
         {% endfor %}
     </div>
 {% endblock %}
