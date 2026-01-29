@@ -17,7 +17,7 @@
 
 {% block content %}
     {% call section({padding: "site"}, {class:"py-site-block"}) %}
-        {% call container({size: "content", type: "cols-1"}) %}
+        {% call container({size: "content", type: "cols-1"},{class:"justify-center"}) %}
             {{ textLockup({
                 title: data.title,
                 elaboration: data.elaboration,
