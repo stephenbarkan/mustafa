@@ -1,14 +1,6 @@
 @import "tailwindcss";
 @import "./theme.css";
 
-@font-face {
-  font-family: MysterionBohemian;
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/assets/mysterionbohemian-webfont.woff") format("woff"), url("/assets/mysterionbohemian-webfont.woff2") format("woff2");
-}
-
 @layer components {
   @import "./markdown.css";
 
