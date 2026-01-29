@@ -35,7 +35,7 @@
 
         {% if props.image %}
             <img
-                {% if props.priority %}
+                {% if props.lazy == false %}
                     fetchpriority="high"
                 {% else %}
                     loading="lazy"

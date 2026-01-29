@@ -5,7 +5,7 @@
       "alt": "Mustafa with a blue wand.",
       "caption": "",
       "focus": "",
-      "priority": true,
+      "lazy": false,
       "aspect": "aspect-[4/5]"
     },
     {
@@ -13,7 +13,7 @@
       "alt": "Mustafa gifting his aura to his friends.",
       "caption": "",
       "focus": "",
-      "priority": true,
+      "lazy": false,
       "aspect": "aspect-[8/5]"
     },
     {
@@ -21,7 +21,6 @@
       "alt": "Mustafa with fire!",
       "caption": "",
       "focus": "",
-      "priority": false,
       "aspect": "aspect-[4/5]"
     },
     {
@@ -29,7 +28,6 @@
       "alt": "Mustafa flowing with a cool light pattern behind him.",
       "caption": "",
       "focus": "",
-      "priority": false,
       "aspect": "aspect-[8/5]"
     },
     {
@@ -37,7 +35,6 @@
       "alt": "Mustafa with fire! Again!",
       "caption": "",
       "focus": "",
-      "priority": false,
       "aspect": "aspect-[4/5]"
     }
   ]
