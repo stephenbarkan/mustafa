@@ -8,6 +8,11 @@
 {% from "components/navbar.njk" import navbar with context %}
 {% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
 
+{# Values ------------------------------------------------------------------------------------------------------------------------------ #}
+
+{% set htmlStyles = "scroll-smooth scroll-p-site-block" %}
+{% set bodyStyles = "bg-space font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh w-screen overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]" %}
+
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <!DOCTYPE html>
@@ -55,7 +60,7 @@
         :style="{'--space-navbar-height': navbarHeight + 'px'}"
     {% endif %}
     lang="en"
-    class="scroll-smooth scroll-p-site-block relative">
+    class="relative {{ htmlStyles }}">
 
     <head>
         {% include "snippets/htmlHead.njk" %}
@@ -63,7 +68,7 @@
 
     <body
     :class="!scrollable && 'overflow-y-hidden'"
-    class="bg-space font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh w-screen overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]">
+    class="{{ bodyStyles }}">
         {# Skip to content link #}
         <a class="absolute top-0 left-0 opacity-0 z-[-1111111]" href="#main" aria-label="skip to main content">Click to skip to main content</a>
         {% block blobs %}

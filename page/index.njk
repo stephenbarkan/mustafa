@@ -19,6 +19,7 @@ permalink: /index.html
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
+
 {% call section({padding: "site"}) %}
     {% call container({type:"cols-1", size:"narrow"},{class:"justify-items-center gap-16"}) %}
         <div class="flex items-center justify-center flex-col gap-8 w-full">
@@ -29,4 +30,5 @@ permalink: /index.html
         {{ button({type:"button", size:"lg", variant:"action", label:"Enter site"},{href:"/home"}) }}
     {% endcall %}
 {% endcall %}
+
 {% endblock %}

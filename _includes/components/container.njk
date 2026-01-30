@@ -34,7 +34,6 @@
         class="mx-auto
         {% if props.size %}{{sizeStyles[props.size]}}{% else %}{{ sizeStyles.base }}{% endif %}
         {% if props.type %}{{typeStyles[props.type]}}{% else %}{{ typeStyles["cols-1"] }}{% endif %}
-        {# {% if props.type %}{{ typeStyles[props.type] }}{% endif %} #}
         {{ themeStyles }}
         {{ attrs.class }}
     ">
