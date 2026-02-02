@@ -608,6 +608,9 @@
   .grid-flow-dense {
     grid-auto-flow: dense;
   }
+  .grid-cols-\[minmax\(1px\,var\(--container-base\)\)\] {
+    grid-template-columns: minmax(1px,var(--container-base));
+  }
   .flex-col {
     flex-direction: column;
   }
