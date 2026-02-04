@@ -77,17 +77,18 @@
         <div data-loader class="animate-spin text-neutral text-body-lg place-self-center z-(--z-lowered)">{{ icon({icon:"progress_activity"}) }}</div>
     </div>
 
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
+
     <div class="flex {{ controlsStyles }}"> {# controls bar #}
         {{ button(
             props={
                 type: buttonProps.type,
                 size: buttonProps.size,
                 variant: buttonProps.variant,
-                icon: "arrow_back"
+                icon: "arrow_back",
+                tooltip:"Previous slide"
             },
             attrs={
-                "aria-label":"Previous slide",
-                "title":"Previous slide",
                 "@click": "previous()",
                 "class": buttonStyles
             }
@@ -114,11 +115,10 @@
                 type: buttonProps.type,
                 size: buttonProps.size,
                 variant: buttonProps.variant,
-                icon: "arrow_forward"
+                icon: "arrow_forward",
+                tooltip: "Next slide"
             },
             attrs={
-                "aria-label":"Next slide",
-                "title":"Next slide",
                 "@click": "next()",
                 "class": buttonStyles
             }

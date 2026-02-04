@@ -11,8 +11,8 @@
 
 {# Theme styles ----------- #}
 
-{% set figureStyles = "gap-6 overflow-hidden" %}
-{% set figureImageStyles = "border border-neutral-lighter bg-neutral rounded-lg overflow-hidden" %}
+{% set figureStyles = "gap-6" %}
+{% set figureImageStyles = "border border-neutral-lighter bg-neutral rounded-lg" %}
 {% set figureCaptionStyles = "text-center text-body-base" %}
 
 {# Other ------------------ #}
@@ -21,9 +21,9 @@
 
 <figure data-figure
     {{ loopAttrs(attrs) }}
-    class="flex flex-col {{ attrs.class }} {{ figureStyles }}">
+    class="flex flex-col overflow-hidden {{ attrs.class }} {{ figureStyles }}">
     <div
-        class="grow
+        class="grow overflow-hidden
             {{ figureImageStyles }}
              {% if props.aspect %}
                 {{ props.aspect }}

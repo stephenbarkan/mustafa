@@ -10,18 +10,11 @@
 
 {# Theme styles ----------- #}
 
-{% set  dividerStyles = "border-neutral-lighter" %}
+{% set dividerStyles = "border-neutral-lighter" %}
 
 {# Other ------------------ #}
 
-{% set directionStyles %}
-{% if props.direction === "vertical" %}
-    border-l
-{% else %}
-    border-t w-full
-{% endif %}
-
-{% endset %}
+{% set directionStyles %}{% if props.direction === "vertical" %}border-l{% else %}border-t w-full{% endif %}{% endset %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 

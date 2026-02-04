@@ -40,10 +40,13 @@
     }
 } %}
 
-{# ------------------ #}
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <{% if attrs.href %}a{% else %}button{% endif %} data-button
-    {% if not props.label and props.ariaLabel %}aria-label="{{ props.ariaLabel }}"{% endif %}
+    {% if props.tooltip %}
+        {% if not props.label %}aria-label="{{ props.tooltip }}"{% endif %}
+        title="{{ props.tooltip }}"
+    {% endif %}
     {{ loopAttrs(attrs) }}
     {% if props.toggleValue %}
          {% if types[props.type].on %}
@@ -79,9 +82,6 @@
         {% endif %}
     {% endif %}
 
-
-
-
     {%- if not props.label and not props.icon -%}
         {% if caller %}
             {{ caller() | safe }}
@@ -97,16 +97,18 @@
 {% set buttonMeta = {
     args: '{{ button(
     props={
-        type: "button | link",
-        size: "base | lg | sm | inherit",
         label: "",
         icon: "",
-        toggleValue: ""
+        tooltip: ""
+        type: "button | link",
+        size: "base | lg | sm | inherit",
+        toggleValue: "",
+        iconPosition: "start | end"
     },
     attrs={}
 ) }}',
 description: "
-- Tag defaults to `button` unless you provide a `href`, then it'll be an `a` tag.
+- Tag defaults to `button` unless you provide an `attrs.href`, then it'll be an `a` tag.
 - Optionally you can use `{% call %}` to give custom inner HTML.
 - `props.toggleValue` is the `x-data` value that the button looks for to determine its on/off state. If you use this property, the `button` expects the `props.icon` and `props.label` values to be objects with `on` and `off` keys.
 "
