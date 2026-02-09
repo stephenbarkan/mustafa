@@ -407,6 +407,9 @@
   .h-\[382px\] {
     height: 382px;
   }
+  .h-\[calc\(var\(--text-body-lg\)\*var\(--text-body-lg--line-height\)\)\] {
+    height: calc(var(--text-body-lg) * var(--text-body-lg--line-height));
+  }
   .h-dvh {
     height: 100dvh;
   }
