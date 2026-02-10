@@ -206,6 +206,9 @@
   .pointer-events-none {
     pointer-events: none;
   }
+  .invisible {
+    visibility: hidden;
+  }
   .sr-only {
     position: absolute;
     width: 1px;
@@ -319,9 +322,6 @@
   .-mx-\[\.25em\] {
     margin-inline: calc(.25em * -1);
   }
-  .mx-auto {
-    margin-inline: auto;
-  }
   .mt-1\.5 {
     margin-top: calc(var(--spacing) * 1.5);
   }
@@ -388,9 +388,6 @@
   }
   .h-8\.5 {
     height: calc(var(--spacing) * 8.5);
-  }
-  .h-\[1\.3em\] {
-    height: 1.3em;
   }
   .h-\[20vh\] {
     height: 20vh;
@@ -709,12 +706,6 @@
   }
   .justify-self-center {
     justify-self: center;
-  }
-  .justify-self-end {
-    justify-self: flex-end;
-  }
-  .justify-self-start {
-    justify-self: flex-start;
   }
   .overflow-hidden {
     overflow: hidden;
@@ -1160,6 +1151,9 @@
     transition-property: transform, translate, scale, rotate;
     transition-timing-function: var(--tw-ease, cubic-bezier(0.2, 0.8, 0.2, 1));
     transition-duration: var(--tw-duration, 100ms);
+  }
+  .transition-discrete {
+    transition-behavior: allow-discrete;
   }
   .delay-100 {
     transition-delay: 100ms;
@@ -1607,11 +1601,6 @@
       gap: calc(var(--spacing) * 6);
     }
   }
-  .lg\:gap-12 {
-    @media (width >= 56rem) {
-      gap: calc(var(--spacing) * 12);
-    }
-  }
   .lg\:gap-16 {
     @media (width >= 56rem) {
       gap: calc(var(--spacing) * 16);
@@ -1626,16 +1615,6 @@
   .lg\:p-24 {
     @media (width >= 56rem) {
       padding: calc(var(--spacing) * 24);
-    }
-  }
-  .lg\:px-24 {
-    @media (width >= 56rem) {
-      padding-inline: calc(var(--spacing) * 24);
-    }
-  }
-  .lg\:py-16 {
-    @media (width >= 56rem) {
-      padding-block: calc(var(--spacing) * 16);
     }
   }
   .lg\:py-32 {

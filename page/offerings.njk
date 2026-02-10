@@ -4,6 +4,7 @@
 
 {% from "components/markdown.njk" import markdown %}
 {% from "components/carousel.njk" import carousel %}
+{% from "components/figure.njk" import figure %}
 {% from "assets.njk" import logo, sparkle, blobOffering %}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
@@ -15,7 +16,8 @@
 {% block panelContent %}
     {{ carousel(
         props={
-            figures: data.figures,
+            macro: figure,
+            slides: data.slides,
             indicators: true
         },
         attrs={class:"grow max-h-full"}

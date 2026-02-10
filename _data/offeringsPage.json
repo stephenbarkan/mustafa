@@ -6,7 +6,7 @@
     "props": { "label": "Contact me", "type": "button", "size": "base", "variant": "action" },
     "attrs": { "href": "/contact" }
   },
-  "figures": [
+  "slides": [
     {
       "iframe": "https://www.youtube.com/embed/sfMtrWNAxXU",
       "caption": "PAPASTAFA DEBUT - Luya Chicago - 3.27.24"
