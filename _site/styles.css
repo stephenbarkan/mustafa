@@ -1020,6 +1020,12 @@
   .py-site-inline {
     padding-block: var(--space-site-inline);
   }
+  .py-tube-base {
+    padding-block: var(--space-tube-base);
+  }
+  .py-tube-lg {
+    padding-block: var(--space-tube-lg);
+  }
   .pt-4 {
     padding-top: calc(var(--spacing) * 4);
   }
