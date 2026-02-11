@@ -16,6 +16,7 @@
     --default-mono-font-family: var(--font-mono);
     --font-display: MysterionBohemian, serif;
     --font-body: Fraunces, serif;
+    --font-icon: "Material Symbols Rounded";
     --text-body-base: var(--body-base);
     --text-body-base--line-height: 1.45;
     --text-body-lg: var(--body-lg);
@@ -28,7 +29,6 @@
     --z-sticky: 30;
     --z-top: 40;
     --z-top-elevated: 50;
-    --spacing-site-inline: var(--space-site-inline);
     --spacing-lines: var(--space-lines);
     --spacing-indent: 1.5ch;
     --spacing-tube-sm: var(--space-tube-sm);
@@ -534,7 +534,7 @@
     transform-origin: top;
     text-box-trim: trim-both;
     text-box-edge: cap alphabetic;
-    font-family: "Material Symbols Rounded";
+    font-family: var(--font-icon);
     font-style: normal;
     line-height: 1;
     letter-spacing: normal;
@@ -1775,6 +1775,11 @@
     --space-lines: 1.5rem;
   }
 }
+@layer utilities {
+  [x-cloak] {
+    display: none !important;
+  }
+}
 @layer components {
   .markdown {
     --space-half: calc(var(--md-font-size) * 2 / 8);
@@ -1982,9 +1987,6 @@
     content: "";
     position: absolute;
     inset: 0;
-  }
-  [x-cloak] {
-    display: none !important;
   }
 }
 @property --tw-translate-x {

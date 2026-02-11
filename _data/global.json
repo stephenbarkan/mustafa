@@ -3,5 +3,6 @@
   "siteTitle": "Mustafa Anwar",
   "siteDescription": "Movement, Fire, and Embodied Presence | Chicago",
   "siteImage": "/assets/uploads/og-image.jpg",
-  "favicon": "/assets/uploads/favicon.png"
+  "favicon": "/assets/uploads/favicon.png",
+  "themeColor": "#2e2736"
 }

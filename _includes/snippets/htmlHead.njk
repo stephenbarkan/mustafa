@@ -20,6 +20,6 @@
 <meta property="og:type" content="{% if ogType %}{{ ogType }}{% else %}website{% endif %}"/>
 <meta name="generator" content="{{ eleventy.generator }}">
 <link rel="icon" type="image/x-icon" href="{{ global.siteDomain }}{{ global.favicon }}">
-<meta name="theme-color" content="var(--color-surface)">
+<meta name="theme-color" content="{{ global.themeColor }}">
 <link rel="stylesheet" href="/styles.css">
 {% include "snippets/fonts.njk" %}

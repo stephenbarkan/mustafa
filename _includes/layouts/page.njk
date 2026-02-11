@@ -2,11 +2,9 @@
 
 {# Nested Components ------------------------------------------------------------------------------------------------------------------- #}
 
-{% from "components/button.njk" import button %}
-{% from "components/container.njk" import container %}
-{% from "components/textLockup.njk" import textLockup %}
-{% from "components/divider.njk" import divider %}
-{% from "components/section.njk" import section %}
+{# Content Source -------------------------------------------------------------------------------------------------------------------------- #}
+
+{# {% set data = cms.DATASOURCE %} #}
 
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
@@ -17,6 +15,7 @@
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
+
     {# page title #}
     {% call section({padding: "site"}, {class:"py-site-block"}) %}
         {% call container({size: "content", type: "cols-1"}) %}
