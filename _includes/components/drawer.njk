@@ -2,7 +2,6 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
-{% from "components/section.njk" import section %}
 {% from "components/container.njk" import container %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
@@ -13,8 +12,8 @@
 
 {# Theme styles ----------- #}
 
-{% set drawerStyles = "w-full h-dvh--navbar overflow-hidden bg-surface/75 backdrop-blur-base" %} {# applied to the wrapper for the panel and backdrop #}
-{% set panelStyles = "content-center bg-neutral-light border-neutral-lighter py-site-inline" %}
+{% set drawerStyles = "w-full h-dvh--navbar overflow-hidden bg-surface/75 backdrop-blur-base" %} {# applied to the wrapper for the panel #}
+{% set panelStyles = "@container content-center bg-neutral-light border-neutral-lighter py-site-inline px-site-inline" %}
 {% set duration = "duration-600" %}
 
 {% if props.alignment === "top" %}
@@ -32,13 +31,13 @@
 {% elseif props.alignment === "right" %}
 
     {% set drawerAlignmentStyles = "flex top-navbar-height justify-end" %}
-    {% set panelAlignmentStyles = "border-l max-w-[80%]" %}
+    {% set panelAlignmentStyles = "grow border-l max-w-[80%]" %}
     {% set transitionStyles = "translate-x-full" %}
 
 {% elseif props.alignment === "left" %}
 
     {% set drawerAlignmentStyles = "flex top-navbar-height justify-start" %}
-    {% set panelAlignmentStyles = "border-r max-w-[80%]" %}
+    {% set panelAlignmentStyles = "grow border-r max-w-[80%]" %}
     {% set transitionStyles = "-translate-x-full" %}
 
 {% endif %}
@@ -84,19 +83,19 @@
             class="flex z-(--z-top) grow fixed overflow-y-auto transition {{ duration }} {{ drawerStyles }} {{ drawerAlignmentStyles }}">
 
             {# Panel – thing that transitions #}
-            {% call section({padding:"site", tag:"div"},{
-                "x-ref": "panel",
-                "x-show":"drawerOpen",
-                "x-transition:enter-start":transitionStyles,
-                "x-transition:leave-end":transitionStyles,
-                "@click": "if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }",
-                "@click.outside": "close($refs.trigger)",
-                class: duration + " transition " + panelStyles + " " + panelAlignmentStyles
-            })  %}
+            <div
+                x-ref="panel"
+                x-show="drawerOpen",
+                x-transition:enter-start="{{ transitionStyles }}"
+                x-transition:leave-end="{{ transitionStyles }}"
+                @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
+                @click.outside="close($refs.trigger)"
+                class="transition {{ duration }} {{ panelStyles }} {{ panelAlignmentStyles }}"
+            >
                 {% if caller %}
                     {{ caller() | safe }}
                 {% endif %}
-            {% endcall %}
+            </div>
 
         </div>
 
