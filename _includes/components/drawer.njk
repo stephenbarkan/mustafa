@@ -2,6 +2,7 @@
 
 {% from "snippets/loopAttrs.njk" import loopAttrs %}
 {% from "components/button.njk" import button %}
+{% from "components/section.njk" import section %}
 {% from "components/container.njk" import container %}
 
 {# Macro ------------------------------------------------------------------------------------------------------------------------------- #}
@@ -12,19 +13,37 @@
 
 {# Theme styles ----------- #}
 
-{% set drawerStyles = "left-0 w-full h-dvh--navbar overflow-hidden" %} {# applied to the wrapper for the panel and backdrop #}
-{% set panelAlignmentStyles %} {# applied to the wrapper for the panel and backdrop #}
-    {% if props.alignment === "bottom" %}bottom-0 flex-col-reverse
-    {% elseif props.alignment === "top" %}top-navbar-height
-    {% elseif props.alignment === "right" %}top-0 right-0
-    {% endif %}
-{% endset %}
-{% set panelStyles %}grow relative bg-neutral-light border-neutral-lighter py-site-inline backdrop-blur-base {% if props.alignment === "bottom" %}border-t{% else %}border-b{% endif %}{% endset %}
-{% set backdropStyles %} bg-space shrink-0 h-lines{% endset %}
+{% set drawerStyles = "w-full h-dvh--navbar overflow-hidden bg-surface/75 backdrop-blur-base" %} {# applied to the wrapper for the panel and backdrop #}
+{% set panelStyles = "content-center bg-neutral-light border-neutral-lighter py-navbar-height" %}
+{% set duration = "duration-600" %}
+
+{% if props.alignment === "top" %}
+
+    {% set drawerAlignmentStyles = "flex-col top-navbar-height" %}
+    {% set panelAlignmentStyles = "border-b" %}
+    {% set transitionStyles = "-translate-y-full" %}
+
+{% elseif props.alignment === "bottom" %}
+
+    {% set drawerAlignmentStyles = "flex-col bottom-0 justify-end" %}
+    {% set panelAlignmentStyles = "border-t" %}
+    {% set transitionStyles = "translate-y-full" %}
+
+{% elseif props.alignment === "right" %}
+
+    {% set drawerAlignmentStyles = "flex top-navbar-height justify-end" %}
+    {% set panelAlignmentStyles = "border-l max-w-[80%]" %}
+    {% set transitionStyles = "translate-x-full" %}
+
+{% elseif props.alignment === "left" %}
+
+    {% set drawerAlignmentStyles = "flex top-navbar-height justify-start" %}
+    {% set panelAlignmentStyles = "border-r max-w-[80%]" %}
+    {% set transitionStyles = "-translate-x-full" %}
+
+{% endif %}
 
 {# Other ------------------ #}
-
-{% set newProps = {toggleValue:"drawerOpen", label:props.triggerProps.label, icon:props.triggerProps.icon, size:props.triggerProps.size, type:props.triggerProps.type, variant:props.triggerProps.variant, ariaLabel: props.triggerProps.ariaLabel}  %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
@@ -51,40 +70,36 @@
     x-on:focusin.window="! $refs.panel.contains($event.target) && close()"
     class="flex {{ attrs.class }}">
 
+    {# Trigger Button #}
+    {% set newProps = props.triggerProps | assign({toggleValue: "drawerOpen"}) %}
+    {{ button(newProps, {class:"grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
 
-    {{ button(props=newProps, attrs={class:"grow", "@click": "toggleDrawer()", "x-ref":"trigger"}) }}
     <template x-teleport="body">
-        <div {# wrapper for panel and backdrop #}
+
+        <div {# wrapper for panel #}
             x-cloak
             x-show="drawerOpen"
-            {% if props.alignment === "top" %}
-                x-transition:enter-start="opacity-0"
-                x-transition:leave-end="opacity-0"
-            {% elseif props.alignment === "bottom" %}
-                x-transition:enter-start="opacity-0"
-                x-transition:leave-end="opacity-0"
-            {% elseif props.alignment === "right" %}
-                x-transition:enter-start="opacity-0"
-                x-transition:leave-end="opacity-0"
-            {% endif %}
-            class="flex z-(--z-top) flex-col grow fixed overflow-y-auto {{ drawerStyles }} {{ panelAlignmentStyles }}">
-            <nav
-                x-ref="panel"
-                @click="if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }"
-                @click.outside="close($refs.trigger)"
-                class="grid content-center items-stretch {{ panelStyles }}">
+            x-transition:enter-start="opacity-0"
+            x-transition:leave-end="opacity-0"
+            class="flex z-(--z-top) grow fixed overflow-y-auto transition {{ duration }} {{ drawerStyles }} {{ drawerAlignmentStyles }}">
+
+            {# Panel – thing that transitions #}
+            {% call section({padding:"site", tag:"div"},{
+                "x-ref": "panel",
+                "x-show":"drawerOpen",
+                "x-transition:enter-start":transitionStyles,
+                "x-transition:leave-end":transitionStyles,
+                "@click": "if($event.target !== $refs.panel && $event.target.tagName.toLowerCase() === 'a') { close($refs.button) }",
+                "@click.outside": "close($refs.trigger)",
+                class: duration + " transition " + panelStyles + " " + panelAlignmentStyles
+            })  %}
                 {% if caller %}
                     {{ caller() | safe }}
-                {% else %}
-                    <ul>
-                        {% for item in props.drawerItems %}
-                            <li>{{ item.macro(item.props, item.attrs) }}</li>
-                        {% endfor %}
-                    </ul>
                 {% endif %}
-            </nav>
-            <div class="{{ backdropStyles }}"></div>
+            {% endcall %}
+
         </div>
+
     </template>
 </div>
 
