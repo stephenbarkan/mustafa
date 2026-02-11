@@ -7,9 +7,12 @@
 {% from "components/figure.njk" import figure %}
 {% from "assets.njk" import logo, sparkle, blobOfferingsLeft, blobOfferingsRight %}
 
+{# Content Source -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% set data = cms.sponsorsGearPage %}
+
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set data = sponsorsGearPage %}
 {% set mainStyles = "max-lg:pb-32" %}
 {% set showDivider = true %}
 
@@ -45,6 +48,8 @@
         {% endcall %}
     {% endcall %}
 {% endblock %}
+
+{# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block blobs %}
     {{ blobOfferingsLeft({class:"hidden lg:block top-0 left-0 bottom-0 h-dvh fixed max-w-[15vw]"}) }}

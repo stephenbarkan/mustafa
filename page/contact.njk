@@ -8,9 +8,12 @@
 {% from "components/textarea.njk" import textarea %}
 {% from "assets.njk" import blobContactRight, blobContactLeft %}
 
+{# Content Source -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% set data = cms.contactPage %}
+
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
-{% set data = contactPage %}
 {% set mainStyles = "" %}
 {% set showDivider = true %}
 
@@ -36,8 +39,8 @@
                     {{ input(
                         props={
                             name: "name",
-                            label: contactPage.nameField.label,
-                            description: contactPage.nameField.hint,
+                            label: data.nameField.label,
+                            description: data.nameField.hint,
                             fieldAttrs: {
                                 type: "text",
                                 required: true,
@@ -49,8 +52,8 @@
                     {{ input(
                         props={
                             name: "contactMethod",
-                            label: contactPage.contactMethodField.label,
-                            description: contactPage.contactMethodField.hint,
+                            label: data.contactMethodField.label,
+                            description: data.contactMethodField.hint,
                             fieldAttrs: {
                                 type: "text",
                                 required: true,
@@ -62,9 +65,9 @@
                     {# {{ checkbox(
                         props={
                             name: "interest",
-                            label: contactPage.interestField.label,
-                            description: contactPage.interestField.hint,
-                            options: contactPage.interestField.options,
+                            label: data.interestField.label,
+                            description: data.interestField.hint,
+                            options: data.interestField.options,
                             fieldAttrs:{
                             }
                         },
@@ -74,8 +77,8 @@
                     {{ textarea(
                         props={
                             name: "message",
-                            label: contactPage.messageField.label,
-                            description: contactPage.messageField.hint,
+                            label: data.messageField.label,
+                            description: data.messageField.hint,
                             fieldAttrs: {
                                 rows: "7"
                             }

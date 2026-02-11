@@ -8,16 +8,21 @@
 {% from "components/figure.njk" import figure %}
 {% from "assets.njk" import logo, sparkle, blobDefaultTop, blobDefaultBottom %}
 
+{# Content Source -------------------------------------------------------------------------------------------------------------------------- #}
+
+{% set data = cms.homePage %}
+
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set mainStyles = "py-site-block gap-site-block" %}
 {% set showBottomLine = false %}
 {% set showNavbar = true %}
-{% set data = homePage %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 {% block content %}
+
+    {# Marquee #}
     {% call section({padding: "none"}) %}
         {% call container(props={size: "full", type: "cols-1"}, attrs={class:"overflow-x-hidden"}) %}
             {% call marquee({
@@ -28,7 +33,7 @@
             },{
                 class:"h-[382px] lg:h-[482px] py-4"
             }) %}
-                {% for item in homePage.figures %}
+                {% for item in data.figures %}
                     <li
                         style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{ loop.length }}*2)"
                         class="max-h-full animate-wave {{ item.aspect }}">
@@ -39,6 +44,7 @@
         {% endcall %}
     {% endcall %}
 
+    {# Navigation links #}
     {% call section({padding: "site"}) %}
         {% call container(props={size: "narrow",type: "cols-1"}) %}
             <div class="grid lg:grid-cols-2 gap-4 lg:gap-6 relative ">
