@@ -28,6 +28,24 @@
   }
 
   @media screen and (min-width: 44rem) {
+    --body-sm: 18px;
+    --body-base: 20.5px;
+    --body-lg: 23px;
+
+    --heading-sm: 22.5px;
+    --heading-base: 26px;
+    --heading-lg: 78px;
+
+    --button-sm: 26px;
+    --button-base: 28.5px;
+    --button-lg: 36px;
+
+    --space-tube-base: 4.75rem;
+    --space-tube-lg: 5.75rem;
+  }
+
+  /* > lg */
+  @media screen and (min-width: 56rem) {
     --body-sm: 20px;
     --body-base: 22px;
     --body-lg: 26px;
@@ -42,10 +60,6 @@
 
     --space-tube-lg: 6rem;
     --space-tube-base: 5rem;
-  }
-
-  /* > lg */
-  @media screen and (min-width: 56rem) {
     --space-site-block: 6rem;
     --space-site-inline: 3.5rem;
     --space-lines: 1.5rem;
@@ -55,8 +69,7 @@
 @theme inline {
   /* Breakpoints ----------------------------------------------------------------------------------------------------------------------- */
 
-  --breakpoint-xs: 28rem; /* 448px */
-  --breakpoint-sm: 36rem; /* 576px */
+  --breakpoint-sm: 28rem; /* 448px */
   --breakpoint-md: 44rem; /* 704px */
   --breakpoint-lg: 56rem; /* 896px */
   --breakpoint-xl: 70rem; /* 1120px */

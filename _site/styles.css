@@ -303,9 +303,6 @@
     @media (width >= 28rem) {
       max-width: 28rem;
     }
-    @media (width >= 36rem) {
-      max-width: 36rem;
-    }
     @media (width >= 44rem) {
       max-width: 44rem;
     }
@@ -1504,35 +1501,13 @@
       padding-bottom: calc(var(--spacing) * 32);
     }
   }
-  .xs\:hidden {
+  .sm\:hidden {
     @media (width >= 28rem) {
       display: none;
     }
   }
-  .xs\:gap-3 {
-    @media (width >= 28rem) {
-      gap: calc(var(--spacing) * 3);
-    }
-  }
-  .xs\:px-6 {
-    @media (width >= 28rem) {
-      padding-inline: calc(var(--spacing) * 6);
-    }
-  }
-  .xs\:max-sm\:block {
-    @media (width >= 28rem) {
-      @media (width < 36rem) {
-        display: block;
-      }
-    }
-  }
-  .sm\:px-16 {
-    @media (width >= 36rem) {
-      padding-inline: calc(var(--spacing) * 16);
-    }
-  }
   .sm\:max-md\:block {
-    @media (width >= 36rem) {
+    @media (width >= 28rem) {
       @media (width < 44rem) {
         display: block;
       }
@@ -1757,6 +1732,19 @@
     --space-lines: 0.5rem;
   }
   @media screen and (min-width: 44rem) {
+    --body-sm: 18px;
+    --body-base: 20.5px;
+    --body-lg: 23px;
+    --heading-sm: 22.5px;
+    --heading-base: 26px;
+    --heading-lg: 78px;
+    --button-sm: 26px;
+    --button-base: 28.5px;
+    --button-lg: 36px;
+    --space-tube-base: 4.75rem;
+    --space-tube-lg: 5.75rem;
+  }
+  @media screen and (min-width: 56rem) {
     --body-sm: 20px;
     --body-base: 22px;
     --body-lg: 26px;
@@ -1768,8 +1756,6 @@
     --button-lg: 40px;
     --space-tube-lg: 6rem;
     --space-tube-base: 5rem;
-  }
-  @media screen and (min-width: 56rem) {
     --space-site-block: 6rem;
     --space-site-inline: 3.5rem;
     --space-lines: 1.5rem;
