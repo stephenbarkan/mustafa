@@ -1,5 +1,7 @@
 :root {
   color-scheme: dark;
+
+  /* "Mobile" Values ----------------------------------------------------------------------------------------------------------------------- */
   --icon-size: 1.45em;
 
   --body-sm: 17.5px;
@@ -22,12 +24,8 @@
   --space-tube-base: 4.5rem;
   --space-tube-lg: 5.25rem;
 
-  @media screen and (min-width: 36rem) {
-    --space-site-inline: 1.5rem;
-    --space-lines: 0.5rem;
-  }
-
-  @media screen and (min-width: 44rem) {
+  /* "Tablet" Values -------------------------------------------------------------------------------------------------------------------------- */
+  @media screen and (min-width: 704px) {
     --body-sm: 18px;
     --body-base: 20.5px;
     --body-lg: 23px;
@@ -42,10 +40,13 @@
 
     --space-tube-base: 4.75rem;
     --space-tube-lg: 5.75rem;
+
+    --space-site-inline: 1.5rem;
+    --space-lines: 0.5rem;
   }
 
-  /* > lg */
-  @media screen and (min-width: 56rem) {
+  /* "Desktop" Values -------------------------------------------------------------------------------------------------------------------------- */
+  @media screen and (min-width: 896px) {
     --body-sm: 20px;
     --body-base: 22px;
     --body-lg: 26px;
@@ -69,10 +70,10 @@
 @theme inline {
   /* Breakpoints ----------------------------------------------------------------------------------------------------------------------- */
 
-  --breakpoint-sm: 28rem; /* 448px */
-  --breakpoint-md: 44rem; /* 704px */
-  --breakpoint-lg: 56rem; /* 896px */
-  --breakpoint-xl: 70rem; /* 1120px */
+  --breakpoint-sm: 448px;
+  --breakpoint-md: 704px;
+  --breakpoint-lg: 896px;
+  --breakpoint-xl: 1120px;
 
   /* Typography ------------------------------------------------------------------------------------------------------------------------ */
 

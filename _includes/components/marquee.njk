@@ -11,7 +11,7 @@
 
 {# Theme styles ----------- #}
 
-{% set marqueeStyles = "overflow-hidden select-none" %}
+{% set marqueeStyles = "" %}
 {% set maskStyles = "mask-x-from-80% mask-x-to-100%" %}
 
 {# Other ------------------ #}
@@ -21,17 +21,17 @@
 <div data-marquee
     {{ loopAttrs(attrs) }}
     style="--gap: {{ props.itemGap | replace("gap-", "") * 4 }}px" {# used to calculate the marquee animation #}
-    class="
-        flex w-full
+    class="@container
+        flex w-full overflow-hidden select-none
         {{ props.itemGap }}
         {{ attrs.class }}
         {{ marqueeStyles }}
         {% if props.mask %}{{ maskStyles }}{% endif %}
         ">
-    <ul class="shrink-0 flex {{ props.itemGap }} justify-around min-w-full animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
+    <ul class="shrink-0 flex {{ props.itemGap }} basis-full w-fit grow justify-between animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
         {{ caller() | safe }}
     </ul>
-    <ul aria-hidden="true" class="shrink-0 flex {{ props.itemGap }} justify-around min-w-full animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
+    <ul aria-hidden="true" class="shrink-0 flex {{ props.itemGap }} basis-full w-fit grow justify-between animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
         {{ caller() | safe }}
     </ul>
 </div>

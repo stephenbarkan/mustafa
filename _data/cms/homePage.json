@@ -21,6 +21,7 @@
       "alt": "Mustafa with fire!",
       "caption": "",
       "focus": "",
+      "lazy": false,
       "aspect": "aspect-[4/5]"
     },
     {
@@ -28,6 +29,7 @@
       "alt": "Mustafa flowing with a cool light pattern behind him.",
       "caption": "",
       "focus": "",
+      "lazy": false,
       "aspect": "aspect-[8/5]"
     },
     {
@@ -35,6 +37,7 @@
       "alt": "Mustafa with fire! Again!",
       "caption": "",
       "focus": "",
+      "lazy": false,
       "aspect": "aspect-[4/5]"
     }
   ]

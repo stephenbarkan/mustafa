@@ -28,11 +28,10 @@
 
 <{{ tag }} data-section
     {{ loopAttrs(attrs) }}
-    class="
-        grid grid-cols-[minmax(1px,var(--container-base))] justify-center
+    class="grid
         {{ attrs.class }}
         {{ sectionStyles }}
-        {% if props.padding %}{{paddingStyles[props.padding]}}{% else %}{{ paddingStyles.site }}{% endif %}
+        {% if props.padding %}{{ paddingStyles[props.padding] }}{% else %}{{ paddingStyles.site }}{% endif %}
     ">
     {{ caller() | safe }}
 </{{ tag }}>
