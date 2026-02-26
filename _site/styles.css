@@ -464,17 +464,11 @@
   .w-\[var\(--container-narrow\)\] {
     width: var(--container-narrow);
   }
-  .w-cqi {
-    width: 100cqi;
-  }
   .w-fit {
     width: fit-content;
   }
   .w-full {
     width: 100%;
-  }
-  .w-full\! {
-    width: 100% !important;
   }
   .w-inherit {
     width: inherit;
@@ -509,20 +503,8 @@
   .max-w-cqi {
     max-width: 100cqi;
   }
-  .max-w-fit {
-    max-width: fit-content;
-  }
   .max-w-full {
     max-width: 100%;
-  }
-  .min-w-cqi {
-    min-width: 100cqi;
-  }
-  .min-w-fit {
-    min-width: fit-content;
-  }
-  .min-w-full {
-    min-width: 100%;
   }
   .min-w-max {
     min-width: max-content;
@@ -670,9 +652,6 @@
   }
   .items-stretch {
     align-items: stretch;
-  }
-  .justify-around {
-    justify-content: space-around;
   }
   .justify-between {
     justify-content: space-between;
