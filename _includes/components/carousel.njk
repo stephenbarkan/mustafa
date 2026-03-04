@@ -17,8 +17,9 @@
 
 {% set controlsStyles = "gap-6 justify-between items-center" %}
 
-{% set indicatorRowStyles = "min-w-tube-sm min-h-tube-sm rounded-sm gap-2 xs:gap-3 px-4 xs:px-6 bg-neutral backdrop-blur-base border-neutral-lighter border" %}
-{% set indicatorStyles = "size-3 @md:size-2.5 checked:bg-action border border-neutral-light hover:bg-(--color-neutral) rounded-full" %}
+{% set indicatorRowStyles = "min-w-tube-sm min-h-tube-sm rounded-sm px-3 xs:px-4 bg-neutral backdrop-blur-base border-neutral-lighter border" %}
+{% set indicatorStyles = "size-3 @md:size-2.5 border border-neutral-light hover:bg-(--color-neutral) rounded-full" %}
+{% set indicatorCheckedStyles = "bg-action!" %}
 
 {% set buttonProps = {
     type: "button",
@@ -34,8 +35,18 @@
 <div data-carousel
     role="group"
     aria-roledescription="carousel"
+    x-id="['carousel-slide', 'carousel-indicator']"
     x-data="{
         currentSlideIndex: 1,
+        init() {
+            this.$nextTick(() => this.select(1))
+        },
+        select(i) {
+            this.currentSlideIndex = i;
+        },
+        isSelected(i) {
+            return this.currentSlideIndex === i
+        },
         stopVideos() {
             document.querySelectorAll('iframe').forEach(v => { v.src = v.src });
             document.querySelectorAll('video').forEach(v => { v.pause() });
@@ -69,10 +80,9 @@
         aria-live="polite"
         tabindex="0"
         {% if props.indicators %}
-            role="tablist"
             aria-label="slides"
         {% endif %}
-        class="relative grid grid-overlap overflow-hidden grow">
+        class="relative grid overflow-hidden grid-overlap grow">
 
         {# loading svg #}
         <div data-loader class="animate-spin text-neutral text-body-lg place-self-center z-(--z-lowered)">{{ icon({icon:"progress_activity"}) }}</div>
@@ -80,19 +90,18 @@
         {# slide #}
         {% for item in props.slides %}
             <div
-                x-data="{ id: $id('carousel-slide')}"
+                x-data="{ id: $id('carousel-slide', {{ loop.index }})}"
                 aria-label="{{ loop.index }} of {{ loop.length }}"
+                aria-roledescription="slide"
                 {% if props.indicators %}
-                    :aria-selected="currentSlideIndex == {{ loop.index }}"
-                    aria-labelledby="carousel-tab-{{ loop.index }}"
+                    aria-labelledby="carousel-indicator-{{ loop.index }}"
                     role="tabpanel"
                 {% else %}
                     role="group"
-                    aria-roledescription="slide"
                 {% endif %}
                 :id="id"
                 :class="currentSlideIndex !== {{ loop.index }} && 'invisible opacity-0'"
-                class="flex w-full transition transition-discrete duration-500"
+                class="flex w-full transition duration-500 transition-discrete"
                 {{ loopAttrs(attrs) }}>
 
                 {# slide macro #}
@@ -126,21 +135,30 @@
             {% if props.indicators %}
                 <div
                     role="tablist"
+                    @keydown.right.prevent.stop="$focus.wrap().next()"
+                    @keydown.left.prevent.stop="$focus.wrap().prev()"
+                    @keydown.home.prevent.stop="$focus.first()"
+                    @keydown.page-up.prevent.stop="$focus.first()"
+                    @keydown.end.prevent.stop="$focus.last()"
+                    @keydown.page-down.prevent.stop="$focus.last()"
                     aria-label="Choose slide to display"
                     class="flex self-center justify-self-center justify-center items-center overflow-x-auto {{ indicatorRowStyles }}">
                     {% for slide in props.slides %}
-                        <div x-data="{ id: $id('carousel-tab')}" class="flex">
-                            <label class="sr-only" :for="id">View slide {{ loop.index }}</label>
-                            <input
-                                aria-controls="carousel-slide-{{ loop.index }}"
-                                :checked="currentSlideIndex === {{ loop.index }}"
-                                x-on:change="currentSlideIndex = {{ loop.index }}"
-                                :id="id"
-                                type="radio"
-                                :name="id"
-                                value="View slide {{ loop.index }}"
-                                class="{{ indicatorStyles }} appearance-none pointer-events-auto"/>
-                        </div>
+                        <button
+                            :id="$id('carousel-indicator', {{ loop.index }})"
+                            role="tab"
+                            aria-label="Slide {{ loop.index }}"
+                            :aria-selected="isSelected({{ loop.index }})"
+                            :aria-controls="$id('carousel-slide', {{ loop.index }})"
+                            @focus="select({{ loop.index }})"
+                            :tabindex="isSelected({{ loop.index }}) ? 0 : -1"
+                            class="grid place-content-center min-w-6 aspect-square">
+                            <div
+                                :class="isSelected({{ loop.index }}) && '{{ indicatorCheckedStyles }}'"
+                                class="flex items-center {{ indicatorStyles }}">
+                                {{ props.data.label }}
+                            </div>
+                        </button>
                     {% endfor %}
                 </div>
             {% endif %}
@@ -152,7 +170,8 @@
                     size: buttonProps.size,
                     variant: buttonProps.variant,
                     icon: "arrow_forward",
-                    tooltip: "Next slide"
+                    tooltip: "Next slide",
+                    iconPosition: "end"
                 },
                 attrs={
                     "@click": "next()",
@@ -164,42 +183,6 @@
     {% endif %}
 </div>
 
-{% endmacro %}
-
-{# ------------------------------------------------------------------------------------------------------------------------------------- #}
-
-{% macro carouselImage(props={}, attrs={}) %}
-
-    <div
-        x-show="currentSlideIndex == {{ props.loop.index }}"
-        x-transition.opacity.duration.600ms
-        {{ loopAttrs(attrs) }}
-        class="flex {{ carouselSlideStyles }} {{ attrs.class }}">
-        {{ caller() }}
-    </div>
-
-{% endmacro %}
-
-{% macro carouselIFrame(props={}, attrs={}) %}
-    <figure
-        x-show="currentSlideIndex == {{ props.loop.index }}"
-        x-transition.opacity.duration.600ms
-        {{ loopAttrs(attrs) }}
-        class="flex flex-col {{ slideStyles }}">
-        <div class="grow {{ slideImageStyles }}">
-            <iframe
-                loading="lazy"
-                class="h-full w-full object-cover aspect-video"
-                src="https://www.youtube.com/embed/{{ props.embed }}"
-                title="{{ props.title }}"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen>
-            </iframe>
-        </div>
-        {% if props.title %}<figcaption class="{{ slideCaptionStyles }}">{{ props.title }}</figcaption>{% endif %}
-    </figure>
 {% endmacro %}
 
 
