@@ -29,7 +29,7 @@
                     {{ figure(props=sponsor.figure | assign({widths: { desktop:666 } })) }}
                     {% call markdown({transform: false}, attrs={class:"lg:col-span-2"}) %}
                         <h2>{{ sponsor.title }}</h2>
-                        <p>{{ button({label:sponsor.link, type:"link", variant:"neutral", size:"base"},{href:sponsor.link, target:"_blank"}) }}
+                        <p>{{ button({label:sponsor.link, type:"link", variant:"neutral", size:"base"},{href:sponsor.link, target:"_blank"}) }}</p>
                         <p>{{ sponsor.elaboration }}</p>
                         {% if sponsor.discountCode %}<p><b>Discount Code:</b>
                         {{ copyToClipboard(
