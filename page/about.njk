@@ -20,7 +20,7 @@
 {% block panelContent %}
     <div class="grid max-h-full gap-site-inline w-full">
         {% for item in data.figures %}
-            {{ figure(props=item | assign({widths: { mobile:640, tablet:1400, desktop:1740 } })) }}
+            {{ figure(props=item | assign({widths: { mobile:640, tablet:1400, desktop:1740 } }), attrs={class:"max-w-content justify-self-center"}) }}
         {% endfor %}
     </div>
 {% endblock %}

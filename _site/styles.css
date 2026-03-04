@@ -1756,6 +1756,11 @@
       opacity: 60%;
     }
   }
+  .max-lg\:max-w-content {
+    @media (width < 896px) {
+      max-width: 53ch;
+    }
+  }
   .max-lg\:justify-center {
     @media (width < 896px) {
       justify-content: center;
