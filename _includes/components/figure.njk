@@ -40,6 +40,24 @@
                 {% else %}
                     loading="lazy"
                 {% endif %}
+                {% set comma = joiner() %}
+                eleventy:widths="
+                    {% if props.widths.mobile %}
+                        {{ props.widths.mobile }}px,
+                    {% endif %}{% if props.widths.tablet %}
+                        {{ props.widths.tablet }}px,
+                    {% endif %}{% if props.widths.desktop %}
+                        {{ props.widths.desktop }}px
+                    {% endif %}"
+                eleventy:formats="avif,webp,jpeg"
+                sizes="
+                    {%- if props.widths.mobile -%}
+                        (max-width: 600px) {{ props.widths.mobile }},
+                    {%- endif -%}{% if props.widths.tablet -%}
+                        (max-width: 1040px) {{ props.widths.tablet }},
+                    {%- endif -%}{% if props.widths.desktop -%}
+                        {{ props.widths.desktop }}
+                    {%- endif -%}"
                 class="w-full h-full object-cover {{ props.focus }}" src="{{ props.image }}" alt="{{ props.alt }}">
         {% endif %}
 

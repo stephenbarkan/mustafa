@@ -29,7 +29,7 @@
                 mask: false,
                 itemGap:"gap-6",
                 duration: "45s",
-                pauseOnHover: false
+                pauseOnHover: true
             },{
                 class:"h-[382px] lg:h-[482px] py-4"
             }) %}
@@ -37,7 +37,18 @@
                     <li
                         style="--animate-duration: 10s; animation-delay:calc(-1 * {{loop.index}} * var(--animate-duration)/{{ loop.length }}*2)"
                         class="max-h-full animate-wave {{ item.aspect }}">
-                        {{ figure(props=item, attrs={class:"h-full "}) }}
+                        {% if item.aspect === "aspect-[4/5]" %}
+                            {% set sizes = {
+                                mobile: 556,
+                                desktop: 716
+                            } %}
+                        {% else %}
+                            {% set sizes = {
+                                mobile: 1116,
+                                desktop: 1436
+                            } %}
+                        {% endif %}
+                        {{ figure( props=item | assign({widths: sizes }), attrs={class:"h-full "}) }}
                     </li>
                 {% endfor %}
             {% endcall %}

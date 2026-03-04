@@ -28,10 +28,10 @@
         {{ marqueeStyles }}
         {% if props.mask %}{{ maskStyles }}{% endif %}
         ">
-    <ul class="shrink-0 flex {{ props.itemGap }} basis-full w-fit grow justify-between animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
+    <ul class="shrink-0 flex {{ props.itemGap }} basis-full w-fit grow justify-between animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused] peer-hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
         {{ caller() | safe }}
     </ul>
-    <ul aria-hidden="true" class="shrink-0 flex {{ props.itemGap }} basis-full w-fit grow justify-between animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
+    <ul aria-hidden="true" class="shrink-0 flex {{ props.itemGap }} basis-full w-fit grow justify-between animate-marquee {% if props.pauseOnHover %}hover:[animation-play-state:paused] peer-hover:[animation-play-state:paused]{% endif %}" style="--animate-duration: {{ props.duration }}">
         {{ caller() | safe }}
     </ul>
 </div>
