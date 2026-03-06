@@ -2006,6 +2006,11 @@
       display: none;
     }
   }
+  .xl\:max-h-dvh {
+    @media (width >= 1120px) {
+      max-height: 100dvh;
+    }
+  }
   .xl\:max-h-dvh--navbar {
     @media (width >= 1120px) {
       max-height: calc(100dvh - var(--space-navbar-height));
