@@ -13,56 +13,23 @@
 {# Values ------------------------------------------------------------------------------------------------------------------------------ #}
 
 {% set htmlStyles = "scroll-smooth scroll-p-site-block" %}
-{% set bodyStyles = "bg-space font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh w-screen overflow-x-hidden items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]" %}
+{% set bodyStyles = "bg-space font-body text-neutral text-body-base antialiased flex flex-col min-h-dvh w-screen items-center pb-[calc(env(safe-area-inset-bottom)+var(--announcementBannerBlockSize))]" %}
 
 {# ------------------------------------------------------------------------------------------------------------------------------------- #}
 
 <!DOCTYPE html>
 <html
-    {% if showNavbar %} {# checks if the layout template includes the navbar or not #}
-        x-data="{
-            scrollable: true,
-            navbarHidden: false,
-            navbarHeight: 0,
-            lastScrollY: 0,
-            hasScrolled: false,
-            setHasScrolled() {
-                if (window.scrollY > this.navbarHeight) {
-                    this.hasScrolled = true
-                } else {
-                    this.hasScrolled = false
-                }
-            },
-            setNavbarHeight() {
-                setTimeout(() => {
-                    if (this.navbarHidden) {
-                        this.navbarHeight = 0;
-                    } else {
-                        this.navbarHeight = document.querySelector(`[x-ref='navbar']`).offsetHeight;
-                    }
-                }, 100);
-            },
-            setNavbarVisibility() {
-                if (window.scrollY === 0) {
-                    this.navbarHidden = false
-                } else if (window.scrollY > this.lastScrollY && this.hasScrolled) { //scrolling down
-                    this.navbarHidden = true
-                } else if (window.scrollY < this.lastScrollY  && this.hasScrolled) { //scrolling up
-                    this.navbarHidden = false
-                }
-                this.setNavbarHeight()
-                this.setHasScrolled()
-                this.lastScrollY = window.scrollY
-            },
-            init() { {# sets navbar height on js load #}
-                this.setNavbarHeight()
+    x-data="{
+        hasScrolled: false,
+        setHasScrolled() {
+            if (window.scrollY > 0) {
+                this.hasScrolled = true
+            } else {
+                this.hasScrolled = false
             }
-        }"
-        x-effect="setNavbarHeight()"
-        @resize.window="setNavbarHeight()"
-        @scroll.window="setNavbarVisibility()"
-        :style="{'--space-navbar-height': navbarHeight + 'px'}"
-    {% endif %}
+        }
+    }"
+    @scroll.window="setHasScrolled()"
     lang="en"
     class="relative {{ htmlStyles }}">
 
@@ -70,9 +37,7 @@
         {% include "snippets/htmlHead.njk" %}
     </head>
 
-    <body
-        :class="!scrollable && 'overflow-y-hidden'"
-        class="{{ bodyStyles }}">
+    <body class="{{ bodyStyles }}">
 
         {# Skip to content link #}
         <a class="absolute top-0 left-0 opacity-0 z-[-1111111]" href="#main" aria-label="skip to main content">Click to skip to main content</a>

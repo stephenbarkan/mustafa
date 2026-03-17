@@ -30,8 +30,8 @@
     --z-sticky: 30;
     --z-top: 40;
     --z-top-elevated: 50;
-    --spacing-lines: var(--space-lines);
     --spacing-indent: 1.5ch;
+    --spacing-lines: var(--space-lines);
     --spacing-tube-sm: var(--space-tube-sm);
     --spacing-tube-base: var(--space-tube-base);
     --spacing-tube-lg: var(--space-tube-lg);
@@ -253,6 +253,9 @@
   .top-lines {
     top: var(--space-lines);
   }
+  .top-navbar {
+    top: var(--space-navbar);
+  }
   .top-navbar-height {
     top: var(--space-navbar-height);
   }
@@ -336,6 +339,9 @@
   }
   .-mx-\[\.25em\] {
     margin-inline: calc(.25em * -1);
+  }
+  .mx-lines {
+    margin-inline: var(--space-lines);
   }
   .mt-1\.5 {
     margin-top: calc(var(--spacing) * 1.5);
@@ -453,8 +459,14 @@
   .h-lvh {
     height: 100lvh;
   }
+  .max-h-\[80dvh\] {
+    max-height: 80dvh;
+  }
   .max-h-full {
     max-height: 100%;
+  }
+  .max-h-unset {
+    max-height: unset;
   }
   .min-h-dvh {
     min-height: 100dvh;
@@ -546,6 +558,9 @@
   .max-w-narrow {
     max-width: 56rem;
   }
+  .max-w-unset {
+    max-width: unset;
+  }
   .min-w-6 {
     min-width: calc(var(--spacing) * 6);
   }
@@ -604,6 +619,11 @@
     --tw-translate-y: calc(calc(1/2 * 100%) * -1);
     translate: var(--tw-translate-x) var(--tw-translate-y);
   }
+  .translate-0 {
+    --tw-translate-x: calc(var(--spacing) * 0);
+    --tw-translate-y: calc(var(--spacing) * 0);
+    translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
   .translate-0\! {
     --tw-translate-x: calc(var(--spacing) * 0) !important;
     --tw-translate-y: calc(var(--spacing) * 0) !important;
@@ -636,6 +656,10 @@
   .translate-y-full {
     --tw-translate-y: 100%;
     translate: var(--tw-translate-x) var(--tw-translate-y);
+  }
+  .translate-z-none {
+    --tw-translate-z: 0;
+    translate: var(--tw-translate-x) var(--tw-translate-y) var(--tw-translate-z);
   }
   .scale-\[\.9\] {
     scale: .9;
@@ -992,6 +1016,9 @@
   .bg-surface\/75 {
     background-color: color-mix(in oklab, color(display-p3 0.094118 0.070588 0.129412 / 1) 75%, transparent);
   }
+  .bg-transparent {
+    background-color: transparent;
+  }
   .bg-space {
     background-image: url("assets/texture.png");
     background-repeat: repeat;
@@ -1309,6 +1336,12 @@
   .opacity-0 {
     opacity: 0%;
   }
+  .opacity-0\! {
+    opacity: 0% !important;
+  }
+  .opacity-50 {
+    opacity: 50%;
+  }
   .mix-blend-plus-lighter {
     mix-blend-mode: plus-lighter;
   }
@@ -1342,13 +1375,13 @@
     transition-timing-function: var(--tw-ease, cubic-bezier(0.2, 0.8, 0.2, 1));
     transition-duration: var(--tw-duration, 100ms);
   }
-  .transition-all {
-    transition-property: all;
+  .transition-colors {
+    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
     transition-timing-function: var(--tw-ease, cubic-bezier(0.2, 0.8, 0.2, 1));
     transition-duration: var(--tw-duration, 100ms);
   }
-  .transition-colors {
-    transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to;
+  .transition-opacity {
+    transition-property: opacity;
     transition-timing-function: var(--tw-ease, cubic-bezier(0.2, 0.8, 0.2, 1));
     transition-duration: var(--tw-duration, 100ms);
   }
@@ -1382,6 +1415,9 @@
   .duration-600 {
     --tw-duration: 600ms;
     transition-duration: 600ms;
+  }
+  .will-change-transform {
+    will-change: transform;
   }
   .outline-none {
     --tw-outline-style: none;
@@ -1452,6 +1488,11 @@
       @media (hover: hover) {
         animation-play-state: paused;
       }
+    }
+  }
+  .backdrop\:bg-transparent {
+    &::backdrop {
+      background-color: transparent;
     }
   }
   .\*\:last-of-type\:z-10 {
@@ -1740,6 +1781,11 @@
       opacity: 60%;
     }
   }
+  .max-xl\:hidden {
+    @media (width < 1120px) {
+      display: none;
+    }
+  }
   .max-lg\:max-w-content {
     @media (width < 896px) {
       max-width: 53ch;
@@ -2009,11 +2055,6 @@
   .xl\:max-h-dvh {
     @media (width >= 1120px) {
       max-height: 100dvh;
-    }
-  }
-  .xl\:max-h-dvh--navbar {
-    @media (width >= 1120px) {
-      max-height: calc(100dvh - var(--space-navbar-height));
     }
   }
   .xl\:grid-cols-2 {

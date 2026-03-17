@@ -126,6 +126,16 @@
 
   /* Spacing --------------------------------------------------------------------------------------------------------------------------- */
 
+  /* System ------------------ */
+  --spacing-inherit: inherit;
+  --spacing-unset: unset;
+  --spacing-cqi: 100cqi;
+  --spacing-navbar: var(--space-navbar);
+  --spacing-dvh--navbar: calc(100dvh - var(--space-navbar));
+  --spacing-indent: 1.5ch;
+  --spacing-safe-area-bottom: env(safe-area-inset-bottom);
+
+  --spacing-none: 0;
   --spacing-site-inline: var(--space-site-inline);
   --spacing-lines: var(--space-lines);
   --spacing-site-inline--lines: calc(var(--space-site-inline) - var(--spacing-lines));
