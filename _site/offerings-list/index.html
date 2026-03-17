@@ -1,7 +1,7 @@
 <!doctype html><html x-data="{
         hasScrolled: false,
         setHasScrolled() {
-            if (window.scrollY > 0) {
+            if (window.scrollY > 50) {
                 this.hasScrolled = true
             } else {
                 this.hasScrolled = false
@@ -32,9 +32,9 @@
             const diff = window.scrollY - this.lastScrollPos;
             if (!hasScrolled) {
                 this.navbarHidden = false
-            } else if (diff > 50) {
+            } else if (diff > 35) {
                 this.navbarHidden = true
-            } else if (diff < -50 ) {
+            } else if (diff < -35 ) {
                 this.navbarHidden = false
             }
             this.setNavbarHeight()
