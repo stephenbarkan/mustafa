@@ -271,6 +271,14 @@
   gap: inherit;
 }
 
+@utility items-center {
+  align-items: safe center;
+}
+
+@utility justify-center {
+  justify-content: safe center;
+}
+
 @utility text-icon {
   transform-origin: top;
   text-box-trim: trim-both;

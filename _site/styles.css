@@ -730,6 +730,9 @@
   .items-center {
     align-items: center;
   }
+  .items-center {
+    align-items: safe center;
+  }
   .items-end {
     align-items: flex-end;
   }
@@ -747,6 +750,9 @@
   }
   .justify-center {
     justify-content: center;
+  }
+  .justify-center {
+    justify-content: safe center;
   }
   .justify-end {
     justify-content: flex-end;
@@ -1765,6 +1771,11 @@
       justify-content: center;
     }
   }
+  .max-lg\:justify-center {
+    @media (width < 896px) {
+      justify-content: safe center;
+    }
+  }
   .max-lg\:pb-32 {
     @media (width < 896px) {
       padding-bottom: calc(var(--spacing) * 32);
@@ -1790,9 +1801,19 @@
       align-items: center;
     }
   }
+  .max-md\:items-center {
+    @media (width < 704px) {
+      align-items: safe center;
+    }
+  }
   .max-md\:justify-center {
     @media (width < 704px) {
       justify-content: center;
+    }
+  }
+  .max-md\:justify-center {
+    @media (width < 704px) {
+      justify-content: safe center;
     }
   }
   .max-md\:text-center {
